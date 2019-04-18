@@ -9,6 +9,10 @@ import WatcherOptions from './WatcherOptions'
 
 export default interface Yox {
 
+  $refs: Record<string, Yox | HTMLElement>
+
+  $node: Node
+
   get(keypath: string, defaultValue?: any): any
 
   set(keypath: string | Record<string, any>, value?: any): void
