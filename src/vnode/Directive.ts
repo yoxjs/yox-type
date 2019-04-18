@@ -1,4 +1,3 @@
-import Event from 'yox-common/util/Event'
 import DirectiveHook from '../hook/Directive'
 
 /**

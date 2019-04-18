@@ -1,3 +1,5 @@
+import Event from 'yox-common/util/Event'
+
 import DirectiveHook from './hook/Directive'
 import TransitionHook from './hook/Transition'
 import VNode from './vnode/VNode'
