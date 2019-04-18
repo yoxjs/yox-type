@@ -1,6 +1,7 @@
 import Property from './Property'
 import Attribute from './Attribute'
 import Directive from './Directive'
+import Yox from '../Yox'
 import TransitionHook from '../hook/Transition'
 
 export default interface VNode {
@@ -46,9 +47,9 @@ export default interface VNode {
   //  <Dog />
   // </Custom>
   // 这里 Dog 传入了 Custom 内部，parent 指向实际的父级组件，即 Custom，而不是 instance
-  parent?: any
+  parent?: Yox
 
-  instance?: any
+  instance?: Yox
 
   // 渲染节点时的 keypath
   keypath?: string
