@@ -34,11 +34,11 @@ export default interface YoxOptions {
 
   slots?: Record<string, any>
 
-  events?: Record<string, (event: Event, data?: Record<string, any>) => boolean | void>
+  events?: Record<string, (event?: Event, data?: Record<string, any>) => boolean | void>
 
   methods?: Record<string, Function>
 
-  watchers?: Record<string, (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions>
+  watchers?: Record<string, (newValue?: any, oldValue?: any, keypath?: string) => void | WatcherOptions>
 
   extensions?: Record<string, any>
 
