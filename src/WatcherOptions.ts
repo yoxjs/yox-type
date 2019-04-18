@@ -1,3 +1,5 @@
+import * as signature from './signature'
+
 export default interface WatcherOptions {
 
   // 是否立即执行一次 watcher，默认为 false
@@ -10,6 +12,6 @@ export default interface WatcherOptions {
   once?: boolean
 
   // 数据变化处理器
-  watcher?: (newValue: any, oldValue: any, keypath: string) => void
+  watcher?: signature.watcher
 
 }

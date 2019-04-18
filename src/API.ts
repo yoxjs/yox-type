@@ -1,5 +1,6 @@
-import CustomEvent from 'yox-common/util/Event'
 import SpecialEvent from './SpecialEvent'
+
+import * as signature from './signature'
 
 export default interface API {
 
@@ -51,9 +52,9 @@ export default interface API {
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement, type: string, listener: (event: CustomEvent) => void, context?: any): void
+  on(node: HTMLElement, type: string, listener: signature.nativeEventListener, context?: any): void
 
-  off(node: HTMLElement, type: string, listener: (event: CustomEvent) => void): void
+  off(node: HTMLElement, type: string, listener: signature.nativeEventListener): void
 
   specialEvents: Record<string, SpecialEvent>
 

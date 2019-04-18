@@ -1,3 +1,5 @@
+import * as signature from './signature'
+
 export default interface ComputedOptions {
 
   // 是否开启缓存，默认为 true
@@ -10,9 +12,9 @@ export default interface ComputedOptions {
   deps?: string[]
 
   // getter，必填
-  get: () => any
+  get: signature.computedGetter
 
   // setter
-  set: (value: any) => void
+  set: signature.computedSetter
 
 }

@@ -1,7 +1,6 @@
-import Yox from '../Yox'
-import VNode from '../vnode/VNode'
+import * as signature from '../signature'
 
 export default interface TransitionHook {
-  enter?: (node: Node | Yox, vnode: VNode) => void
-  leave?: (node: Node | Yox, vnode: VNode) => void
+  enter?: signature.transitionEnter
+  leave?: signature.transitionLeave
 }

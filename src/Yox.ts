@@ -4,6 +4,7 @@ import DirectiveHook from './hook/Directive'
 import TransitionHook from './hook/Transition'
 import VNode from './vnode/VNode'
 
+import * as signature from './signature'
 import YoxOptions from './YoxOptions'
 import WatcherOptions from './WatcherOptions'
 
@@ -17,34 +18,34 @@ export default interface Yox {
 
   set(keypath: string | Record<string, any>, value?: any): void
 
-  on(type: string | Record<string, Function>, listener?: Function): Yox
+  on(type: string | Record<string, signature.eventListener>, listener?: signature.eventListener): Yox
 
-  once(type: string | Record<string, Function>, listener?: Function): Yox
+  once(type: string | Record<string, signature.eventListener>, listener?: signature.eventListener): Yox
 
-  off(type: string, listener?: Function): Yox
+  off(type: string, listener?: signature.eventListener): Yox
 
   fire(bullet: string | Event, data?: Record<string, any> | boolean, downward?: boolean): boolean
 
   watch(
-    keypath: string | Record<string, (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions>,
-    watcher?: (newValue: any, oldValue: any, keypath: string) => void,
+    keypath: string | Record<string, signature.watcher | WatcherOptions>,
+    watcher?: signature.watcher,
     options?: WatcherOptions | boolean
   ): Yox
 
   watchOnce(
     keypath: string,
-    watcher: (newValue: any, oldValue: any, keypath: string) => void,
+    watcher: signature.watcher,
     options?: WatcherOptions
   ): Yox
 
   unwatch(
     keypath: string,
-    watcher?: (newValue: any, oldValue: any, keypath: string) => void
+    watcher?: signature.watcher
   ): Yox
 
   directive(name: string | Record<string, DirectiveHook>, directive?: DirectiveHook): DirectiveHook | void
 
-  component(name: string | Record<string, YoxOptions>, callback?: YoxOptions | Function): YoxOptions | void
+  component(name: string | Record<string, YoxOptions>, callback?: YoxOptions | signature.asyncComponent): YoxOptions | void
 
   transition(name: string | Record<string, TransitionHook>, transition?: TransitionHook): TransitionHook | void
 

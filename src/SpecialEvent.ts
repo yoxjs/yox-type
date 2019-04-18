@@ -1,6 +1,6 @@
-import CustomEvent from 'yox-common/util/Event'
+import * as signature from './signature'
 
 export default interface SpecialEvent {
-  on: (node: HTMLElement, listener: (event: Event | CustomEvent) => void) => void,
-  off: (node: HTMLElement, listener: (event: Event | CustomEvent) => void) => void,
+  on: (node: HTMLElement, listener: signature.specialEventListener) => void,
+  off: (node: HTMLElement, listener: signature.specialEventListener) => void,
 }

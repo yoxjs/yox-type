@@ -1,8 +1,6 @@
 import DirectiveHook from '../hook/Directive'
+import * as signature from '../signature'
 
-/**
- * 指令
- */
 export default interface Directive {
 
   type: string
@@ -17,10 +15,10 @@ export default interface Directive {
   hooks?: DirectiveHook
 
   // 取值函数
-  getter?: () => any
+  getter?: signature.directiveGetter
 
   // 事件或函数调用式的指令会编译成 handler
-  handler?: (event?: any, data?: Record<string, any>) => void
+  handler?: signature.directiveHandler
 
   // 作用于 handler，用于限制调用频率
   // 需要外部自己应用 lazy 给 handler
