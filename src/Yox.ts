@@ -25,11 +25,22 @@ export default interface Yox {
 
   fire(bullet: string | Event, data?: Record<string, any> | boolean, downward?: boolean): boolean
 
-  watch(keypath: string | Record<string, (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions>, watcher?: (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions | boolean, options?: boolean | WatcherOptions): Yox
+  watch(
+    keypath: string | Record<string, (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions>,
+    watcher?: (newValue: any, oldValue: any, keypath: string) => void,
+    options?: WatcherOptions | boolean
+  ): Yox
 
-  watchOnce(keypath: string | Record<string, (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions>, watcher?: (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions, options?: WatcherOptions): Yox
+  watchOnce(
+    keypath: string,
+    watcher: (newValue: any, oldValue: any, keypath: string) => void,
+    options?: WatcherOptions
+  ): Yox
 
-  unwatch(keypath: string, watcher?: (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions): Yox
+  unwatch(
+    keypath: string,
+    watcher?: (newValue: any, oldValue: any, keypath: string) => void
+  ): Yox
 
   directive(name: string | Record<string, DirectiveHook>, directive?: DirectiveHook): DirectiveHook | void
 

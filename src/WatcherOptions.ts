@@ -9,7 +9,7 @@ export default interface WatcherOptions {
   // 是否只监听一次，默认为 false
   once?: boolean
 
-  // 数据变化处理器，必填
-  watcher: (newValue: any, oldValue: any, keypath: string) => void
+  // 数据变化处理器
+  watcher?: (newValue: any, oldValue: any, keypath: string) => void
 
 }
