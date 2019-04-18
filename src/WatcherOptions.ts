@@ -10,6 +10,6 @@ export default interface WatcherOptions {
   once?: boolean
 
   // 数据变化处理器
-  watcher?: (newValue?: any, oldValue?: any, keypath?: string) => void
+  watcher?: (newValue: any, oldValue: any, keypath: string) => void
 
 }
