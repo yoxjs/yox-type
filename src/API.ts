@@ -1,3 +1,4 @@
+import CustomEvent from 'yox-common/util/Event'
 import SpecialEvent from './SpecialEvent'
 
 export default interface API {
