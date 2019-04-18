@@ -28,7 +28,7 @@ export default interface Yox {
 
   transition(name: string | Record<string, TransitionHook>, transition?: TransitionHook): TransitionHook | void
 
-  partial(name: string | Record<string, string | Function>, partial?: string | Function): string | Function | void
+  partial(name: string | Record<string, string | Function>, partial?: string | Function): Function | void
 
   filter(name: string | Record<string, Function>, filter?: Function): Function | void
 
