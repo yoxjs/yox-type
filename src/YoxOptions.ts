@@ -6,7 +6,7 @@ import WatcherOptions from './WatcherOptions'
 import DirectiveHook from './hook/Directive'
 import TransitionHook from './hook/Transition'
 
-export default interface Options {
+export default interface YoxOptions {
 
   el?: HTMLElement
 
@@ -24,7 +24,7 @@ export default interface Options {
 
   transitions?: Record<string, TransitionHook>
 
-  components?: Record<string, Options>
+  components?: Record<string, YoxOptions>
 
   directives?: Record<string, DirectiveHook>
 
@@ -38,7 +38,7 @@ export default interface Options {
 
   methods?: Record<string, Function>
 
-  watchers?: Record<string, () => void | WatcherOptions>
+  watchers?: Record<string, (newValue: any, oldValue: any, keypath: string) => void | WatcherOptions>
 
   extensions?: Record<string, any>
 

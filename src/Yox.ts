@@ -29,7 +29,7 @@ export default interface Yox {
 
   directive(name: string | Record<string, DirectiveHook>, directive?: DirectiveHook): DirectiveHook | void
 
-  component(name: string | Record<string, YoxOptions>, options?: YoxOptions): YoxOptions | void
+  component(name: string | Record<string, YoxOptions>, callback?: YoxOptions | Function): YoxOptions | void
 
   transition(name: string | Record<string, TransitionHook>, transition?: TransitionHook): TransitionHook | void
 
