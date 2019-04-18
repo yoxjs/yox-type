@@ -22,13 +22,13 @@ export default interface Yox {
 
   unwatch(keypath: string, watcher?: Function | Record<string, any>): Yox
 
-  directive(name: string | Record<string, DirectiveHook>, directive?: DirectiveHook): void
+  directive(name: string | Record<string, DirectiveHook>, directive?: DirectiveHook): DirectiveHook | void
 
-  transition(name: string | Record<string, TransitionHook>, transition?: TransitionHook): void
+  transition(name: string | Record<string, TransitionHook>, transition?: TransitionHook): TransitionHook | void
 
-  partial(name: string | Record<string, string | Function>, partial?: string | Function): void
+  partial(name: string | Record<string, string | Function>, partial?: string | Function): string | Function | void
 
-  filter(name: string | Record<string, Function>, filter?: Function): void
+  filter(name: string | Record<string, Function>, filter?: Function): Function | void
 
   create(options: Record<string, any>, vnode?: VNode, node?: HTMLElement): Yox
 
