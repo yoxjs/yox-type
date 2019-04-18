@@ -1,6 +1,7 @@
 import Property from './Property'
 import Attribute from './Attribute'
 import Directive from './Directive'
+import TransitionHook from '../hook/Transition'
 
 export default interface VNode {
 
@@ -27,6 +28,8 @@ export default interface VNode {
   nativeAttrs?: Record<string, Attribute>
 
   directives?: Record<string, Directive>
+
+  transition?: TransitionHook
 
   model?: any
 
