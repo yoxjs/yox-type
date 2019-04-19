@@ -1,5 +1,5 @@
 import CustomEvent from './Event'
-import YoxOptions from './YoxOptions'
+import YoxOptions from './options/Yox'
 
 import Yox from './Yox'
 import VNode from './vnode/VNode'

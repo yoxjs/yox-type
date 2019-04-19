@@ -1,4 +1,4 @@
-import DirectiveHook from '../hook/Directive'
+import DirectiveHooks from '../hooks/Directive'
 import * as type from '../type'
 
 export default interface Directive {
@@ -13,7 +13,7 @@ export default interface Directive {
   readonly value?: any
 
   // 必须有 hooks, 不然玩个毛...
-  readonly hooks: DirectiveHook
+  readonly hooks: DirectiveHooks
 
   // 取值函数
   readonly getter?: type.directiveGetter | void

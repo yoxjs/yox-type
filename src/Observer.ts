@@ -1,11 +1,17 @@
 import * as type from './type'
-import WatcherOptions from './WatcherOptions'
+import Computed from './Computed'
+import ComputedOptions from './options/Computed'
+import WatcherOptions from './options/Watcher'
 
 export default interface Observer {
 
   data: Record<string, any>
 
   context: any
+
+  addComputed(keypath: string, options: type.computedGetter | ComputedOptions): Computed | void
+
+  removeComputed(keypath: string): void
 
   diffSync(keypath: string, newValue: any, oldValue: any): void
 

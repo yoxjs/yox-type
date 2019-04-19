@@ -1,12 +1,15 @@
 import CustomEvent from './Event'
 
-import DirectiveHook from './hook/Directive'
-import TransitionHook from './hook/Transition'
+import DirectiveHooks from './hooks/Directive'
+import TransitionHooks from './hooks/Transition'
 import VNode from './vnode/VNode'
 
 import * as type from './type'
-import YoxOptions from './YoxOptions'
-import WatcherOptions from './WatcherOptions'
+import Computed from './Computed'
+import ComputedOptions from './options/Computed'
+import WatcherOptions from './options/Watcher'
+
+import YoxOptions from './options/Yox'
 
 export default interface Yox {
 
@@ -21,6 +24,10 @@ export default interface Yox {
   $parent?: Yox
 
   $children?: Yox[]
+
+  addComputed(keypath: string, computed: type.computedGetter | ComputedOptions): Computed | void
+
+  removeComputed(keypath: string): void
 
   get(keypath: string, defaultValue?: any): any
 
@@ -51,11 +58,11 @@ export default interface Yox {
     watcher?: type.watcher
   ): Yox
 
-  directive(name: string | Record<string, DirectiveHook>, directive?: DirectiveHook): DirectiveHook | void
+  directive(name: string | Record<string, DirectiveHooks>, directive?: DirectiveHooks): DirectiveHooks | void
 
-  component(nname: string | Record<string, YoxOptions>, component?: YoxOptions | signature.asyncComponent): YoxOptions | void
+  component(nname: string | Record<string, YoxOptions>, component?: YoxOptions | type.asyncComponent): YoxOptions | void
 
-  transition(name: string | Record<string, TransitionHook>, transition?: TransitionHook): TransitionHook | void
+  transition(name: string | Record<string, TransitionHooks>, transition?: TransitionHooks): TransitionHooks | void
 
   partial(name: string | Record<string, string>, partial?: string): Function | void
 

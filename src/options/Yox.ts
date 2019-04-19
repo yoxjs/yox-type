@@ -1,10 +1,10 @@
-import * as type from './type'
+import * as type from '../type'
 
-import Yox from './Yox'
-import ComputedOptions from './ComputedOptions'
-import WatcherOptions from './WatcherOptions'
-import DirectiveHook from './hook/Directive'
-import TransitionHook from './hook/Transition'
+import Yox from '../Yox'
+import ComputedOptions from './Computed'
+import WatcherOptions from './Watcher'
+import DirectiveHook from '../hooks/Directive'
+import TransitionHook from '../hooks/Transition'
 
 export default interface YoxOptions {
 

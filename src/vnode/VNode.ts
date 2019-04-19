@@ -2,7 +2,7 @@ import Property from './Property'
 import Attribute from './Attribute'
 import Directive from './Directive'
 import Yox from '../Yox'
-import TransitionHook from '../hook/Transition'
+import TransitionHooks from '../hooks/Transition'
 
 export default interface VNode {
 
@@ -32,7 +32,7 @@ export default interface VNode {
 
   readonly directives?: Record<string, Directive>
 
-  readonly transition?: TransitionHook
+  readonly transition?: TransitionHooks
 
   readonly model?: any
 
