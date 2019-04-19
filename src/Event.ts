@@ -1,4 +1,4 @@
-export default interface Event {
+export default interface CustomEvent {
 
   // 事件名称
   type: string
@@ -18,6 +18,12 @@ export default interface Event {
   // 处理当前事件的监听器
   listener?: Function
 
+  // 模仿 Event 的两个方法签名，避免业务代码判断事件类型
+  preventDefault(): Event
+
+  stopPropagation(): Event
+
+  // 简单版本
   prevent(): Event
 
   stop(): Event

@@ -1,9 +1,9 @@
 export default interface Property {
 
-  name: string
+  readonly name: string
 
-  value: any
+  readonly value: any
 
-  hint: number
+  readonly hint: number
 
 }

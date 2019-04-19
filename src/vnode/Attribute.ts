@@ -1,7 +1,7 @@
 export default interface Attribute {
 
-  name: string
+  readonly name: string
 
-  value: any
+  readonly value: any
 
 }

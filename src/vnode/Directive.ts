@@ -3,31 +3,31 @@ import * as type from '../type'
 
 export default interface Directive {
 
-  type: string
+  readonly type: string
 
-  name: string
+  readonly name: string
 
   // 当前 vnode 所有指令唯一的一个 key
-  key: string
+  readonly key: string
 
-  value?: any
+  readonly value?: any
 
-  hooks?: DirectiveHook
+  readonly hooks?: DirectiveHook
 
   // 取值函数
-  getter?: type.directiveGetter
+  readonly getter?: type.directiveGetter
 
   // 事件或函数调用式的指令会编译成 handler
-  handler?: type.directiveHandler
+  readonly handler?: type.directiveHandler
 
   // 作用于 handler，用于限制调用频率
   // 需要外部自己应用 lazy 给 handler
-  lazy?: number | boolean
+  readonly lazy?: number | boolean
 
   // 单向绑定的 keypath
-  binding?: string
+  readonly binding?: string
 
   // 单向绑定的 hint，用于区分 attr 和 prop
-  hint?: number
+  readonly hint?: number
 
 }

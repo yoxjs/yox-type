@@ -6,52 +6,54 @@ import TransitionHook from '../hook/Transition'
 
 export default interface VNode {
 
+  node: Node
+
   data: Record<string, any>
 
-  tag?: string
+  readonly tag?: string
 
-  isComponent?: boolean
+  readonly isComponent?: boolean
 
-  isComment?: boolean
+  readonly isComment?: boolean
 
-  isText?: boolean
+  readonly isText?: boolean
 
-  isSvg?: boolean
+  readonly isSvg?: boolean
 
-  isStatic?: boolean
+  readonly isStatic?: boolean
 
-  props?: Record<string, any>
+  readonly props?: Record<string, any>
 
-  slots?: Record<string, string | VNode[]>
+  readonly slots?: Record<string, string | VNode[]>
 
-  nativeProps?: Record<string, Property>
+  readonly nativeProps?: Record<string, Property>
 
-  nativeAttrs?: Record<string, Attribute>
+  readonly nativeAttrs?: Record<string, Attribute>
 
-  directives?: Record<string, Directive>
+  readonly directives?: Record<string, Directive>
 
-  transition?: TransitionHook
+  readonly transition?: TransitionHook
 
-  model?: any
+  readonly model?: any
 
-  ref?: string
+  readonly ref?: string
 
-  key?: string
+  readonly key?: string
 
-  text?: string
+  readonly text?: string
 
-  children?: VNode[]
+  readonly children?: VNode[]
 
   // 组件的 parent
   // <Custom>
   //  <Dog />
   // </Custom>
   // 这里 Dog 传入了 Custom 内部，parent 指向实际的父级组件，即 Custom，而不是 instance
-  parent?: Yox
+  readonly parent?: Yox
 
-  instance?: Yox
+  readonly instance?: Yox
 
   // 渲染节点时的 keypath
-  keypath?: string
+  readonly keypath?: string
 
 }
