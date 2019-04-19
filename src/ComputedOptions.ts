@@ -1,4 +1,4 @@
-import * as signature from './signature'
+import * as type from './type'
 
 export default interface ComputedOptions {
 
@@ -12,9 +12,9 @@ export default interface ComputedOptions {
   deps?: string[]
 
   // getter，必填
-  get: signature.computedGetter
+  get: type.computedGetter
 
   // setter
-  set: signature.computedSetter
+  set: type.computedSetter
 
 }

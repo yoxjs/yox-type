@@ -1,6 +1,6 @@
-import * as signature from '../signature'
+import * as type from '../type'
 
 export default interface TransitionHook {
-  enter?: signature.transitionEnter
-  leave?: signature.transitionLeave
+  enter?: type.transitionEnter
+  leave?: type.transitionLeave
 }

@@ -1,4 +1,4 @@
-import * as signature from './signature'
+import * as type from './type'
 
 import Yox from './Yox'
 import ComputedOptions from './ComputedOptions'
@@ -20,7 +20,7 @@ export default interface YoxOptions {
 
   replace?: boolean
 
-  computed?: Record<string, signature.computedGetter | ComputedOptions>
+  computed?: Record<string, type.computedGetter | ComputedOptions>
 
   transitions?: Record<string, TransitionHook>
 
@@ -34,11 +34,11 @@ export default interface YoxOptions {
 
   slots?: Record<string, any>
 
-  events?: Record<string, signature.eventListener>
+  events?: Record<string, type.eventListener>
 
   methods?: Record<string, Function>
 
-  watchers?: Record<string, signature.watcher | WatcherOptions>
+  watchers?: Record<string, type.watcher | WatcherOptions>
 
   extensions?: Record<string, any>
 

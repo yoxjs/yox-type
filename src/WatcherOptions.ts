@@ -1,4 +1,4 @@
-import * as signature from './signature'
+import * as type from './type'
 
 export default interface WatcherOptions {
 
@@ -12,6 +12,6 @@ export default interface WatcherOptions {
   once?: boolean
 
   // 数据变化处理器
-  watcher?: signature.watcher
+  watcher?: type.watcher
 
 }

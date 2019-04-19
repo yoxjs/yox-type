@@ -1,7 +1,7 @@
-import * as signature from '../signature'
+import * as type from '../type'
 
 export default interface DirectiveHook {
-  bind: signature.directiveBind
-  update?: signature.directiveUpdate
-  unbind?: signature.directiveUnbind
+  bind: type.directiveBind
+  update?: type.directiveUpdate
+  unbind?: type.directiveUnbind
 }

@@ -1,6 +1,6 @@
-import * as signature from './signature'
+import * as type from './type'
 
 export default interface SpecialEvent {
-  on: (node: HTMLElement, listener: signature.specialEventListener) => void,
-  off: (node: HTMLElement, listener: signature.specialEventListener) => void,
+  on: (node: HTMLElement, listener: type.specialEventListener) => void,
+  off: (node: HTMLElement, listener: type.specialEventListener) => void,
 }

@@ -1,9 +1,11 @@
-import CustomEvent from 'yox-common/util/Event'
+import CustomEvent from './Event'
 import YoxOptions from './YoxOptions'
 
 import Yox from './Yox'
 import VNode from './vnode/VNode'
 import Directive from './vnode/Directive'
+
+export type eventData = Record<string, any>
 
 export interface computedGetter { (): any }
 
