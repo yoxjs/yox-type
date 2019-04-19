@@ -1,18 +1,15 @@
 {
   "name": "yox-type",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "types for typescript",
   "main": "index.ts",
-  "directories": {
-    "example": "example",
-    "test": "test"
-  },
+  "directories": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yoxjs/yox-type.git"
   },
   "scripts": {},
-  "keywords": [],
+  "keywords": ["yox", "type", "typescript"],
   "author": "musicode",
   "license": "MIT",
   "bugs": {

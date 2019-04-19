@@ -22,7 +22,8 @@ export default interface Directive {
 
   // 作用于 handler，用于限制调用频率
   // 需要外部自己应用 lazy 给 handler
-  readonly lazy?: number | boolean
+  // lazy 是指令创建完成之后，根据是否有匹配的 lazy 指令加上去的
+  lazy?: number | boolean
 
   // 单向绑定的 keypath
   readonly binding?: string

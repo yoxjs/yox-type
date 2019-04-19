@@ -3,6 +3,10 @@ import WatcherOptions from './WatcherOptions'
 
 export default interface Observer {
 
+  data: Record<string, any>
+
+  context: any
+
   diffSync(keypath: string, newValue: any, oldValue: any): void
 
   get(keypath: string, defaultValue?: any): any

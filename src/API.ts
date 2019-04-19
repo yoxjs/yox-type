@@ -44,7 +44,7 @@ export default interface API {
 
   children(node: Node): Node[]
 
-  text(node: HTMLElement, content?: string): string | void
+  text(node: Node, content?: string): string | void
 
   html(node: HTMLElement, content?: string): string | void
 
