@@ -12,7 +12,8 @@ export default interface Directive {
 
   readonly value?: any
 
-  readonly hooks?: DirectiveHook | void
+  // 必须有 hooks, 不然玩个毛...
+  readonly hooks: DirectiveHook
 
   // 取值函数
   readonly getter?: type.directiveGetter | void
