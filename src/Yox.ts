@@ -12,7 +12,15 @@ export default interface Yox {
 
   $refs: Record<string, Yox | HTMLElement>
 
-  $node: Node
+  $el?: HTMLElement
+
+  $model?: string
+
+  $vnode?: VNode
+
+  $parent?: Yox
+
+  $children?: Yox[]
 
   get(keypath: string, defaultValue?: any): any
 
@@ -43,19 +51,22 @@ export default interface Yox {
     watcher?: type.watcher
   ): Yox
 
-  forceUpdate(): void
-
   directive(name: string | Record<string, DirectiveHook>, directive?: DirectiveHook): DirectiveHook | void
 
-  component(name: string | Record<string, YoxOptions>, callback?: YoxOptions | type.asyncComponent): YoxOptions | void
+  component(nname: string | Record<string, YoxOptions>, component?: YoxOptions | signature.asyncComponent): YoxOptions | void
 
   transition(name: string | Record<string, TransitionHook>, transition?: TransitionHook): TransitionHook | void
 
-  partial(name: string | Record<string, string | Function>, partial?: string | Function): Function | void
+  partial(name: string | Record<string, string>, partial?: string): Function | void
 
-  filter(name: string | Record<string, Function | Record<string, Function>>, filter?: Function | Record<string, Function>): Function | void
+  filter(
+    name: string | Record<string, Function | Record<string, Function>>,
+    filter?: Function | Record<string, Function>
+  ): Function | Record<string, Function> | void
 
   checkPropTypes(props: Record<string, any>): Record<string, any>
+
+  forceUpdate(): void
 
   // node 可以是 Comment 或 HTMLElement
   create(options: YoxOptions, vnode?: VNode, node?: Node): Yox
