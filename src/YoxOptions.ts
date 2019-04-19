@@ -8,11 +8,13 @@ import TransitionHook from './hook/Transition'
 
 export default interface YoxOptions {
 
-  el?: HTMLElement
+  el?: string | Node
 
   data?: Record<string, any> | Function
 
   template?: string
+
+  model?: string
 
   props?: Record<string, any>
 

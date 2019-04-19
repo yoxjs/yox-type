@@ -57,7 +57,8 @@ export default interface Yox {
 
   checkPropTypes(props: Record<string, any>): Record<string, any>
 
-  create(options: YoxOptions, vnode?: VNode, node?: HTMLElement): Yox
+  // node 可以是 Comment 或 HTMLElement
+  create(options: YoxOptions, vnode?: VNode, node?: Node): Yox
 
   destroy(): void
 

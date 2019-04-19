@@ -12,8 +12,6 @@ export default interface API {
 
   createEvent(event: any, node: HTMLElement): any
 
-  isElement(node: Node): boolean
-
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
   removeProp(node: HTMLElement, name: string, hint?: number): void
@@ -38,11 +36,9 @@ export default interface API {
 
   next(node: Node): Node
 
-  find(selector: string, context?: HTMLElement): HTMLElement | void
+  find(selector: string): HTMLElement | void
 
-  tag(node: HTMLElement): string
-
-  children(node: Node): Node[]
+  tag(node: Node): string | void
 
   text(node: Node, content?: string): string | void
 

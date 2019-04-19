@@ -12,13 +12,13 @@ export default interface Directive {
 
   readonly value?: any
 
-  readonly hooks?: DirectiveHook
+  readonly hooks?: DirectiveHook | void
 
   // 取值函数
-  readonly getter?: type.directiveGetter
+  readonly getter?: type.directiveGetter | void
 
   // 事件或函数调用式的指令会编译成 handler
-  readonly handler?: type.directiveHandler
+  readonly handler?: type.directiveHandler | void
 
   // 作用于 handler，用于限制调用频率
   // 需要外部自己应用 lazy 给 handler
@@ -26,7 +26,7 @@ export default interface Directive {
   lazy?: number | boolean
 
   // 单向绑定的 keypath
-  readonly binding?: string
+  readonly binding?: string | void
 
   // 单向绑定的 hint，用于区分 attr 和 prop
   readonly hint?: number

@@ -15,6 +15,6 @@ export default interface ComputedOptions {
   get: type.computedGetter
 
   // setter
-  set: type.computedSetter
+  set?: type.computedSetter
 
 }
