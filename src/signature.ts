@@ -15,20 +15,20 @@ export interface eventListener { (event: CustomEvent, data?: Record<string, any>
 
 export interface nativeEventListener { (event: CustomEvent): boolean | void }
 
-export interface specialEventListener { (event: Event | CustomEvent): boolean | void }
+export interface specialEventListener { (event: Event | CustomEvent): void }
 
 export interface asyncComponent { (options: YoxOptions | void): void }
 
 export interface directiveGetter { (): any }
 
-export interface directiveHandler { (event?: CustomEvent, data?: Record<string, any>): boolean | void }
+export interface directiveHandler { (event?: CustomEvent, data?: Record<string, any>): void }
 
-export interface transitionEnter { (node: Node, done: () => void): void }
+export interface transitionEnter { (node: HTMLElement, done: () => void): void }
 
-export interface transitionLeave { (node: Node, done: () => void): void }
+export interface transitionLeave { (node: HTMLElement, done: () => void): void }
 
-export interface directiveBind { (node: Node | Yox, directive: Directive, vnode: VNode): void }
+export interface directiveBind { (node: HTMLElement | Yox, directive: Directive, vnode: VNode): void }
 
-export interface directiveUpdate { (node: Node | Yox, directive: Directive, vnode: VNode, oldVnode: VNode): void }
+export interface directiveUpdate { (node: HTMLElement | Yox, directive: Directive, vnode: VNode, oldVnode: VNode): void }
 
-export interface directiveUnbind { (node: Node | Yox, directive: Directive, vnode: VNode): void }
+export interface directiveUnbind { (node: HTMLElement | Yox, directive: Directive, vnode: VNode): void }
