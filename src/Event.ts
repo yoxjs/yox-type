@@ -19,13 +19,13 @@ export default interface CustomEvent {
   listener?: Function
 
   // 模仿 Event 的两个方法签名，避免业务代码判断事件类型
-  preventDefault(): Event
+  preventDefault(): CustomEvent
 
-  stopPropagation(): Event
+  stopPropagation(): CustomEvent
 
   // 简单版本
-  prevent(): Event
+  prevent(): CustomEvent
 
-  stop(): Event
+  stop(): CustomEvent
 
 }
