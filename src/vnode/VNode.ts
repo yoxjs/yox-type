@@ -10,7 +10,20 @@ export default interface VNode {
 
   data: Record<string, any>
 
-  readonly tag?: string
+  // 渲染节点时的 keypath
+  readonly keypath: string
+
+  // 渲染该节点的组件实例
+  readonly instance: Yox
+
+  // 组件的 parent
+  // <Custom>
+  //  <Dog />
+  // </Custom>
+  // 这里 Dog 传入了 Custom 内部，parent 指向实际的父级组件，即 Custom，而不是 instance
+  readonly parent?: Yox
+
+  readonly tag?: string | void
 
   readonly isComponent?: boolean
 
@@ -43,17 +56,5 @@ export default interface VNode {
   readonly text?: string
 
   readonly children?: VNode[]
-
-  // 组件的 parent
-  // <Custom>
-  //  <Dog />
-  // </Custom>
-  // 这里 Dog 传入了 Custom 内部，parent 指向实际的父级组件，即 Custom，而不是 instance
-  readonly parent?: Yox
-
-  readonly instance?: Yox
-
-  // 渲染节点时的 keypath
-  readonly keypath?: string
 
 }
