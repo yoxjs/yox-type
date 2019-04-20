@@ -4,7 +4,7 @@ import * as type from '../index'
 
 export default interface API {
 
-  createElement(tag: string, isSvg?: boolean): HTMLElement
+  createElement(tag: string, isSvg?: boolean): Element
 
   createText(text: string): Text
 
@@ -32,9 +32,9 @@ export default interface API {
 
   remove(parentNode: Node, node: Node): void
 
-  parent(node: Node): Node
+  parent(node: Node): Node | void
 
-  next(node: Node): Node
+  next(node: Node): Node | void
 
   find(selector: string): HTMLElement | void
 
