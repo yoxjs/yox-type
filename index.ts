@@ -1,9 +1,9 @@
-import CustomEvent from './Event'
-import YoxOptions from './options/Yox'
+import CustomEvent from './src/Event'
+import YoxOptions from './src/options/Yox'
 
-import Yox from './Yox'
-import VNode from './vnode/VNode'
-import Directive from './vnode/Directive'
+import Yox from './src/Yox'
+import VNode from './src/vnode/VNode'
+import Directive from './src/vnode/Directive'
 
 export type eventData = Record<string, any>
 

@@ -1,6 +1,7 @@
 import * as type from '../type'
 
 import Yox from '../Yox'
+import PropRule from '../PropRule'
 import ComputedOptions from './Computed'
 import WatcherOptions from './Watcher'
 import DirectiveHook from '../hooks/Directive'
@@ -9,6 +10,8 @@ import TransitionHook from '../hooks/Transition'
 export default interface YoxOptions {
 
   el?: string | Node
+
+  propTypes?: Record<string, PropRule>
 
   data?: Record<string, any> | Function
 

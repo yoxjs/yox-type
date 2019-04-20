@@ -1,6 +1,4 @@
-test
 node_modules
-.babelrc
 .gitignore
 .npmignore
 package-lock.json
