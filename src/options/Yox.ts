@@ -1,4 +1,4 @@
-import * as type from '../type'
+import * as type from '../../index'
 
 import Yox from '../Yox'
 import PropRule from '../PropRule'

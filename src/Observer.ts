@@ -1,4 +1,4 @@
-import * as type from './type'
+import * as type from '../index'
 import Computed from './Computed'
 import ComputedOptions from './options/Computed'
 import WatcherOptions from './options/Watcher'
