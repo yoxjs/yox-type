@@ -20,10 +20,6 @@ export default interface API {
 
   removeAttr(node: HTMLElement, name: string): void
 
-  data(node: HTMLElement, name: string, value?: string): string | void
-
-  removeData(node: HTMLElement, name: string): void
-
   before(parentNode: Node, newNode: Node, referenceNode: Node): void
 
   append(parentNode: Node, node: Node): void
