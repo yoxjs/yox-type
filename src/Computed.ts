@@ -4,12 +4,4 @@ export default interface Computed {
 
   set(value: any): void
 
-  has(dep: string): boolean
-
-  add(dep: string): void
-
-  remove(dep: string): void
-
-  clear(): void
-
 }
