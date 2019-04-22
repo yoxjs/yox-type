@@ -45,6 +45,8 @@ export default interface VNode {
 
   readonly directives?: Record<string, Directive>
 
+  readonly lazy?: Record<string, number | boolean>
+
   readonly transition?: TransitionHooks
 
   readonly model?: any
