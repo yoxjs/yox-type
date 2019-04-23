@@ -13,7 +13,7 @@ export default interface Observer {
 
   removeComputed(keypath: string): void
 
-  diffSync(keypath: string, newValue: any, oldValue: any): void
+  diff(keypath: string, newValue: any, oldValue: any): void
 
   get(keypath: string, defaultValue?: any): any
 

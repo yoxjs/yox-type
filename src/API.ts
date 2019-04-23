@@ -32,7 +32,7 @@ export default interface API {
 
   next(node: Node): Node | void
 
-  find(selector: string): HTMLElement | void
+  find(selector: string): Element | void
 
   tag(node: Node): string | void
 

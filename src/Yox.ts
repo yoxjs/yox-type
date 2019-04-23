@@ -13,7 +13,7 @@ import YoxOptions from './options/Yox'
 
 export default interface Yox {
 
-  $refs: Record<string, Yox | HTMLElement>
+  $refs?: Record<string, Yox | HTMLElement>
 
   $el?: HTMLElement
 
