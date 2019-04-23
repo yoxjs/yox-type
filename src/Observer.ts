@@ -25,12 +25,6 @@ export default interface Observer {
     options?: WatcherOptions | boolean
   ): void
 
-  watchOnce(
-    keypath: string,
-    watcher: type.watcher,
-    options?: WatcherOptions
-  ): void
-
   unwatch(
     keypath: string,
     watcher?: type.watcher
