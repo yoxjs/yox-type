@@ -29,17 +29,36 @@ export default interface Yox {
 
   removeComputed(keypath: string): void
 
-  get(keypath: string, defaultValue?: any): any
+  get(
+    keypath: string,
+    defaultValue?: any
+  ): any
 
-  set(keypath: string | Record<string, any>, value?: any): void
+  set(
+    keypath: string | Record<string, any>,
+    value?: any
+  ): void
 
-  on(type: string | Record<string, type.eventListener>, listener?: type.eventListener): Yox
+  on(
+    type: string | Record<string, type.eventListener>,
+    listener?: type.eventListener
+  ): Yox
 
-  once(type: string | Record<string, type.eventListener>, listener?: type.eventListener): Yox
+  once(
+    type: string | Record<string, type.eventListener>,
+    listener?: type.eventListener
+  ): Yox
 
-  off(type: string, listener?: type.eventListener): Yox
+  off(
+    type: string,
+    listener?: type.eventListener
+  ): Yox
 
-  fire(bullet: string | CustomEvent, data?: type.eventData | boolean, downward?: boolean): boolean
+  fire(
+    bullet: string | CustomEvent,
+    data?: type.eventData | boolean,
+    downward?: boolean
+  ): boolean
 
   watch(
     keypath: string | Record<string, type.watcher | WatcherOptions>,
@@ -58,17 +77,29 @@ export default interface Yox {
     watcher?: type.watcher
   ): Yox
 
-  directive(name: string | Record<string, DirectiveHooks>, directive?: DirectiveHooks): DirectiveHooks | void
+  directive(
+    name: string | Record<string, DirectiveHooks>,
+    directive?: DirectiveHooks
+  ): DirectiveHooks | void
 
-  component(nname: string | Record<string, YoxOptions>, component?: YoxOptions | type.asyncComponent): YoxOptions | void
+  transition(
+    name: string | Record<string, TransitionHooks>,
+    transition?: TransitionHooks
+  ): TransitionHooks | void
 
-  transition(name: string | Record<string, TransitionHooks>, transition?: TransitionHooks): TransitionHooks | void
+  component(
+    name: string | Record<string, YoxOptions>,
+    component?: YoxOptions | type.asyncComponent
+  ): YoxOptions | void
 
-  partial(name: string | Record<string, string>, partial?: string): Function | void
+  partial(
+    name: string | Record<string, string>,
+    partial?: string
+  ): Function | void
 
   filter(
     name: string | Record<string, Function | Record<string, Function>>,
-    filter?: Function | Record<string, Function>
+    filter?: Function | Record<string, Function | Record<string, Function>>
   ): Function | Record<string, Function> | void
 
   checkPropTypes(props: Record<string, any>): Record<string, any>

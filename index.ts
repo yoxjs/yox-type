@@ -31,6 +31,4 @@ export interface transitionLeave { (node: HTMLElement, done: () => void): void }
 
 export interface directiveBind { (node: HTMLElement | Yox, directive: Directive, vnode: VNode): void }
 
-export interface directiveUpdate { (node: HTMLElement | Yox, directive: Directive, vnode: VNode, oldVnode: VNode): void }
-
 export interface directiveUnbind { (node: HTMLElement | Yox, directive: Directive, vnode: VNode): void }
