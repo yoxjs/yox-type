@@ -37,7 +37,7 @@ export default interface VNode {
 
   readonly props?: Record<string, any>
 
-  readonly slots?: Record<string, string | VNode[]>
+  readonly slots?: Record<string, VNode[]>
 
   readonly nativeProps?: Record<string, Property>
 
