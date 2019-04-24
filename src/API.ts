@@ -20,11 +20,11 @@ export default interface API {
 
   removeAttr(node: HTMLElement, name: string): void
 
-  before(parentNode: Node, newNode: Node, referenceNode: Node): void
+  before(parentNode: Node, node: Node, referenceNode: Node): void
 
   append(parentNode: Node, node: Node): void
 
-  replace(parentNode: Node, newNode: Node, oldNode: Node): void
+  replace(parentNode: Node, node: Node, oldNode: Node): void
 
   remove(parentNode: Node, node: Node): void
 
@@ -36,9 +36,9 @@ export default interface API {
 
   tag(node: Node): string | void
 
-  text(node: Node, content?: string): string | void
+  text(node: Node, text?: string): string | void
 
-  html(node: HTMLElement, content?: string): string | void
+  html(node: Element, html?: string): string | void
 
   addClass(node: HTMLElement, className: string): void
 
