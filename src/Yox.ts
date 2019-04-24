@@ -13,8 +13,6 @@ import YoxOptions from './options/Yox'
 
 export default interface Yox {
 
-  $refs?: Record<string, Yox | HTMLElement>
-
   $el?: HTMLElement
 
   $model?: string
@@ -24,6 +22,8 @@ export default interface Yox {
   $parent?: Yox
 
   $children?: Yox[]
+
+  $refs?: Record<string, Yox | HTMLElement>
 
   addComputed(keypath: string, computed: type.computedGetter | ComputedOptions): Computed | void
 
@@ -111,7 +111,7 @@ export default interface Yox {
 
   destroy(): void
 
-  nextTick(task: Function): void
+  nextTick(task: Function, prepend?: boolean): void
 
   toggle(keypath: string): boolean
 
