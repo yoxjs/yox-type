@@ -9,15 +9,30 @@ export default interface Observer {
 
   context: any
 
-  addComputed(keypath: string, options: type.computedGetter | ComputedOptions): Computed | void
+  addComputed(
+    keypath: string,
+    options: type.computedGetter | ComputedOptions
+  ): Computed | void
 
-  removeComputed(keypath: string): void
+  removeComputed(
+    keypath: string
+  ): void
 
-  diff(keypath: string, newValue: any, oldValue: any): void
+  diff(
+    keypath: string,
+    newValue: any,
+    oldValue: any
+  ): void
 
-  get(keypath: string, defaultValue?: any): any
+  get(
+    keypath: string,
+    defaultValue?: any
+  ): any
 
-  set(keypath: string | Record<string, any>, value?: any): void
+  set(
+    keypath: string | Record<string, any>,
+    value?: any
+  ): void
 
   watch(
     keypath: string | Record<string, type.watcher | WatcherOptions>,

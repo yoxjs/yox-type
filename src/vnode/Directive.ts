@@ -3,8 +3,10 @@ import * as type from '../../index'
 
 export default interface Directive {
 
+  // 指令类型，如 event
   readonly type: string
 
+  // 指令名称，如 click
   readonly name: string
 
   // 当前 vnode 所有指令唯一的一个 key

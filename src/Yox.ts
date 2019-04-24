@@ -25,9 +25,14 @@ export default interface Yox {
 
   $refs?: Record<string, Yox | HTMLElement>
 
-  addComputed(keypath: string, computed: type.computedGetter | ComputedOptions): Computed | void
+  addComputed(
+    keypath: string,
+    computed: type.computedGetter | ComputedOptions
+  ): Computed | void
 
-  removeComputed(keypath: string): void
+  removeComputed(
+    keypath: string
+  ): void
 
   get(
     keypath: string,
@@ -106,7 +111,6 @@ export default interface Yox {
 
   forceUpdate(): void
 
-  // node 可以是 Comment 或 HTMLElement
   create(options: YoxOptions, vnode?: VNode, node?: Node): Yox
 
   destroy(): void
