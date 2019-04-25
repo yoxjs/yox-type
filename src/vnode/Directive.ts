@@ -3,15 +3,17 @@ import * as type from '../../index'
 
 export default interface Directive {
 
-  // 指令类型，如 event
-  readonly type: string
+  // 指令命名空间，如 event
+  readonly ns: string
 
   // 指令名称，如 click
   readonly name: string
 
-  // 当前 vnode 所有指令唯一的一个 key
+  // 当前 vnode 所有指令唯一的 key
   readonly key: string
 
+  // 指令的值，一般是字面量，比如 o-x="1" 中的 1
+  // 如果不是字面量，则提供 getter 函数用于取值，同时 value 也会保留字面量
   readonly value?: any
 
   // 必须有 hooks, 不然玩个毛...
