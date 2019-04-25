@@ -26,7 +26,8 @@ export default interface Observer {
 
   get(
     keypath: string,
-    defaultValue?: any
+    defaultValue?: any,
+    depIgnore?: boolean
   ): any
 
   set(

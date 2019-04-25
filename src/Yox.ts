@@ -36,7 +36,8 @@ export default interface Yox {
 
   get(
     keypath: string,
-    defaultValue?: any
+    defaultValue?: any,
+    depIgnore?: boolean
   ): any
 
   set(
