@@ -10,8 +10,6 @@ export default interface API {
 
   createComment(text: string): Comment
 
-  createEvent(event: any, node: HTMLElement): any
-
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
   removeProp(node: HTMLElement, name: string, hint?: number): void
@@ -36,9 +34,9 @@ export default interface API {
 
   tag(node: Node): string | void
 
-  text(node: Node, text?: string): string | void
+  text(node: Node, text?: string, isStyle?: boolean): string | void
 
-  html(node: Element, html?: string): string | void
+  html(node: Element, html?: string, isStyle?: boolean): string | void
 
   addClass(node: HTMLElement, className: string): void
 
