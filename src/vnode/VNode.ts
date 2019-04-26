@@ -31,7 +31,11 @@ export default interface VNode {
 
   readonly isText?: boolean
 
+  // 是否是 svg 元素
   readonly isSvg?: boolean
+
+  // 是否是 <style>
+  readonly isStyle?: boolean
 
   readonly isStatic?: boolean
 
