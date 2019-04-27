@@ -37,8 +37,8 @@ export default interface Observer {
 
   watch(
     keypath: string | Record<string, type.watcher | WatcherOptions>,
-    watcher?: type.watcher,
-    options?: WatcherOptions | boolean
+    watcher?: type.watcher | WatcherOptions,
+    immediate?: boolean
   ): void
 
   unwatch(

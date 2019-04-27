@@ -68,14 +68,8 @@ export default interface Yox {
 
   watch(
     keypath: string | Record<string, type.watcher | WatcherOptions>,
-    watcher?: type.watcher,
-    options?: WatcherOptions | boolean
-  ): Yox
-
-  watchOnce(
-    keypath: string,
-    watcher: type.watcher,
-    options?: WatcherOptions
+    watcher?: type.watcher | WatcherOptions,
+    immediate?: boolean
   ): Yox
 
   unwatch(
