@@ -15,9 +15,7 @@ export interface watcher { (newValue: any, oldValue: any, keypath: string): void
 
 export interface eventListener { (event: CustomEvent, data?: Record<string, any>): boolean | void }
 
-export interface nativeEventListener { (event: CustomEvent): boolean | void }
-
-export interface specialEventListener { (event: Event | CustomEvent): void }
+export interface nativeEventListener { (event: Event | CustomEvent): boolean | void }
 
 export interface asyncComponent { (options: YoxOptions | void): void }
 
