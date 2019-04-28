@@ -1,3 +1,3 @@
-# yox-config
+# yox-type
 
-Configuration for Yox.js
+typescript types for yox.js
