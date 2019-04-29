@@ -47,4 +47,20 @@ export default interface YoxOptions {
 
   extensions?: Record<string, any>
 
+  beforeCreate?: Function
+
+  afterCreate?: Function
+
+  beforeMount?: Function
+
+  afterMount?: Function
+
+  beforeUpdate?: Function
+
+  afterUpdate?: Function
+
+  beforeDestroy?: Function
+
+  afterDestroy?: Function
+
 }
