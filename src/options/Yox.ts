@@ -9,9 +9,9 @@ import TransitionHook from '../hooks/Transition'
 
 export default interface YoxOptions {
 
-  el?: string | Node
-
   propTypes?: Record<string, PropRule>
+
+  el?: string | Node
 
   data?: Record<string, any> | Function
 

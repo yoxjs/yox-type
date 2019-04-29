@@ -1,4 +1,4 @@
-import CustomEvent from './Event'
+import CustomEvent from './CustomEvent'
 
 import DirectiveHooks from './hooks/Directive'
 import TransitionHooks from './hooks/Transition'

@@ -6,9 +6,10 @@ import TransitionHooks from '../hooks/Transition'
 
 export default interface VNode {
 
-  node: Node
-
   data: Record<string, any>
+
+  // 真实节点
+  readonly node: Node
 
   // 渲染节点时的 keypath
   readonly keypath: string

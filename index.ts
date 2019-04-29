@@ -1,4 +1,4 @@
-import CustomEvent from './src/Event'
+import CustomEvent from './src/CustomEvent'
 import YoxOptions from './src/options/Yox'
 
 import Yox from './src/Yox'

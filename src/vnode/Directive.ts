@@ -9,7 +9,7 @@ export default interface Directive {
   // 指令名称，如 click
   readonly name: string
 
-  // 当前 vnode 所有指令唯一的 key
+  // vnode 级别每个指令的 unique key
   readonly key: string
 
   // 指令的值，一般是字面量，比如 o-x="1" 中的 1
