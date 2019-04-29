@@ -1,6 +1,7 @@
 import Property from './Property'
 import Attribute from './Attribute'
 import Directive from './Directive'
+
 import Yox from '../Yox'
 import TransitionHooks from '../hooks/Transition'
 
@@ -26,16 +27,19 @@ export default interface VNode {
 
   readonly tag?: string | void
 
+  // 是否是 组件节点
   readonly isComponent?: boolean
 
+  // 是否是 注释节点
   readonly isComment?: boolean
 
+  // 是否是 文本节点
   readonly isText?: boolean
 
   // 是否是 svg 元素
   readonly isSvg?: boolean
 
-  // 是否是 <style>
+  // 是否是 style 元素
   readonly isStyle?: boolean
 
   readonly isStatic?: boolean

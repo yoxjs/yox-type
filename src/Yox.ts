@@ -13,9 +13,9 @@ import YoxOptions from './options/Yox'
 
 export default interface Yox {
 
-  $el?: HTMLElement
+  $options: YoxOptions
 
-  $model?: string
+  $el?: HTMLElement
 
   $vnode?: VNode
 
