@@ -1,7 +1,9 @@
+import * as type from '../../index'
+
 export default interface EmitterOptions {
 
   // 监听函数
-  fn?: Function
+  fn?: type.eventListener
 
   // 执行监听函数的上下文对象
   ctx?: any
