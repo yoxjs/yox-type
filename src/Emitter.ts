@@ -1,8 +1,9 @@
 import * as type from '../index'
 
+import CustomEvent from './CustomEvent'
 import EmitterOptions from './options/Emitter'
 
-export default interface EmitterUtil {
+export default interface Emitter {
 
   ns: boolean
 
