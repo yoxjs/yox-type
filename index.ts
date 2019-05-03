@@ -11,7 +11,7 @@ export interface watcher { (newValue: any, oldValue: any, keypath: string): void
 
 export interface listener { (event: CustomEvent, data?: data): boolean | void }
 
-export interface nativeListener { (event: Event | CustomEvent): boolean | void }
+export interface nativeListener { (event: CustomEvent | Event): boolean | void }
 
 export interface computedGetter { (): any }
 

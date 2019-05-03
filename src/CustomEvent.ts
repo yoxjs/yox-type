@@ -1,13 +1,15 @@
+import Yox from './Yox'
+
 export default interface CustomEvent {
 
   // 事件名称
   type: string
 
   // 谁发出的事件
-  target?: any
+  target?: Yox
 
   // 原始事件，比如 dom 事件
-  originalEvent?: any
+  originalEvent?: CustomEvent | Event
 
   // 是否已阻止事件的默认行为
   isPrevented?: boolean
