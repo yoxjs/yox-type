@@ -8,6 +8,12 @@ export default interface CustomEvent {
   // 谁发出的事件
   target?: Yox
 
+  // 事件当前的阶段
+  // 0: 当前组件发射的事件，且当前组件正在处理
+  // 1: 当前组件向上发射的事件，且已流转到父组件
+  // -1: 当前组件向下发射的事件，且已流转到子组件
+  phase: number
+
   // 原始事件，比如 dom 事件
   originalEvent?: CustomEvent | Event
 
