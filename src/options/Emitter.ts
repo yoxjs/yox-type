@@ -1,10 +1,10 @@
 export default interface EmitterOptions {
 
   // 监听函数
-  fn: Function
+  fn?: Function
 
   // 所在的命名空间
-  ns: string
+  ns?: string
 
   // 执行监听函数的上下文对象
   ctx?: any
