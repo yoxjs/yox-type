@@ -41,28 +41,28 @@ export default interface Yox {
   ): any
 
   set(
-    keypath: string | Record<string, any>,
+    keypath: string | type.data,
     value?: any
   ): void
 
   on(
-    type: string | Record<string, type.eventListener>,
-    listener?: type.eventListener
+    type: string | Record<string, type.listener>,
+    listener?: type.listener
   ): Yox
 
   once(
-    type: string | Record<string, type.eventListener>,
-    listener?: type.eventListener
+    type: string | Record<string, type.listener>,
+    listener?: type.listener
   ): Yox
 
   off(
     type: string,
-    listener?: type.eventListener
+    listener?: type.listener
   ): Yox
 
   fire(
     bullet: string | CustomEvent,
-    data?: type.eventData | boolean,
+    data?: type.data | boolean,
     downward?: boolean
   ): boolean
 
@@ -102,7 +102,7 @@ export default interface Yox {
     filter?: Function | Record<string, Function | Record<string, Function>>
   ): Function | Record<string, Function> | void
 
-  checkPropTypes(props: Record<string, any>): Record<string, any>
+  checkPropTypes(props: type.data): type.data
 
   forceUpdate(): void
 

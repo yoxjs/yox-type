@@ -23,7 +23,7 @@ export default interface Directive {
   readonly getter?: type.directiveGetter | void
 
   // 事件或函数调用式的指令会编译成 handler
-  readonly handler?: type.directiveHandler | type.eventListener | void
+  readonly handler?: type.directiveHandler | type.listener | void
 
   // 单向绑定的 keypath
   readonly binding?: string | void

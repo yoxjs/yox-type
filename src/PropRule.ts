@@ -1,9 +1,10 @@
+import * as type from '../index'
 
-interface typeGetter { (props: Record<string, any>): boolean }
+interface typeGetter { (props: type.data): boolean }
 
-interface valueGetter { (props: Record<string, any>): any }
+interface valueGetter { (props: type.data): any }
 
-interface requiredGetter { (props: Record<string, any>): boolean }
+interface requiredGetter { (props: type.data): boolean }
 
 export default interface PropRule {
   type: string | string[] | typeGetter

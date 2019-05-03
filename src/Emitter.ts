@@ -1,6 +1,5 @@
 import * as type from '../index'
 
-import CustomEvent from './CustomEvent'
 import EmitterOptions from './options/Emitter'
 
 export default interface Emitter {
@@ -9,28 +8,28 @@ export default interface Emitter {
 
   listeners: Record<string, EmitterOptions[]>
 
-  nativeListeners?: Record<string, type.nativeEventListener>
+  nativeListeners?: Record<string, type.nativeListener>
 
   fire(
-    bullet: string | CustomEvent,
-    data: type.eventData | any[] | void,
-    filter?: (options: EmitterOptions, data: type.eventData | any[] | void) => boolean | void
+    type: string,
+    data: any[] | void,
+    filter?: (type: string, data: any[] | void, options: EmitterOptions) => boolean | void
   ): boolean
 
   has(
     type: string,
-    listener?: type.eventListener | EmitterOptions
+    listener?: Function | EmitterOptions
   ): boolean
 
   on(
-    type: string | Record<string, type.eventListener | EmitterOptions>,
-    listener?: type.eventListener | EmitterOptions,
+    type: string | Record<string, Function | EmitterOptions>,
+    listener?: Function | EmitterOptions,
     extra?: EmitterOptions
   ): void
 
   off(
     type?: string,
-    listener?: type.eventListener | EmitterOptions
+    listener?: Function | EmitterOptions
   ): void
 
 }

@@ -4,6 +4,7 @@ import Yox from '../Yox'
 import PropRule from '../PropRule'
 import ComputedOptions from './Computed'
 import WatcherOptions from './Watcher'
+import VNode from '../vnode/VNode'
 import DirectiveHook from '../hooks/Directive'
 import TransitionHook from '../hooks/Transition'
 
@@ -13,13 +14,13 @@ export default interface YoxOptions {
 
   el?: string | Node
 
-  data?: Record<string, any> | Function
+  data?: type.data | Function
 
   template?: string
 
   model?: string
 
-  props?: Record<string, any>
+  props?: type.data
 
   parent?: Yox
 
@@ -37,17 +38,17 @@ export default interface YoxOptions {
 
   filters?: Record<string, Function | Record<string, Function>>
 
-  slots?: Record<string, any>
+  slots?: Record<string, VNode[]>
 
-  events?: Record<string, type.eventListener>
+  events?: Record<string, type.listener>
 
   methods?: Record<string, Function>
 
   watchers?: Record<string, type.watcher | WatcherOptions>
 
-  extensions?: Record<string, any>
+  extensions?: type.data
 
-  beforeCreate?: Function
+  beforeCreate?: (options: YoxOptions) => void
 
   afterCreate?: Function
 

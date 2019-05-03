@@ -5,7 +5,7 @@ import WatcherOptions from './options/Watcher'
 
 export default interface Observer {
 
-  data: Record<string, any>
+  data: type.data
 
   context: any
 
@@ -31,7 +31,7 @@ export default interface Observer {
   ): any
 
   set(
-    keypath: string | Record<string, any>,
+    keypath: string | type.data,
     value?: any
   ): void
 

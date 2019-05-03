@@ -2,12 +2,14 @@ import Property from './Property'
 import Attribute from './Attribute'
 import Directive from './Directive'
 
+import * as type from '../../index'
+
 import Yox from '../Yox'
 import TransitionHooks from '../hooks/Transition'
 
 export default interface VNode {
 
-  data: Record<string, any>
+  data: type.data
 
   // 真实节点
   readonly node: Node
@@ -44,7 +46,7 @@ export default interface VNode {
 
   readonly isStatic?: boolean
 
-  readonly props?: Record<string, any>
+  readonly props?: type.data
 
   readonly slots?: Record<string, VNode[]>
 
