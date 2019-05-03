@@ -1,7 +1,10 @@
 export default interface EmitterOptions {
 
   // 监听函数
-  fn?: Function
+  fn: Function
+
+  // 所在的命名空间
+  ns: string
 
   // 执行监听函数的上下文对象
   ctx?: any
@@ -11,9 +14,6 @@ export default interface EmitterOptions {
 
   // 监听函数的最大可执行次数
   max?: number
-
-  // 所在的命名空间
-  ns?: string
 
   // 计数器，用于扩展，随便做什么计数都行
   count?: number
