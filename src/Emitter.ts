@@ -12,8 +12,8 @@ export default interface Emitter {
 
   fire(
     type: string,
-    data: any[] | void,
-    filter?: (type: string, data: any[] | void, options: EmitterOptions) => boolean | void
+    args: any[] | void,
+    filter?: (type: string, args: any[] | void, options: EmitterOptions) => boolean | void
   ): boolean
 
   has(
