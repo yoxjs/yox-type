@@ -23,8 +23,7 @@ export default interface Emitter {
 
   on(
     type: string | Record<string, Function | EmitterOptions>,
-    listener?: Function | EmitterOptions,
-    extra?: EmitterOptions
+    listener?: Function | EmitterOptions
   ): void
 
   off(
