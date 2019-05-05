@@ -1,6 +1,6 @@
 {
   "name": "yox-type",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "description": "types for typescript",
   "main": "index.js",
   "directories": {},
