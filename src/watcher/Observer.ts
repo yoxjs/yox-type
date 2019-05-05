@@ -1,5 +1,6 @@
 import * as type from '../type'
 import Computed from './Computed'
+import NextTask from '../interface/NextTask'
 import ComputedOptions from '../options/Computed'
 import WatcherOptions from '../options/Watcher'
 
@@ -8,6 +9,8 @@ export default interface Observer {
   data: type.data
 
   context: any
+
+  nextTask: NextTask
 
   addComputed(
     keypath: string,
