@@ -1,6 +1,6 @@
-import * as type from '../index'
+import * as type from '../type'
 
-import EmitterOptions from './options/Emitter'
+import EmitterOptions from '../options/Emitter'
 
 export default interface Emitter {
 

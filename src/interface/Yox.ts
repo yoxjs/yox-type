@@ -1,19 +1,26 @@
-import CustomEvent from './CustomEvent'
+import CustomEvent from '../event/CustomEvent'
+import Observer from '../watcher/Observer'
+import Computed from '../watcher/Computed'
+import Emitter from '../event/Emitter'
 
-import DirectiveHooks from './hooks/Directive'
-import TransitionHooks from './hooks/Transition'
-import VNode from './vnode/VNode'
+import * as type from '../type'
 
-import * as type from '../index'
-import Computed from './Computed'
-import ComputedOptions from './options/Computed'
-import WatcherOptions from './options/Watcher'
+import DirectiveHooks from '../hooks/Directive'
+import TransitionHooks from '../hooks/Transition'
+import VNode from '../vnode/VNode'
 
-import YoxOptions from './options/Yox'
+import ComputedOptions from '../options/Computed'
+import WatcherOptions from '../options/Watcher'
+
+import YoxOptions from '../options/Yox'
 
 export default interface Yox {
 
   $options: YoxOptions
+
+  $emitter: Emitter
+
+  $observer: Observer
 
   $el?: HTMLElement
 
@@ -61,7 +68,7 @@ export default interface Yox {
   ): Yox
 
   fire(
-    bullet: string | CustomEvent,
+    type: string | CustomEvent,
     data?: type.data | boolean,
     downward?: boolean
   ): boolean
@@ -110,7 +117,7 @@ export default interface Yox {
 
   destroy(): void
 
-  nextTick(task: Function, prepend?: boolean): void
+  nextTick(task: Function): void
 
   toggle(keypath: string): boolean
 

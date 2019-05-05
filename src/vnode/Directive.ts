@@ -1,5 +1,5 @@
 import DirectiveHooks from '../hooks/Directive'
-import * as type from '../../index'
+import * as type from '../type'
 
 export default interface Directive {
 

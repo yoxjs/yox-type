@@ -1,6 +1,6 @@
 import SpecialEvent from './SpecialEvent'
 
-import * as type from '../index'
+import * as type from '../type'
 
 export default interface API {
 

@@ -1,4 +1,4 @@
-import * as type from '../index'
+import * as type from '../type'
 
 export default interface SpecialEvent {
   on(node: HTMLElement, listener: type.nativeListener): void,

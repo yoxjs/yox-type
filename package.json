@@ -1,8 +1,7 @@
 {
   "name": "yox-type",
-  "version": "0.0.60",
+  "version": "0.0.61",
   "description": "types for typescript",
-  "main": "index.js",
   "directories": {},
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import Yox from './Yox'
+import Yox from '../interface/Yox'
 
 export default interface CustomEvent {
 

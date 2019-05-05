@@ -1,7 +1,7 @@
-import * as type from '../index'
+import * as type from '../type'
 import Computed from './Computed'
-import ComputedOptions from './options/Computed'
-import WatcherOptions from './options/Watcher'
+import ComputedOptions from '../options/Computed'
+import WatcherOptions from '../options/Watcher'
 
 export default interface Observer {
 

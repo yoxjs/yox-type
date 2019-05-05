@@ -1,12 +1,14 @@
-import * as type from '../../index'
+import * as type from '../type'
 
-import Yox from '../Yox'
-import PropRule from '../PropRule'
-import ComputedOptions from './Computed'
-import WatcherOptions from './Watcher'
+import Yox from '../interface/Yox'
+import PropRule from '../interface/PropRule'
+
 import VNode from '../vnode/VNode'
 import DirectiveHook from '../hooks/Directive'
 import TransitionHook from '../hooks/Transition'
+
+import ComputedOptions from './Computed'
+import WatcherOptions from './Watcher'
 
 export default interface YoxOptions {
 
@@ -14,7 +16,7 @@ export default interface YoxOptions {
 
   el?: string | Node
 
-  data?: type.data | Function
+  data?: type.data | type.dataGenerator
 
   template?: string
 
@@ -48,7 +50,7 @@ export default interface YoxOptions {
 
   extensions?: type.data
 
-  beforeCreate?: (options: YoxOptions) => void
+  beforeCreate?: type.lifeCycleHook
 
   afterCreate?: Function
 

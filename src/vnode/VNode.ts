@@ -2,9 +2,9 @@ import Property from './Property'
 import Attribute from './Attribute'
 import Directive from './Directive'
 
-import * as type from '../../index'
+import * as type from '../type'
 
-import Yox from '../Yox'
+import Yox from '../interface/Yox'
 import TransitionHooks from '../hooks/Transition'
 
 export default interface VNode {
@@ -12,21 +12,18 @@ export default interface VNode {
   data: type.data
 
   // 真实节点
-  readonly node: Node
+  node: Node
+
+  // 组件实际的父组件
+  parent?: Yox
 
   // 渲染节点时的 keypath
   readonly keypath: string
 
-  // 渲染该节点的上下文
+  // 渲染该节点的组件
   readonly context: Yox
 
-  // 组件的 parent
-  // <Custom>
-  //  <Dog />
-  // </Custom>
-  // 这里 Dog 传入了 Custom 内部，parent 指向实际的父级组件，即 Custom，而不是 context
-  readonly parent?: Yox
-
+  // 元素节点或组件节点的标签名称
   readonly tag?: string | void
 
   // 是否是 组件节点
