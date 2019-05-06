@@ -1,6 +1,6 @@
 export default interface Computed {
 
-  get(force?: boolean): any
+  get(force?: true): any
 
   set(value: any): void
 

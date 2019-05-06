@@ -18,10 +18,10 @@ export default interface CustomEvent {
   originalEvent?: CustomEvent | Event
 
   // 是否已阻止事件的默认行为
-  isPrevented?: boolean
+  isPrevented?: true
 
   // 事件是否已停止冒泡
-  isStoped?: boolean
+  isStoped?: true
 
   // 处理当前事件的监听器
   listener?: Function

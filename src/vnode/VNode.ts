@@ -54,7 +54,7 @@ export default interface VNode {
   readonly directives?: Record<string, Directive>
 
   // 如果 directives 有值，则 lazy 必有值
-  readonly lazy?: Record<string, number | boolean>
+  readonly lazy?: Record<string, number | true>
 
   readonly transition?: TransitionHooks
 

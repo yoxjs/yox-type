@@ -26,7 +26,7 @@ export default interface YoxOptions {
 
   parent?: Yox
 
-  replace?: boolean
+  replace?: true
 
   computed?: Record<string, type.computedGetter | ComputedOptions>
 

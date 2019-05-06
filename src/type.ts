@@ -9,9 +9,9 @@ export type data = Record<string, any>
 
 export type watcher = (newValue: any, oldValue: any, keypath: string) => void
 
-export type listener = (event: CustomEvent, data?: data) => boolean | void
+export type listener = (event: CustomEvent, data?: data) => true | void
 
-export type nativeListener = (event: CustomEvent | Event) => boolean | void
+export type nativeListener = (event: CustomEvent | Event) => true | void
 
 export type computedGetter = () => any
 

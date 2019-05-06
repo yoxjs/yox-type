@@ -44,7 +44,7 @@ export default interface Yox {
   get(
     keypath: string,
     defaultValue?: any,
-    depIgnore?: boolean
+    depIgnore?: true
   ): any
 
   set(
@@ -69,14 +69,14 @@ export default interface Yox {
 
   fire(
     type: string | CustomEvent,
-    data?: type.data | boolean,
-    downward?: boolean
+    data?: type.data | true,
+    downward?: true
   ): boolean
 
   watch(
     keypath: string | Record<string, type.watcher | WatcherOptions>,
     watcher?: type.watcher | WatcherOptions,
-    immediate?: boolean
+    immediate?: true
   ): Yox
 
   unwatch(
@@ -135,6 +135,6 @@ export default interface Yox {
 
   remove(keypath: string, item: any): boolean | void
 
-  copy<T>(data: T, deep?: boolean): T
+  copy<T>(data: T, deep?: true): T
 
 }
