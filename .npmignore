@@ -4,3 +4,4 @@ dist
 .npmignore
 package-lock.json
 yarn.lock
+tsconfig.tsbuildinfo

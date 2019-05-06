@@ -63,7 +63,7 @@ export default interface Yox {
   ): Yox
 
   off(
-    type: string,
+    type?: string,
     listener?: type.listener
   ): Yox
 
