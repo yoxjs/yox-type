@@ -19,8 +19,6 @@ export type computedSetter = (value: any) => void
 
 export type directiveGetter = () => any
 
-export type directiveHandler = (event?: CustomEvent, data?: data) => void
-
 export type transitionEnter = (node: HTMLElement, done: () => void) => void
 
 export type transitionLeave = (node: HTMLElement, done: () => void) => void

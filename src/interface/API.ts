@@ -42,9 +42,9 @@ export default interface API {
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement, type: string, listener: type.nativeListener, context?: any): void
+  on(node: HTMLElement, type: string, listener: type.listener): void
 
-  off(node: HTMLElement, type: string, listener: type.nativeListener): void
+  off(node: HTMLElement, type: string, listener: type.listener): void
 
   specialEvents: Record<string, SpecialEvent>
 
