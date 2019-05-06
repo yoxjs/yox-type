@@ -18,17 +18,17 @@ export default interface Emitter {
 
   has(
     type: string,
-    listener?: Function | EmitterOptions
+    listener?: Function
   ): boolean
 
   on(
-    type: string | Record<string, Function | EmitterOptions>,
+    type: string,
     listener?: Function | EmitterOptions
   ): void
 
   off(
     type?: string,
-    listener?: Function | EmitterOptions
+    listener?: Function
   ): void
 
 }
