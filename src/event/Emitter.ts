@@ -16,11 +16,6 @@ export default interface Emitter {
     filter?: (type: string, args: any[] | void, options: EmitterOptions) => boolean | void
   ): boolean
 
-  has(
-    type: string,
-    listener?: Function
-  ): boolean
-
   on(
     type: string,
     listener?: Function | EmitterOptions
@@ -30,5 +25,10 @@ export default interface Emitter {
     type?: string,
     listener?: Function
   ): void
+
+  has(
+    type: string,
+    listener?: Function
+  ): boolean
 
 }

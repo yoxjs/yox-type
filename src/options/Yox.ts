@@ -28,7 +28,7 @@ export default interface YoxOptions {
 
   replace?: true
 
-  computed?: Record<string, type.computedGetter | ComputedOptions>
+  computed?: Record<string, type.getter | ComputedOptions>
 
   transitions?: Record<string, TransitionHook>
 

@@ -11,16 +11,16 @@ export default interface CustomEvent {
   // -1: 当前组件向下发射的事件，且已流转到子组件
   phase: number
 
-  // 谁发出的事件
+  // 哪个组件触发的事件
   target?: Yox
 
-  // 原始事件，比如 dom 事件
+  // 原始事件
   originalEvent?: CustomEvent | Event
 
   // 是否已阻止事件的默认行为
   isPrevented?: true
 
-  // 事件是否已停止冒泡
+  // 事件是否已停止传递
   isStoped?: true
 
   // 处理当前事件的监听器

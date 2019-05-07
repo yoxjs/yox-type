@@ -1,13 +1,13 @@
+import * as type from '../type'
+
+import Emitter from '../event/Emitter'
 import CustomEvent from '../event/CustomEvent'
 import Observer from '../watcher/Observer'
 import Computed from '../watcher/Computed'
-import Emitter from '../event/Emitter'
 
-import * as type from '../type'
-
+import VNode from '../vnode/VNode'
 import DirectiveHooks from '../hooks/Directive'
 import TransitionHooks from '../hooks/Transition'
-import VNode from '../vnode/VNode'
 
 import ComputedOptions from '../options/Computed'
 import WatcherOptions from '../options/Watcher'
@@ -34,7 +34,7 @@ export default interface Yox {
 
   addComputed(
     keypath: string,
-    computed: type.computedGetter | ComputedOptions
+    computed: type.getter | ComputedOptions
   ): Computed | void
 
   removeComputed(
@@ -125,15 +125,15 @@ export default interface Yox {
 
   decrease(keypath: string, step: number, min?: number): number | void
 
-  insert(keypath: string, item: any, index: number | boolean): boolean | void
+  insert(keypath: string, item: any, index: number | boolean): true | void
 
-  append(keypath: string, item: any): boolean | void
+  append(keypath: string, item: any): true | void
 
-  prepend(keypath: string, item: any): boolean | void
+  prepend(keypath: string, item: any): true | void
 
-  removeAt(keypath: string, index: number): boolean | void
+  removeAt(keypath: string, index: number): true | void
 
-  remove(keypath: string, item: any): boolean | void
+  remove(keypath: string, item: any): true | void
 
   copy<T>(data: T, deep?: true): T
 

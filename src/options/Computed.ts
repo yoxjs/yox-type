@@ -3,10 +3,10 @@ import * as type from '../type'
 export default interface ComputedOptions {
 
   // getter，必填
-  get: type.computedGetter
+  get: type.getter
 
   // setter
-  set?: type.computedSetter
+  set?: type.setter
 
   // 是否开启缓存，默认为 true
   cache?: boolean

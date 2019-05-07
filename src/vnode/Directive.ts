@@ -20,7 +20,7 @@ export default interface Directive {
   readonly hooks: DirectiveHooks
 
   // 取值函数
-  readonly getter?: type.directiveGetter | void
+  readonly getter?: type.getter | void
 
   // 事件或函数调用式的指令会编译成 handler
   readonly handler?: type.listener | void

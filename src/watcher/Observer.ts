@@ -14,7 +14,7 @@ export default interface Observer {
 
   addComputed(
     keypath: string,
-    options: type.computedGetter | ComputedOptions
+    options: type.getter | ComputedOptions
   ): Computed | void
 
   removeComputed(
