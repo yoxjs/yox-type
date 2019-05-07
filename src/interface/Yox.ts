@@ -105,9 +105,9 @@ export default interface Yox {
   ): Function | void
 
   filter(
-    name: string | Record<string, Function | Record<string, Function>>,
-    filter?: Function | Record<string, Function | Record<string, Function>>
-  ): Function | Record<string, Function> | void
+    name: string | Record<string, type.filter>,
+    filter?: type.filter
+  ): type.filter | void
 
   checkPropTypes(props: type.data): type.data
 

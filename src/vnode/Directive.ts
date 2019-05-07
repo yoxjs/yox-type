@@ -14,7 +14,7 @@ export default interface Directive {
 
   // 指令的值，一般是字面量，比如 o-x="1" 中的 1
   // 如果不是字面量，则提供 getter 函数用于取值，同时 value 也会保留字面量
-  readonly value?: any
+  readonly value?: string | number | boolean
 
   // 必须有 hooks, 不然玩个毛...
   readonly hooks: DirectiveHooks
@@ -29,6 +29,6 @@ export default interface Directive {
   readonly binding?: string | void
 
   // 单向绑定的 hint，用于区分 attr 和 prop
-  readonly hint?: number
+  readonly hint?: type.hint | void
 
 }

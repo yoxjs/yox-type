@@ -38,7 +38,7 @@ export default interface YoxOptions {
 
   partials?: Record<string, string>
 
-  filters?: Record<string, Function | Record<string, Function>>
+  filters?: Record<string, type.filter>
 
   slots?: Record<string, VNode[]>
 

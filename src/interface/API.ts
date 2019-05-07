@@ -12,7 +12,7 @@ export default interface API {
 
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
-  removeProp(node: HTMLElement, name: string, hint?: number): void
+  removeProp(node: HTMLElement, name: string, hint?: type.hint): void
 
   attr(node: HTMLElement, name: string, value?: string): string | void
 
