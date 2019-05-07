@@ -30,7 +30,7 @@ export default interface Observer {
   get(
     keypath: string,
     defaultValue?: any,
-    depIgnore?: true
+    depIgnore?: boolean
   ): any
 
   set(
@@ -41,11 +41,11 @@ export default interface Observer {
   watch(
     keypath: string | Record<string, type.watcher | WatcherOptions>,
     watcher?: type.watcher | WatcherOptions,
-    immediate?: true
+    immediate?: boolean
   ): void
 
   unwatch(
-    keypath: string,
+    keypath?: string,
     watcher?: type.watcher
   ): void
 
@@ -65,7 +65,7 @@ export default interface Observer {
 
   remove(keypath: string, item: any): true | void
 
-  copy<T>(data: T, deep?: true): T
+  copy<T>(data: T, deep?: boolean): T
 
   destroy(): void
 
