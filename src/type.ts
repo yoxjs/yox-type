@@ -7,6 +7,8 @@ import Directive from './vnode/Directive'
 
 export type hint = 1 | 2 | 3
 
+export type lazy = number | true
+
 export type data = Record<string, any>
 
 export type getter = () => any
