@@ -95,8 +95,8 @@ export default interface Yox {
   ): TransitionHooks | void
 
   component(
-    name: string | Record<string, YoxOptions>,
-    component?: YoxOptions | type.asyncComponent
+    name: string | Record<string, type.component>,
+    component?: type.component
   ): YoxOptions | void
 
   partial(

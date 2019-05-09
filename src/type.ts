@@ -35,6 +35,8 @@ export type specialEvent = (node: HTMLElement, listener: nativeListener) => void
 
 export type asyncComponent = (options: YoxOptions) => void
 
+export type component = YoxOptions | asyncComponent
+
 export type lifeCycleHook = (options: YoxOptions) => void
 
 export type dataGenerator = (options: YoxOptions) => data
