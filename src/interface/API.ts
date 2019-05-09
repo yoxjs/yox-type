@@ -42,9 +42,9 @@ export default interface API {
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement, type: string, listener: type.listener): void
+  on(node: HTMLElement | Window | Document, type: string, listener: type.listener): void
 
-  off(node: HTMLElement, type: string, listener: type.listener): void
+  off(node: HTMLElement | Window | Document, type: string, listener: type.listener): void
 
   addSpecialEvent(type: string, hooks: SpecialEventHooks): void
 

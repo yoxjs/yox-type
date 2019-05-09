@@ -31,7 +31,7 @@ export type bind = (node: HTMLElement | Yox, directive: Directive, vnode: VNode)
 
 export type unbind = (node: HTMLElement | Yox, directive: Directive, vnode: VNode) => void
 
-export type specialEvent = (node: HTMLElement, listener: nativeListener) => void
+export type specialEvent = (node: HTMLElement | Window | Document, listener: nativeListener) => void
 
 export type asyncComponent = (options: YoxOptions) => void
 
