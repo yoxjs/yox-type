@@ -46,6 +46,6 @@ export default interface API {
 
   off(node: HTMLElement, type: string, listener: type.listener): void
 
-  specialEvents: Record<string, SpecialEvent>
+  addSpecialEvent(type: string, hooks: SpecialEvent): void
 
 }
