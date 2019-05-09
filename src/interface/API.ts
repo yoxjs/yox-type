@@ -1,4 +1,4 @@
-import SpecialEvent from './SpecialEvent'
+import SpecialEventHooks from '../hooks/SpecialEvent'
 
 import * as type from '../type'
 
@@ -46,6 +46,6 @@ export default interface API {
 
   off(node: HTMLElement, type: string, listener: type.listener): void
 
-  addSpecialEvent(type: string, hooks: SpecialEvent): void
+  addSpecialEvent(type: string, hooks: SpecialEventHooks): void
 
 }

@@ -1,6 +1,6 @@
 import * as type from '../type'
 
-export default interface SpecialEvent {
+export default interface SpecialEventHooks {
   on: type.specialEvent
   off: type.specialEvent
 }
