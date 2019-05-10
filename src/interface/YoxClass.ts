@@ -152,6 +152,8 @@ export default interface YoxClass {
 
   compile(template: string, stringify?: boolean): Function | string
 
+  loadComponent(name: string, callback: type.componentCallback): void
+
   checkPropTypes(props: type.data, propTypes: Record<string, PropRule>): type.data
 
   directive(
@@ -167,7 +169,7 @@ export default interface YoxClass {
   component(
     name: string | Record<string, type.component>,
     component?: type.component
-  ): YoxOptions | void
+  ): type.component | void
 
   partial(
     name: string | Record<string, string>,

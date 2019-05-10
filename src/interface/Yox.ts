@@ -84,6 +84,8 @@ export default interface Yox {
     watcher?: type.watcher
   ): Yox
 
+  loadComponent(name: string, callback: type.componentCallback): void
+
   directive(
     name: string | Record<string, DirectiveHooks>,
     directive?: DirectiveHooks
@@ -97,7 +99,7 @@ export default interface Yox {
   component(
     name: string | Record<string, type.component>,
     component?: type.component
-  ): YoxOptions | void
+  ): type.component | void
 
   partial(
     name: string | Record<string, string>,
