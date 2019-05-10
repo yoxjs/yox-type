@@ -152,8 +152,6 @@ export default interface YoxClass {
 
   compile(template: string, stringify?: boolean): Function | string
 
-  loadComponent(name: string, callback: type.componentCallback): void
-
   checkPropTypes(props: type.data, propTypes: Record<string, PropRule>): type.data
 
   directive(
