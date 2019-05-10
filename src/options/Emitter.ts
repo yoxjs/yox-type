@@ -1,13 +1,9 @@
-export default interface EmitterOptions {
+import Task from '../interface/Task'
 
-  // 监听函数
-  fn: Function
+export default interface EmitterOptions extends Task {
 
   // 所在的命名空间
   ns?: string
-
-  // 执行监听函数的上下文对象
-  ctx?: any
 
   // 监听函数已执行次数
   num?: number

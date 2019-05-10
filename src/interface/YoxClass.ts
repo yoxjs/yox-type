@@ -126,17 +126,17 @@ export default interface YoxClass {
 
   logger: {
 
-    debug(msg: string): void
+    debug(msg: string, tag?: string): void
 
-    info(msg: string): void
+    info(msg: string, tag?: string): void
 
-    success(msg: string): void
+    success(msg: string, tag?: string): void
 
-    warn(msg: string): void
+    warn(msg: string, tag?: string): void
 
-    error(msg: string): void
+    error(msg: string, tag?: string): void
 
-    fatal(msg: string): never
+    fatal(msg: string, tag?: string): never
 
   },
 
