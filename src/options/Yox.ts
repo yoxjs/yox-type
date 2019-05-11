@@ -24,6 +24,8 @@ export default interface YoxOptions {
 
   props?: type.data
 
+  root?: Yox
+
   parent?: Yox
 
   replace?: true
