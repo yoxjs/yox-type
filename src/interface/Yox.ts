@@ -26,6 +26,8 @@ export default interface Yox {
 
   $vnode?: VNode
 
+  $root?: Yox
+
   $parent?: Yox
 
   $children?: Yox[]
