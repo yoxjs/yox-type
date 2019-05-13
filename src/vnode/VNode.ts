@@ -17,6 +17,9 @@ export default interface VNode {
   // 组件实际的父组件
   parent?: Yox
 
+  // 插槽名称
+  slot?: string
+
   // 渲染节点时的 keypath
   readonly keypath: string
 

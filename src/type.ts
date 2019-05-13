@@ -48,3 +48,5 @@ export type propType = (props: data, key: string) => void
 export type propValue = (props: data, key: string) => any
 
 export type propRequired = (props: data, key: string) => boolean
+
+export type propTransform = (props: data, key: string) => any
