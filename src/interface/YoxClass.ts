@@ -8,7 +8,6 @@ import EmitterClass from '../event/EmitterClass'
 import CustomEventClass from '../event/CustomEventClass'
 import ValueHolder from './ValueHolder'
 import YoxPlugin from './YoxPlugin'
-import PropRule from './PropRule'
 
 import * as type from '../type'
 
@@ -159,8 +158,6 @@ export default interface YoxClass {
   nextTick(task: Function, context?: any): void
 
   compile(template: string, stringify?: boolean): Function | string
-
-  checkPropTypes(props: type.data, propTypes: Record<string, PropRule>): type.data
 
   directive(
     name: string | Record<string, DirectiveHooks>,
