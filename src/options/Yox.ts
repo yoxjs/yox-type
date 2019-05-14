@@ -30,7 +30,13 @@ export default interface YoxOptions {
 
   replace?: true
 
+  vnode?: VNode
+
+  slots?: Record<string, VNode[]>
+
   computed?: Record<string, type.getter | ComputedOptions>
+
+  watchers?: Record<string, type.watcher | WatcherOptions>
 
   transitions?: Record<string, TransitionHook>
 
@@ -42,13 +48,9 @@ export default interface YoxOptions {
 
   filters?: Record<string, type.filter>
 
-  slots?: Record<string, VNode[]>
-
   events?: Record<string, type.listener>
 
   methods?: Record<string, Function>
-
-  watchers?: Record<string, type.watcher | WatcherOptions>
 
   extensions?: type.data
 
