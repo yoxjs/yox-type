@@ -88,6 +88,8 @@ export default interface Yox {
 
   loadComponent(name: string, callback: type.componentCallback): void
 
+  createComponent(options: YoxOptions, vnode: VNode): Yox
+
   directive(
     name: string | Record<string, DirectiveHooks>,
     directive?: DirectiveHooks
@@ -116,8 +118,6 @@ export default interface Yox {
   checkPropTypes(props: type.data): type.data
 
   forceUpdate(): void
-
-  create(options: YoxOptions, vnode: VNode): Yox
 
   destroy(): void
 
