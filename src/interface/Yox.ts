@@ -117,7 +117,7 @@ export default interface Yox {
 
   forceUpdate(): void
 
-  create(options: YoxOptions, vnode: VNode, node: Node | void): Yox
+  create(options: YoxOptions, vnode: VNode): Yox
 
   destroy(): void
 
