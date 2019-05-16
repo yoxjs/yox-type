@@ -70,4 +70,12 @@ export default interface YoxOptions {
 
   afterDestroy?: Function
 
+  beforeChildCreate?: type.lifeCycleHook
+
+  afterChildCreate?: (child: Yox) => void
+
+  beforeChildDestroy?: (child: Yox) => void
+
+  afterChildDestroy?: (child: Yox) => void
+
 }

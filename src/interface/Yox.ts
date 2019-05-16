@@ -139,6 +139,8 @@ export default interface Yox {
 
   remove(keypath: string, item: any): true | void
 
+  splice(keypath: string, index: number, count: number, ...items: any[]): true | void
+
   copy<T>(data: T, deep?: boolean): T
 
 }

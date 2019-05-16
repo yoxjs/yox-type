@@ -77,6 +77,8 @@ export default interface YoxClass {
 
     extend(original: Object, ...objects: Object[]): Object
 
+    merge(object1: Object | void, object2: Object | void): Object | void
+
     copy(object: any, deep?: boolean): any
 
     get(object: any, keypath: string): ValueHolder | undefined
