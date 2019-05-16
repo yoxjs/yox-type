@@ -67,25 +67,25 @@ export default interface YoxClass {
 
   object: {
 
-    keys(object: Object): string[]
+    keys(object: type.data): string[]
 
-    sort(object: Object, desc?: boolean): string[]
+    sort(object: type.data, desc?: boolean): string[]
 
-    each(object: Object, callback: (value: any, key: string) => boolean | void): void
+    each(object: type.data, callback: (value: any, key: string) => boolean | void): void
 
-    clear(object: Object): void
+    clear(object: type.data): void
 
-    extend(original: Object, ...objects: Object[]): Object
+    extend(original: type.data, object: type.data): type.data
 
-    merge(object1: Object | void, object2: Object | void): Object | void
+    merge(object1: type.data | void, object2: type.data | void): type.data | void
 
     copy(object: any, deep?: boolean): any
 
     get(object: any, keypath: string): ValueHolder | undefined
 
-    set(object: Object, keypath: string, value: any, autofill?: boolean): void
+    set(object: type.data, keypath: string, value: any, autofill?: boolean): void
 
-    has(object: Object, key: string | number): boolean
+    has(object: type.data, key: string | number): boolean
 
     falsy(object: any): boolean
 
