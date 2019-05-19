@@ -119,7 +119,7 @@ export default interface Yox {
 
   checkPropTypes(props: type.data): type.data
 
-  forceUpdate(): void
+  forceUpdate(data?: type.data): void
 
   destroy(): void
 
