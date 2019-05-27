@@ -117,7 +117,9 @@ export default interface Yox {
     filter?: type.filter
   ): type.filter | void
 
-  checkPropTypes(props: type.data): type.data
+  checkProps(props: type.data): type.data
+
+  checkProp(key: string, value: any): any
 
   forceUpdate(data?: type.data): void
 

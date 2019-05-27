@@ -43,8 +43,8 @@ export type lifeCycleHook = (options: YoxOptions) => void
 
 export type dataGenerator = (options: YoxOptions) => data
 
-export type propType = (props: data, key: string) => void
+export type propType = (key: string, value: any) => void
 
-export type propValue = (props: data, key: string) => any
+export type propValue = (key: string, value: any) => any
 
-export type propRequired = (props: data, key: string) => boolean
+export type propRequired = (key: string, value: any) => boolean

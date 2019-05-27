@@ -162,7 +162,7 @@ export default interface YoxClass {
 
   compile(template: string, stringify?: boolean): Function | string
 
-  checkProp(props: type.data, key: string, rule: PropRule): any
+  checkProp(key: string, value: any, rule: PropRule): any
 
   directive(
     name: string | Record<string, DirectiveHooks>,
