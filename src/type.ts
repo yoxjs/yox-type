@@ -45,6 +45,4 @@ export type dataGenerator = (options: YoxOptions) => data
 
 export type propType = (key: string, value: any) => void
 
-export type propValue = (key: string, value: any) => any
-
-export type propRequired = (key: string, value: any) => boolean
+export type propValue = () => any
