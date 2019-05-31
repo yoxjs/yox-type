@@ -1,3 +1,4 @@
+import * as config from '../../../yox-config/src/config'
 import * as type from '../type'
 
 import Yox from '../interface/Yox'
@@ -54,28 +55,20 @@ export default interface YoxOptions {
 
   extensions?: type.data
 
-  beforeCreate?: type.lifeCycleHook
+  [config.HOOK_BEFORE_CREATE]?: type.lifeCycleHook
 
-  afterCreate?: Function
+  [config.HOOK_AFTER_CREATE]?: Function
 
-  beforeMount?: Function
+  [config.HOOK_BEFORE_MOUNT]?: Function
 
-  afterMount?: Function
+  [config.HOOK_AFTER_MOUNT]?: Function
 
-  beforeUpdate?: Function
+  [config.HOOK_BEFORE_UPDATE]?: Function
 
-  afterUpdate?: Function
+  [config.HOOK_AFTER_UPDATE]?: Function
 
-  beforeDestroy?: Function
+  [config.HOOK_BEFORE_DESTROY]?: Function
 
-  afterDestroy?: Function
-
-  beforeChildCreate?: type.lifeCycleHook
-
-  afterChildCreate?: (child: Yox) => void
-
-  beforeChildDestroy?: (child: Yox) => void
-
-  afterChildDestroy?: (child: Yox) => void
+  [config.HOOK_AFTER_DESTROY]?: Function
 
 }

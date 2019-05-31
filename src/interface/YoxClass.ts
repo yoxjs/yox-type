@@ -1,3 +1,5 @@
+import * as config from '../../../yox-config/src/config'
+
 import DirectiveHooks from '../hooks/Directive'
 import TransitionHooks from '../hooks/Transition'
 import YoxOptions from '../options/Yox'
@@ -188,5 +190,21 @@ export default interface YoxClass {
     name: string | Record<string, type.filter>,
     filter?: type.filter
   ): type.filter | void
+
+  [config.HOOK_BEFORE_CREATE]?: type.lifeCycleHook
+
+  [config.HOOK_AFTER_CREATE]?: (instance: Yox) => void
+
+  [config.HOOK_BEFORE_MOUNT]?: (instance: Yox) => void
+
+  [config.HOOK_AFTER_MOUNT]?: (instance: Yox) => void
+
+  [config.HOOK_BEFORE_UPDATE]?: (instance: Yox) => void
+
+  [config.HOOK_AFTER_UPDATE]?: (instance: Yox) => void
+
+  [config.HOOK_BEFORE_DESTROY]?: (instance: Yox) => void
+
+  [config.HOOK_AFTER_DESTROY]?: (instance: Yox) => void
 
 }
