@@ -44,6 +44,9 @@ export default interface VNode {
   // 是否是 style 元素
   readonly isStyle?: boolean
 
+  // 是否是 option 元素
+  readonly isOption?: boolean
+
   readonly isStatic?: boolean
 
   readonly props?: type.data

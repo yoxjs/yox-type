@@ -34,9 +34,9 @@ export default interface API {
 
   tag(node: Node): string | void
 
-  text(node: Node, text?: string, isStyle?: boolean): string | void
+  text(node: Node, text?: string, isStyle?: boolean, isOption?: boolean): string | void
 
-  html(node: Element, html?: string, isStyle?: boolean): string | void
+  html(node: Element, html?: string, isStyle?: boolean, isOption?: boolean): string | void
 
   addClass(node: HTMLElement, className: string): void
 
