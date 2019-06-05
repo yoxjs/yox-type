@@ -5,6 +5,9 @@ import Yox from './interface/Yox'
 import VNode from './vnode/VNode'
 import Directive from './vnode/Directive'
 
+import Location from './router/Location'
+import RouteTarget from './router/RouteTarget'
+
 export type hint = 1 | 2 | 3
 
 export type lazy = number | true
@@ -40,6 +43,10 @@ export type componentLoader = (callback: componentCallback) => void
 export type component = YoxOptions | componentLoader
 
 export type lifeCycleHook = (options: YoxOptions) => void
+
+export type routerBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
+
+export type routerAfterHook = (to: Location, from: Location | void) => void
 
 export type dataGenerator = (options: YoxOptions) => data
 

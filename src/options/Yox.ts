@@ -71,4 +71,16 @@ export default interface YoxOptions {
 
   [config.HOOK_AFTER_DESTROY]?: Function
 
+  [config.HOOK_BEFORE_ROUTE_ENTER]?: type.routerBeforeHook
+
+  [config.HOOK_AFTER_ROUTE_ENTER]?: type.routerAfterHook
+
+  [config.HOOK_BEFORE_ROUTE_UPDATE]?: type.routerBeforeHook
+
+  [config.HOOK_AFTER_ROUTE_UPDATE]?: type.routerAfterHook
+
+  [config.HOOK_BEFORE_ROUTE_LEAVE]?: type.routerBeforeHook
+
+  [config.HOOK_AFTER_ROUTE_LEAVE]?: type.routerAfterHook
+
 }
