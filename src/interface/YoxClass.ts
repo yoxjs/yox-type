@@ -16,7 +16,7 @@ import * as type from '../type'
 
 export default interface YoxClass {
 
-  dom?: API,
+  dom?: API
 
   is: {
 
@@ -34,7 +34,7 @@ export default interface YoxClass {
 
     numeric(value: any): boolean
 
-  },
+  }
 
   array: {
 
@@ -66,7 +66,7 @@ export default interface YoxClass {
 
     falsy(array: any): boolean
 
-  },
+  }
 
   object: {
 
@@ -92,7 +92,7 @@ export default interface YoxClass {
 
     falsy(object: any): boolean
 
-  },
+  }
 
   string: {
 
@@ -126,7 +126,7 @@ export default interface YoxClass {
 
     falsy(str: any): boolean
 
-  },
+  }
 
   logger: {
 
@@ -150,11 +150,11 @@ export default interface YoxClass {
 
     fatal(msg: string, tag?: string): void
 
-  },
+  }
 
-  Emitter: EmitterClass,
+  Emitter: EmitterClass
 
-  Event: CustomEventClass,
+  Event: CustomEventClass
 
   new(options?: YoxOptions): Yox
 
