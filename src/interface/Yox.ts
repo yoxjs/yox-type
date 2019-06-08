@@ -32,6 +32,8 @@ export default interface Yox {
 
   $parent?: Yox
 
+  $context?: Yox
+
   $children?: Yox[]
 
   $refs?: Record<string, Yox | HTMLElement>
