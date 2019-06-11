@@ -6,7 +6,6 @@ import YoxOptions from '../options/Yox'
 
 import Yox from './Yox'
 import API from './API'
-import PropRule from './PropRule'
 import EmitterClass from '../event/EmitterClass'
 import CustomEventClass from '../event/CustomEventClass'
 import ValueHolder from './ValueHolder'
@@ -163,8 +162,6 @@ export default interface YoxClass {
   nextTick(task: Function, context?: any): void
 
   compile(template: string, stringify?: boolean): Function | string
-
-  checkProp(key: string, value: any, rule: PropRule): any
 
   directive(
     name: string | Record<string, DirectiveHooks>,
