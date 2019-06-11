@@ -42,11 +42,17 @@ export type componentLoader = (callback: componentCallback) => void
 
 export type component = YoxOptions | componentLoader
 
-export type lifeCycleHook = (options: YoxOptions) => void
+export type yoxOptionsBeforeCreateHook = (options: YoxOptions) => void
 
-export type routerBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
+export type yoxOptionsOtherHook = () => void
 
-export type routerAfterHook = (to: Location, from: Location | void) => void
+export type yoxClassBeforeCreateHook = (options: YoxOptions) => void
+
+export type yoxClassOtherHook = (instance: Yox) => void
+
+export type yoxRouterBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
+
+export type yoxRouterAfterHook = (to: Location, from: Location | void) => void
 
 export type dataGenerator = (options: YoxOptions) => data
 

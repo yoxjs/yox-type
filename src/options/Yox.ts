@@ -29,6 +29,8 @@ export default interface YoxOptions {
 
   parent?: Yox
 
+  context?: Yox
+
   replace?: true
 
   vnode?: VNode
@@ -55,32 +57,32 @@ export default interface YoxOptions {
 
   extensions?: type.data
 
-  [config.HOOK_BEFORE_CREATE]?: type.lifeCycleHook
+  [config.HOOK_BEFORE_CREATE]?: type.yoxOptionsBeforeCreateHook
 
-  [config.HOOK_AFTER_CREATE]?: Function
+  [config.HOOK_AFTER_CREATE]?: type.yoxOptionsOtherHook
 
-  [config.HOOK_BEFORE_MOUNT]?: Function
+  [config.HOOK_BEFORE_MOUNT]?: type.yoxOptionsOtherHook
 
-  [config.HOOK_AFTER_MOUNT]?: Function
+  [config.HOOK_AFTER_MOUNT]?: type.yoxOptionsOtherHook
 
-  [config.HOOK_BEFORE_UPDATE]?: Function
+  [config.HOOK_BEFORE_UPDATE]?: type.yoxOptionsOtherHook
 
-  [config.HOOK_AFTER_UPDATE]?: Function
+  [config.HOOK_AFTER_UPDATE]?: type.yoxOptionsOtherHook
 
-  [config.HOOK_BEFORE_DESTROY]?: Function
+  [config.HOOK_BEFORE_DESTROY]?: type.yoxOptionsOtherHook
 
-  [config.HOOK_AFTER_DESTROY]?: Function
+  [config.HOOK_AFTER_DESTROY]?: type.yoxOptionsOtherHook
 
-  [config.HOOK_BEFORE_ROUTE_ENTER]?: type.routerBeforeHook
+  [config.HOOK_BEFORE_ROUTE_ENTER]?: type.yoxRouterBeforeHook
 
-  [config.HOOK_AFTER_ROUTE_ENTER]?: type.routerAfterHook
+  [config.HOOK_AFTER_ROUTE_ENTER]?: type.yoxRouterAfterHook
 
-  [config.HOOK_BEFORE_ROUTE_UPDATE]?: type.routerBeforeHook
+  [config.HOOK_BEFORE_ROUTE_UPDATE]?: type.yoxRouterBeforeHook
 
-  [config.HOOK_AFTER_ROUTE_UPDATE]?: type.routerAfterHook
+  [config.HOOK_AFTER_ROUTE_UPDATE]?: type.yoxRouterAfterHook
 
-  [config.HOOK_BEFORE_ROUTE_LEAVE]?: type.routerBeforeHook
+  [config.HOOK_BEFORE_ROUTE_LEAVE]?: type.yoxRouterBeforeHook
 
-  [config.HOOK_AFTER_ROUTE_LEAVE]?: type.routerAfterHook
+  [config.HOOK_AFTER_ROUTE_LEAVE]?: type.yoxRouterAfterHook
 
 }

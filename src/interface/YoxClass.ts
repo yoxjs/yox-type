@@ -191,20 +191,20 @@ export default interface YoxClass {
     filter?: type.filter
   ): type.filter | void
 
-  [config.HOOK_BEFORE_CREATE]?: type.lifeCycleHook
+  [config.HOOK_BEFORE_CREATE]?: type.yoxClassBeforeCreateHook
 
-  [config.HOOK_AFTER_CREATE]?: (instance: Yox) => void
+  [config.HOOK_AFTER_CREATE]?: type.yoxClassOtherHook
 
-  [config.HOOK_BEFORE_MOUNT]?: (instance: Yox) => void
+  [config.HOOK_BEFORE_MOUNT]?: type.yoxClassOtherHook
 
-  [config.HOOK_AFTER_MOUNT]?: (instance: Yox) => void
+  [config.HOOK_AFTER_MOUNT]?: type.yoxClassOtherHook
 
-  [config.HOOK_BEFORE_UPDATE]?: (instance: Yox) => void
+  [config.HOOK_BEFORE_UPDATE]?: type.yoxClassOtherHook
 
-  [config.HOOK_AFTER_UPDATE]?: (instance: Yox) => void
+  [config.HOOK_AFTER_UPDATE]?: type.yoxClassOtherHook
 
-  [config.HOOK_BEFORE_DESTROY]?: (instance: Yox) => void
+  [config.HOOK_BEFORE_DESTROY]?: type.yoxClassOtherHook
 
-  [config.HOOK_AFTER_DESTROY]?: (instance: Yox) => void
+  [config.HOOK_AFTER_DESTROY]?: type.yoxClassOtherHook
 
 }
