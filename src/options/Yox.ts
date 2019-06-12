@@ -21,7 +21,7 @@ export default interface YoxOptions {
 
   template?: string
 
-  model?: string
+  model?: type.model
 
   props?: type.data
 

@@ -22,9 +22,9 @@ export type filter = Function | Record<string, Function>
 
 export type watcher = (newValue: any, oldValue: any, keypath: string) => void
 
-export type listener = (event: CustomEvent, data?: data) => true | void
+export type listener = (event: CustomEvent, data?: data) => false | void
 
-export type nativeListener = (event: CustomEvent | Event) => true | void
+export type nativeListener = (event: CustomEvent | Event) => false | void
 
 export type enter = (node: HTMLElement) => void
 
@@ -59,3 +59,8 @@ export type dataGenerator = (options: YoxOptions) => data
 export type propType = (key: string, value: any) => void
 
 export type propValue = () => any
+
+export type model = {
+  prop: string
+  event: string
+}
