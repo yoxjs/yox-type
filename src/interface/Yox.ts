@@ -90,9 +90,15 @@ export default interface Yox {
     watcher?: type.watcher
   ): Yox
 
-  loadComponent(name: string, callback: type.componentCallback): void
+  loadComponent(
+    name: string,
+    callback: type.componentCallback
+  ): void
 
-  createComponent(options: YoxOptions, vnode: VNode): Yox
+  createComponent(
+    options: YoxOptions,
+    vnode: VNode
+  ): Yox
 
   directive(
     name: string | Record<string, DirectiveHooks>,

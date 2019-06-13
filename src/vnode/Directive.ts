@@ -16,7 +16,7 @@ export default interface Directive {
   // 如果不是字面量，则提供 getter 函数用于取值，同时 value 也会保留字面量
   readonly value?: string | number | boolean
 
-  // 必须有 hooks, 不然玩个毛...
+  // 必须有 hooks
   readonly hooks: DirectiveHooks
 
   // 取值函数
