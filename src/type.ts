@@ -59,8 +59,3 @@ export type dataGenerator = (options: YoxOptions) => data
 export type propType = (key: string, value: any) => void
 
 export type propValue = () => any
-
-export type model = {
-  prop: string
-  event: string
-}

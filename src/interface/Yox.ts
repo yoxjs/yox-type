@@ -26,7 +26,7 @@ export default interface Yox {
 
   $vnode?: VNode
 
-  $model?: type.model
+  $model?: string
 
   $root?: Yox
 

@@ -64,8 +64,6 @@ export default interface VNode {
 
   readonly transition?: TransitionHooks
 
-  readonly model?: any
-
   readonly ref?: string
 
   readonly key?: string
