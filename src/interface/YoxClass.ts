@@ -1,4 +1,4 @@
-import * as config from 'yox-config/src/config'
+import * as config from '../../../yox-config/src/config'
 
 import DirectiveHooks from '../hooks/Directive'
 import TransitionHooks from '../hooks/Transition'
