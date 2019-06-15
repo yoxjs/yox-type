@@ -1,14 +1,10 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../yox-config/tsconfig.json",
   "compilerOptions": {
-    "composite": true
+
   },
-  "references": [
-    {
-      "path": "../yox-config"
-    }
-  ],
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "../yox-config/src/**/*.ts"
   ]
 }

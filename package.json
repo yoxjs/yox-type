@@ -1,6 +1,6 @@
 {
   "name": "yox-type",
-  "version": "0.0.67",
+  "version": "0.1.0",
   "description": "types for typescript",
   "directories": {},
   "repository": {
@@ -8,11 +8,18 @@
     "url": "git+https://github.com/yoxjs/yox-type.git"
   },
   "scripts": {},
-  "keywords": ["yox", "type", "typescript"],
+  "keywords": [
+    "yox",
+    "type",
+    "typescript"
+  ],
   "author": "musicode",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yoxjs/yox-type/issues"
   },
-  "homepage": "https://github.com/yoxjs/yox-type#readme"
+  "homepage": "https://github.com/yoxjs/yox-type#readme",
+  "peerDependencies": {
+    "yox-config": "^0.2.0"
+  }
 }

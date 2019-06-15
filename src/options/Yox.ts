@@ -1,4 +1,4 @@
-import * as config from '../../../yox-config/src/config'
+import * as config from 'yox-config/src/config'
 import * as type from '../type'
 
 import Yox from '../interface/Yox'
