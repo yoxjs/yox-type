@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/yoxjs/yox-type#readme",
   "peerDependencies": {
-    "yox-config": "^0.2.0"
+    "yox-config": "^0.2.1"
   }
 }
