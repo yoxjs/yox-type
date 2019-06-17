@@ -19,7 +19,7 @@ export default interface YoxOptions {
 
   data?: type.data | type.dataGenerator
 
-  template?: string
+  template?: string | Function
 
   model?: string
 
