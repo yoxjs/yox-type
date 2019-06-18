@@ -1,9 +1,13 @@
-import CustomEvent from './event/CustomEvent'
-import YoxOptions from './options/Yox'
+import {
+  CustomEvent,
+  YoxOptions,
+  Yox,
+} from './class'
 
-import Yox from './interface/Yox'
-import VNode from './vnode/VNode'
-import Directive from './vnode/Directive'
+import {
+  VNode,
+  Directive,
+} from './vnode'
 
 import Location from './router/Location'
 import RouteTarget from './router/RouteTarget'

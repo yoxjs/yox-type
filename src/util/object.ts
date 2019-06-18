@@ -1,5 +1,5 @@
 import * as type from '../type'
-import ValueHolder from '../interface/ValueHolder'
+import { ValueHolder } from '../class'
 
 export default interface objectUtil {
 
