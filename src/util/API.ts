@@ -1,6 +1,6 @@
-import SpecialEventHooks from '../hooks/SpecialEvent'
-
 import * as type from '../type'
+
+import SpecialEventHooks from '../hooks/SpecialEvent'
 
 export default interface API {
 
