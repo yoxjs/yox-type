@@ -15,7 +15,7 @@ import * as type from '../type'
 
 export default interface YoxClass {
 
-  dom?: API
+  dom: API
 
   is: {
 
