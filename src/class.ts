@@ -553,22 +553,6 @@ export declare var Yox: {
     filter?: type.filter
   ): type.filter | void
 
-  [config.HOOK_BEFORE_CREATE]?: type.yoxClassBeforeCreateHook
-
-  [config.HOOK_AFTER_CREATE]?: type.yoxClassOtherHook
-
-  [config.HOOK_BEFORE_MOUNT]?: type.yoxClassOtherHook
-
-  [config.HOOK_AFTER_MOUNT]?: type.yoxClassOtherHook
-
-  [config.HOOK_BEFORE_UPDATE]?: type.yoxClassOtherHook
-
-  [config.HOOK_AFTER_UPDATE]?: type.yoxClassOtherHook
-
-  [config.HOOK_BEFORE_DESTROY]?: type.yoxClassOtherHook
-
-  [config.HOOK_AFTER_DESTROY]?: type.yoxClassOtherHook
-
 }
 
 type YoxClass = typeof Yox

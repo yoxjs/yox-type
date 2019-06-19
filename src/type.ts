@@ -60,10 +60,6 @@ export type yoxOptionsBeforeCreateHook = (options: YoxOptions) => void
 
 export type yoxOptionsOtherHook = () => void
 
-export type yoxClassBeforeCreateHook = (options: YoxOptions) => void
-
-export type yoxClassOtherHook = (instance: Yox) => void
-
 export type yoxRouterBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
 
 export type yoxRouterAfterHook = (to: Location, from: Location | void) => void
