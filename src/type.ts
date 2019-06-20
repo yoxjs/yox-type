@@ -52,7 +52,7 @@ export type routerBeforeHook = (to: Location, from: Location | void, next: (valu
 
 export type routerAfterHook = (to: Location, from: Location | void) => void
 
-export type valueHolder = {
+export interface ValueHolder {
   keypath?: string
   value: any
 }
@@ -224,7 +224,7 @@ export interface API {
 
 }
 
-export interface arrayUtil {
+interface arrayUtil {
 
   each<T>(
     array: T[],
@@ -256,7 +256,7 @@ export interface arrayUtil {
 
 }
 
-export interface isUtil {
+interface isUtil {
 
   func(value: any): boolean
 
@@ -274,7 +274,7 @@ export interface isUtil {
 
 }
 
-export interface loggerUtil {
+interface loggerUtil {
 
   DEBUG: number
 
@@ -298,7 +298,7 @@ export interface loggerUtil {
 
 }
 
-export interface objectUtil {
+interface objectUtil {
 
   keys(object: data): string[]
 
@@ -314,7 +314,7 @@ export interface objectUtil {
 
   copy(object: any, deep?: boolean): any
 
-  get(object: any, keypath: string): valueHolder | undefined
+  get(object: any, keypath: string): ValueHolder | undefined
 
   set(object: data, keypath: string, value: any, autofill?: boolean): void
 
@@ -324,7 +324,7 @@ export interface objectUtil {
 
 }
 
-export interface stringUtil {
+interface stringUtil {
 
   camelize(str: string): string
 
