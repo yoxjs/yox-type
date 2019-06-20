@@ -205,6 +205,9 @@ declare global {
 
   export interface YoxOptions {
 
+    // 给外部命名组件的机会
+    name?: string
+
     propTypes?: Record<string, PropRule>
 
     el?: string | Node
