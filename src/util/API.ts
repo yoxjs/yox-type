@@ -1,6 +1,8 @@
-import * as type from '../type'
-
-import { SpecialEventHooks } from '../class'
+import {
+  hint,
+  listener,
+  SpecialEventHooks,
+} from '../type'
 
 export default interface API {
 
@@ -12,7 +14,7 @@ export default interface API {
 
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
-  removeProp(node: HTMLElement, name: string, hint?: type.hint): void
+  removeProp(node: HTMLElement, name: string, hint?: hint): void
 
   attr(node: HTMLElement, name: string, value?: string): string | void
 
@@ -42,9 +44,9 @@ export default interface API {
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement | Window | Document, type: string, listener: type.listener): void
+  on(node: HTMLElement | Window | Document, type: string, listener: listener): void
 
-  off(node: HTMLElement | Window | Document, type: string, listener: type.listener): void
+  off(node: HTMLElement | Window | Document, type: string, listener: listener): void
 
   addSpecialEvent(type: string, hooks: SpecialEventHooks): void
 
