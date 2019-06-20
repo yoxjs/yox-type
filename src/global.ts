@@ -30,6 +30,61 @@ import {
   VNode,
 } from './type'
 
+declare const Yox: {
+
+  prototype: Yox
+
+  dom: API
+
+  is: isUtil
+
+  array: arrayUtil
+
+  object: objectUtil
+
+  string: stringUtil
+
+  logger: loggerUtil
+
+  Emitter: typeof Emitter
+
+  Event: typeof CustomEvent
+
+  new(options?: YoxOptions): Yox
+
+  use(plugin: YoxPlugin): void
+
+  nextTick(task: Function, context?: any): void
+
+  compile(template: string, stringify?: boolean): Function | string
+
+  directive(
+    name: string | Record<string, DirectiveHooks>,
+    directive?: DirectiveHooks
+  ): DirectiveHooks | void
+
+  transition(
+    name: string | Record<string, TransitionHooks>,
+    transition?: TransitionHooks
+  ): TransitionHooks | void
+
+  component(
+    name: string | Record<string, component>,
+    component?: component
+  ): component | void
+
+  partial(
+    name: string | Record<string, string>,
+    partial?: string
+  ): Function | void
+
+  filter(
+    name: string | Record<string, filter>,
+    filter?: filter
+  ): filter | void
+
+}
+
 type YoxClass = typeof Yox
 
 interface arrayUtil {
@@ -415,61 +470,6 @@ export interface Yox {
   remove(keypath: string, item: any): true | void
 
   copy<T>(data: T, deep?: boolean): T
-
-}
-
-declare const Yox: {
-
-  prototype: Yox
-
-  dom: API
-
-  is: isUtil
-
-  array: arrayUtil
-
-  object: objectUtil
-
-  string: stringUtil
-
-  logger: loggerUtil
-
-  Emitter: typeof Emitter
-
-  Event: typeof CustomEvent
-
-  new(options?: YoxOptions): Yox
-
-  use(plugin: YoxPlugin): void
-
-  nextTick(task: Function, context?: any): void
-
-  compile(template: string, stringify?: boolean): Function | string
-
-  directive(
-    name: string | Record<string, DirectiveHooks>,
-    directive?: DirectiveHooks
-  ): DirectiveHooks | void
-
-  transition(
-    name: string | Record<string, TransitionHooks>,
-    transition?: TransitionHooks
-  ): TransitionHooks | void
-
-  component(
-    name: string | Record<string, component>,
-    component?: component
-  ): component | void
-
-  partial(
-    name: string | Record<string, string>,
-    partial?: string
-  ): Function | void
-
-  filter(
-    name: string | Record<string, filter>,
-    filter?: filter
-  ): filter | void
 
 }
 
