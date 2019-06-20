@@ -30,61 +30,6 @@ import {
   VNode,
 } from './type'
 
-export declare const YoxInterface: {
-
-  prototype: YoxInterface
-
-  dom: API
-
-  is: isUtil
-
-  array: arrayUtil
-
-  object: objectUtil
-
-  string: stringUtil
-
-  logger: loggerUtil
-
-  Emitter: typeof EmitterInterface
-
-  Event: typeof CustomEventInterface
-
-  new(options?: YoxOptions): YoxInterface
-
-  use(plugin: YoxPlugin): void
-
-  nextTick(task: Function, context?: any): void
-
-  compile(template: string, stringify?: boolean): Function | string
-
-  directive(
-    name: string | Record<string, DirectiveHooks>,
-    directive?: DirectiveHooks
-  ): DirectiveHooks | void
-
-  transition(
-    name: string | Record<string, TransitionHooks>,
-    transition?: TransitionHooks
-  ): TransitionHooks | void
-
-  component(
-    name: string | Record<string, component>,
-    component?: component
-  ): component | void
-
-  partial(
-    name: string | Record<string, string>,
-    partial?: string
-  ): Function | void
-
-  filter(
-    name: string | Record<string, filter>,
-    filter?: filter
-  ): filter | void
-
-}
-
 type YoxClass = typeof YoxInterface
 
 interface arrayUtil {
@@ -472,6 +417,61 @@ declare global {
     remove(keypath: string, item: any): true | void
 
     copy<T>(data: T, deep?: boolean): T
+
+  }
+
+  export const YoxInterface: {
+
+    prototype: YoxInterface
+
+    dom: API
+
+    is: isUtil
+
+    array: arrayUtil
+
+    object: objectUtil
+
+    string: stringUtil
+
+    logger: loggerUtil
+
+    Emitter: typeof EmitterInterface
+
+    Event: typeof CustomEventInterface
+
+    new(options?: YoxOptions): YoxInterface
+
+    use(plugin: YoxPlugin): void
+
+    nextTick(task: Function, context?: any): void
+
+    compile(template: string, stringify?: boolean): Function | string
+
+    directive(
+      name: string | Record<string, DirectiveHooks>,
+      directive?: DirectiveHooks
+    ): DirectiveHooks | void
+
+    transition(
+      name: string | Record<string, TransitionHooks>,
+      transition?: TransitionHooks
+    ): TransitionHooks | void
+
+    component(
+      name: string | Record<string, component>,
+      component?: component
+    ): component | void
+
+    partial(
+      name: string | Record<string, string>,
+      partial?: string
+    ): Function | void
+
+    filter(
+      name: string | Record<string, filter>,
+      filter?: filter
+    ): filter | void
 
   }
 
