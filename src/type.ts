@@ -1,13 +1,3 @@
-import {
-  Yox,
-  YoxOptions,
-  ComputedOptions,
-  WatcherOptions,
-  DirectiveHooks,
-  TransitionHooks,
-  SpecialEventHooks,
-} from './global'
-
 export type hint = 1 | 2 | 3
 
 export type lazy = number | true
@@ -30,17 +20,17 @@ export type filter = formater | Record<string, formater>
 
 export type watcher = (newValue: any, oldValue: any, keypath: string) => void
 
-export type listener = (event: CustomEvent, data?: data) => false | void
+export type listener = (event: CustomEventInterface, data?: data) => false | void
 
-export type nativeListener = (event: CustomEvent | Event) => false | void
+export type nativeListener = (event: CustomEventInterface | Event) => false | void
 
 export type enter = (node: HTMLElement) => void
 
 export type leave = (node: HTMLElement, done: () => void) => void
 
-export type bind = (node: HTMLElement | Yox, directive: Directive, vnode: VNode) => void
+export type bind = (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
 
-export type unbind = (node: HTMLElement | Yox, directive: Directive, vnode: VNode) => void
+export type unbind = (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
 
 export type on = (node: HTMLElement | Window | Document, listener: nativeListener) => void
 
@@ -123,7 +113,7 @@ export interface VNode {
   node: Node
 
   // 组件实际的父组件
-  parent?: Yox
+  parent?: YoxInterface
 
   // 插槽名称
   slot?: string
@@ -132,7 +122,7 @@ export interface VNode {
   readonly keypath: string
 
   // 渲染该节点的组件
-  readonly context: Yox
+  readonly context: YoxInterface
 
   // 元素节点或组件节点的标签名称
   readonly tag?: string | void
@@ -242,7 +232,7 @@ export interface Task {
 
 }
 
-export interface NextTask {
+export interface NextTaskInterface {
 
   append(func: Function, context?: any): void
 
@@ -270,7 +260,7 @@ export interface EmitterOptions extends Task {
 
 }
 
-export interface CustomEvent {
+export interface CustomEventInterface {
 
   // 事件名称
   type: string
@@ -282,10 +272,10 @@ export interface CustomEvent {
   phase: number
 
   // 哪个组件触发的事件
-  target?: Yox
+  target?: YoxInterface
 
   // 原始事件
-  originalEvent?: CustomEvent | Event
+  originalEvent?: CustomEventInterface | Event
 
   // 是否已阻止事件的默认行为
   isPrevented?: true
@@ -297,20 +287,20 @@ export interface CustomEvent {
   listener?: Function
 
   // 模仿 Event 的两个方法签名，避免业务代码判断事件类型
-  preventDefault(): CustomEvent
+  preventDefault(): CustomEventInterface
 
-  stopPropagation(): CustomEvent
+  stopPropagation(): CustomEventInterface
 
   // 简单版本
-  prevent(): CustomEvent
+  prevent(): CustomEventInterface
 
-  stop(): CustomEvent
+  stop(): CustomEventInterface
 
 }
 
-export declare var CustomEvent: {
+export declare var CustomEventInterface: {
 
-  prototype: CustomEvent
+  prototype: CustomEventInterface
 
   PHASE_CURRENT: number
 
@@ -318,11 +308,11 @@ export declare var CustomEvent: {
 
   PHASE_DOWNWARD: number
 
-  new(type: string, originalEvent?: CustomEvent | Event): CustomEvent
+  new(type: string, originalEvent?: CustomEventInterface | Event): CustomEventInterface
 
 }
 
-export interface Emitter {
+export interface EmitterInterface {
 
   ns: boolean
 
@@ -353,26 +343,26 @@ export interface Emitter {
 
 }
 
-export declare var Emitter: {
+export declare var EmitterInterface: {
 
-  prototype: Emitter
+  prototype: EmitterInterface
 
-  new(ns?: boolean): Emitter
+  new(ns?: boolean): EmitterInterface
 
 }
 
-export interface Observer {
+export interface ObserverInterface {
 
   data: data
 
   context: any
 
-  nextTask: NextTask
+  nextTask: NextTaskInterface
 
   addComputed(
     keypath: string,
     options: getter | ComputedOptions
-  ): Computed | void
+  ): ComputedInterface | void
 
   removeComputed(
     keypath: string
@@ -428,15 +418,15 @@ export interface Observer {
 
 }
 
-export declare var Observer: {
+export declare var ObserverInterface: {
 
-  prototype: Observer
+  prototype: ObserverInterface
 
-  new(data?: data, context?: any): Observer
+  new(data?: data, context?: any): ObserverInterface
 
 }
 
-export interface Computed {
+export interface ComputedInterface {
 
   get(force?: boolean): any
 
@@ -444,23 +434,23 @@ export interface Computed {
 
 }
 
-export declare var Computed: {
+export declare var ComputedInterface: {
 
-  prototype: Computed
+  prototype: ComputedInterface
 
-  current?: Computed
+  current?: ComputedInterface
 
-  build(keypath: string, observer: Observer, options: any): Computed | void
+  build(keypath: string, observer: ObserverInterface, options: any): ComputedInterface | void
 
   new(
     keypath: string,
     sync: boolean,
     cache: boolean,
     deps: string[],
-    observer: Observer,
+    observer: ObserverInterface,
     getter: getter,
     setter: setter | void
-  ): Computed
+  ): ComputedInterface
 
 }
 
