@@ -1,3 +1,13 @@
+import {
+  WatcherOptions,
+  ComputedOptions,
+  YoxOptions,
+  YoxInterface,
+  DirectiveHooks,
+  TransitionHooks,
+  SpecialEventHooks,
+} from './global'
+
 export type hint = 1 | 2 | 3
 
 export type lazy = number | true

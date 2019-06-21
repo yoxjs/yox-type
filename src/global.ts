@@ -30,8 +30,6 @@ import {
   VNode,
 } from './type'
 
-type YoxClass = typeof YoxInterface
-
 interface arrayUtil {
 
   each<T>(
@@ -166,337 +164,337 @@ interface stringUtil {
 
 }
 
-declare global {
+type YoxClass = typeof YoxInterface
 
-  export interface ComputedOptions {
+export interface ComputedOptions {
 
-    // getter，必填
-    get: getter
+  // getter，必填
+  get: getter
 
-    // setter
-    set?: setter
+  // setter
+  set?: setter
 
-    // 是否开启缓存，默认为 true
-    cache?: boolean
+  // 是否开启缓存，默认为 true
+  cache?: boolean
 
-    // 是否同步监听变化，默认为 true
-    sync?: boolean
+  // 是否同步监听变化，默认为 true
+  sync?: boolean
 
-    // 写死依赖，从而跳过依赖自动收集
-    deps?: string[]
+  // 写死依赖，从而跳过依赖自动收集
+  deps?: string[]
 
-  }
+}
 
-  export interface WatcherOptions {
+export interface WatcherOptions {
 
-    // 数据变化处理器，必填
-    watcher: watcher
+  // 数据变化处理器，必填
+  watcher: watcher
 
-    // 是否立即执行一次 watcher，默认为 false
+  // 是否立即执行一次 watcher，默认为 false
+  immediate?: boolean
+
+  // 是否同步监听变化，默认为 false
+  sync?: boolean
+
+  // 是否只监听一次，默认为 false
+  once?: boolean
+
+}
+
+export interface YoxOptions {
+
+  // 给外部命名组件的机会
+  name?: string
+
+  propTypes?: Record<string, PropRule>
+
+  el?: string | Node
+
+  data?: data | dataGenerator
+
+  template?: string | Function
+
+  model?: string
+
+  props?: data
+
+  root?: YoxInterface
+
+  parent?: YoxInterface
+
+  context?: YoxInterface
+
+  replace?: true
+
+  vnode?: VNode
+
+  slots?: Record<string, VNode[]>
+
+  computed?: Record<string, getter | ComputedOptions>
+
+  watchers?: Record<string, watcher | WatcherOptions>
+
+  transitions?: Record<string, TransitionHooks>
+
+  components?: Record<string, YoxOptions>
+
+  directives?: Record<string, DirectiveHooks>
+
+  partials?: Record<string, string>
+
+  filters?: Record<string, filter>
+
+  events?: Record<string, listener>
+
+  methods?: Record<string, Function>
+
+  extensions?: data
+
+  [config.HOOK_BEFORE_CREATE]?: optionsBeforeCreateHook
+
+  [config.HOOK_AFTER_CREATE]?: optionsOtherHook
+
+  [config.HOOK_BEFORE_MOUNT]?: optionsOtherHook
+
+  [config.HOOK_AFTER_MOUNT]?: optionsOtherHook
+
+  [config.HOOK_BEFORE_UPDATE]?: optionsOtherHook
+
+  [config.HOOK_AFTER_UPDATE]?: optionsOtherHook
+
+  [config.HOOK_BEFORE_DESTROY]?: optionsOtherHook
+
+  [config.HOOK_AFTER_DESTROY]?: optionsOtherHook
+
+  [config.HOOK_BEFORE_ROUTE_ENTER]?: routerBeforeHook
+
+  [config.HOOK_AFTER_ROUTE_ENTER]?: routerAfterHook
+
+  [config.HOOK_BEFORE_ROUTE_UPDATE]?: routerBeforeHook
+
+  [config.HOOK_AFTER_ROUTE_UPDATE]?: routerAfterHook
+
+  [config.HOOK_BEFORE_ROUTE_LEAVE]?: routerBeforeHook
+
+  [config.HOOK_AFTER_ROUTE_LEAVE]?: routerAfterHook
+
+}
+
+export interface YoxInterface {
+
+  $options: YoxOptions
+
+  $emitter: EmitterInterface
+
+  $observer: ObserverInterface
+
+  $el?: HTMLElement
+
+  $vnode?: VNode
+
+  $model?: string
+
+  $root?: YoxInterface
+
+  $parent?: YoxInterface
+
+  $context?: YoxInterface
+
+  $children?: YoxInterface[]
+
+  $refs?: Record<string, YoxInterface | HTMLElement>
+
+  addComputed(
+    keypath: string,
+    computed: getter | ComputedOptions
+  ): ComputedInterface | void
+
+  removeComputed(
+    keypath: string
+  ): void
+
+  get(
+    keypath: string,
+    defaultValue?: any,
+    depIgnore?: boolean
+  ): any
+
+  set(
+    keypath: string | data,
+    value?: any
+  ): void
+
+  on(
+    type: string | Record<string, listener>,
+    listener?: listener
+  ): YoxInterface
+
+  once(
+    type: string | Record<string, listener>,
+    listener?: listener
+  ): YoxInterface
+
+  off(
+    type?: string,
+    listener?: listener
+  ): YoxInterface
+
+  fire(
+    type: string | CustomEventInterface,
+    data?: data | boolean,
+    downward?: boolean
+  ): boolean
+
+  watch(
+    keypath: string | Record<string, watcher | WatcherOptions>,
+    watcher?: watcher | WatcherOptions,
     immediate?: boolean
+  ): YoxInterface
 
-    // 是否同步监听变化，默认为 false
-    sync?: boolean
+  unwatch(
+    keypath?: string,
+    watcher?: watcher
+  ): YoxInterface
 
-    // 是否只监听一次，默认为 false
-    once?: boolean
+  loadComponent(
+    name: string,
+    callback: componentCallback
+  ): void
 
-  }
+  createComponent(
+    options: YoxOptions,
+    vnode: VNode
+  ): YoxInterface
 
-  export interface YoxOptions {
+  directive(
+    name: string | Record<string, DirectiveHooks>,
+    directive?: DirectiveHooks
+  ): DirectiveHooks | void
 
-    // 给外部命名组件的机会
-    name?: string
+  transition(
+    name: string | Record<string, TransitionHooks>,
+    transition?: TransitionHooks
+  ): TransitionHooks | void
 
-    propTypes?: Record<string, PropRule>
+  component(
+    name: string | Record<string, component>,
+    component?: component
+  ): component | void
 
-    el?: string | Node
+  partial(
+    name: string | Record<string, string>,
+    partial?: string
+  ): Function | void
 
-    data?: data | dataGenerator
+  filter(
+    name: string | Record<string, filter>,
+    filter?: filter
+  ): filter | void
 
-    template?: string | Function
+  checkProps(props: data): void
 
-    model?: string
+  checkProp(key: string, value: any): void
 
-    props?: data
+  forceUpdate(data?: data): void
 
-    root?: YoxInterface
+  destroy(): void
 
-    parent?: YoxInterface
+  nextTick(task: Function): void
 
-    context?: YoxInterface
+  toggle(keypath: string): boolean
 
-    replace?: true
+  increase(keypath: string, step?: number, max?: number): number | void
 
-    vnode?: VNode
+  decrease(keypath: string, step: number, min?: number): number | void
 
-    slots?: Record<string, VNode[]>
+  insert(keypath: string, item: any, index: number | boolean): true | void
 
-    computed?: Record<string, getter | ComputedOptions>
+  append(keypath: string, item: any): true | void
 
-    watchers?: Record<string, watcher | WatcherOptions>
+  prepend(keypath: string, item: any): true | void
 
-    transitions?: Record<string, TransitionHooks>
+  removeAt(keypath: string, index: number): true | void
 
-    components?: Record<string, YoxOptions>
+  remove(keypath: string, item: any): true | void
 
-    directives?: Record<string, DirectiveHooks>
+  copy<T>(data: T, deep?: boolean): T
 
-    partials?: Record<string, string>
+}
 
-    filters?: Record<string, filter>
+export declare const YoxInterface: {
 
-    events?: Record<string, listener>
+  prototype: YoxInterface
 
-    methods?: Record<string, Function>
+  dom: API
 
-    extensions?: data
+  is: isUtil
 
-    [config.HOOK_BEFORE_CREATE]?: optionsBeforeCreateHook
+  array: arrayUtil
 
-    [config.HOOK_AFTER_CREATE]?: optionsOtherHook
+  object: objectUtil
 
-    [config.HOOK_BEFORE_MOUNT]?: optionsOtherHook
+  string: stringUtil
 
-    [config.HOOK_AFTER_MOUNT]?: optionsOtherHook
+  logger: loggerUtil
 
-    [config.HOOK_BEFORE_UPDATE]?: optionsOtherHook
+  Emitter: typeof EmitterInterface
 
-    [config.HOOK_AFTER_UPDATE]?: optionsOtherHook
+  Event: typeof CustomEventInterface
 
-    [config.HOOK_BEFORE_DESTROY]?: optionsOtherHook
+  new(options?: YoxOptions): YoxInterface
 
-    [config.HOOK_AFTER_DESTROY]?: optionsOtherHook
+  use(plugin: YoxPlugin): void
 
-    [config.HOOK_BEFORE_ROUTE_ENTER]?: routerBeforeHook
+  create(options?: YoxOptions): YoxOptions
 
-    [config.HOOK_AFTER_ROUTE_ENTER]?: routerAfterHook
+  nextTick(task: Function, context?: any): void
 
-    [config.HOOK_BEFORE_ROUTE_UPDATE]?: routerBeforeHook
-
-    [config.HOOK_AFTER_ROUTE_UPDATE]?: routerAfterHook
-
-    [config.HOOK_BEFORE_ROUTE_LEAVE]?: routerBeforeHook
-
-    [config.HOOK_AFTER_ROUTE_LEAVE]?: routerAfterHook
-
-  }
-
-  export interface YoxInterface {
-
-    $options: YoxOptions
-
-    $emitter: EmitterInterface
-
-    $observer: ObserverInterface
-
-    $el?: HTMLElement
-
-    $vnode?: VNode
-
-    $model?: string
-
-    $root?: YoxInterface
-
-    $parent?: YoxInterface
-
-    $context?: YoxInterface
-
-    $children?: YoxInterface[]
-
-    $refs?: Record<string, YoxInterface | HTMLElement>
-
-    addComputed(
-      keypath: string,
-      computed: getter | ComputedOptions
-    ): ComputedInterface | void
-
-    removeComputed(
-      keypath: string
-    ): void
-
-    get(
-      keypath: string,
-      defaultValue?: any,
-      depIgnore?: boolean
-    ): any
-
-    set(
-      keypath: string | data,
-      value?: any
-    ): void
-
-    on(
-      type: string | Record<string, listener>,
-      listener?: listener
-    ): YoxInterface
-
-    once(
-      type: string | Record<string, listener>,
-      listener?: listener
-    ): YoxInterface
-
-    off(
-      type?: string,
-      listener?: listener
-    ): YoxInterface
-
-    fire(
-      type: string | CustomEventInterface,
-      data?: data | boolean,
-      downward?: boolean
-    ): boolean
-
-    watch(
-      keypath: string | Record<string, watcher | WatcherOptions>,
-      watcher?: watcher | WatcherOptions,
-      immediate?: boolean
-    ): YoxInterface
-
-    unwatch(
-      keypath?: string,
-      watcher?: watcher
-    ): YoxInterface
-
-    loadComponent(
-      name: string,
-      callback: componentCallback
-    ): void
-
-    createComponent(
-      options: YoxOptions,
-      vnode: VNode
-    ): YoxInterface
-
-    directive(
-      name: string | Record<string, DirectiveHooks>,
-      directive?: DirectiveHooks
-    ): DirectiveHooks | void
-
-    transition(
-      name: string | Record<string, TransitionHooks>,
-      transition?: TransitionHooks
-    ): TransitionHooks | void
-
-    component(
-      name: string | Record<string, component>,
-      component?: component
-    ): component | void
-
-    partial(
-      name: string | Record<string, string>,
-      partial?: string
-    ): Function | void
-
-    filter(
-      name: string | Record<string, filter>,
-      filter?: filter
-    ): filter | void
-
-    checkProps(props: data): void
-
-    checkProp(key: string, value: any): void
-
-    forceUpdate(data?: data): void
-
-    destroy(): void
-
-    nextTick(task: Function): void
-
-    toggle(keypath: string): boolean
-
-    increase(keypath: string, step?: number, max?: number): number | void
-
-    decrease(keypath: string, step: number, min?: number): number | void
-
-    insert(keypath: string, item: any, index: number | boolean): true | void
-
-    append(keypath: string, item: any): true | void
-
-    prepend(keypath: string, item: any): true | void
-
-    removeAt(keypath: string, index: number): true | void
-
-    remove(keypath: string, item: any): true | void
-
-    copy<T>(data: T, deep?: boolean): T
-
-  }
-
-  export const YoxInterface: {
-
-    prototype: YoxInterface
-
-    dom: API
-
-    is: isUtil
-
-    array: arrayUtil
-
-    object: objectUtil
-
-    string: stringUtil
-
-    logger: loggerUtil
-
-    Emitter: typeof EmitterInterface
-
-    Event: typeof CustomEventInterface
-
-    new(options?: YoxOptions): YoxInterface
-
-    use(plugin: YoxPlugin): void
-
-    nextTick(task: Function, context?: any): void
-
-    compile(template: string, stringify?: boolean): Function | string
-
-    directive(
-      name: string | Record<string, DirectiveHooks>,
-      directive?: DirectiveHooks
-    ): DirectiveHooks | void
-
-    transition(
-      name: string | Record<string, TransitionHooks>,
-      transition?: TransitionHooks
-    ): TransitionHooks | void
-
-    component(
-      name: string | Record<string, component>,
-      component?: component
-    ): component | void
-
-    partial(
-      name: string | Record<string, string>,
-      partial?: string
-    ): Function | void
-
-    filter(
-      name: string | Record<string, filter>,
-      filter?: filter
-    ): filter | void
-
-  }
-
-  export interface YoxPlugin {
-    version: string
-    install(Yox: YoxClass): void
-  }
-
-  export interface DirectiveHooks {
-    once?: true
-    bind: bind
-    unbind?: unbind
-  }
-
-  export interface SpecialEventHooks {
-    on: on
-    off: off
-  }
-
-  export interface TransitionHooks {
-    enter?: enter
-    leave?: leave
-  }
-
+  compile(template: string, stringify?: boolean): Function | string
+
+  directive(
+    name: string | Record<string, DirectiveHooks>,
+    directive?: DirectiveHooks
+  ): DirectiveHooks | void
+
+  transition(
+    name: string | Record<string, TransitionHooks>,
+    transition?: TransitionHooks
+  ): TransitionHooks | void
+
+  component(
+    name: string | Record<string, component>,
+    component?: component
+  ): component | void
+
+  partial(
+    name: string | Record<string, string>,
+    partial?: string
+  ): Function | void
+
+  filter(
+    name: string | Record<string, filter>,
+    filter?: filter
+  ): filter | void
+
+}
+
+export interface YoxPlugin {
+  version: string
+  install(Yox: YoxClass): void
+}
+
+export interface DirectiveHooks {
+  once?: true
+  bind: bind
+  unbind?: unbind
+}
+
+export interface SpecialEventHooks {
+  on: on
+  off: off
+}
+
+export interface TransitionHooks {
+  enter?: enter
+  leave?: leave
 }
