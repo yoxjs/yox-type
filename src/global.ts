@@ -1,4 +1,19 @@
-import * as config from '../../yox-config/src/config'
+import {
+  HOOK_BEFORE_CREATE,
+  HOOK_AFTER_CREATE,
+  HOOK_BEFORE_MOUNT,
+  HOOK_AFTER_MOUNT,
+  HOOK_BEFORE_UPDATE,
+  HOOK_AFTER_UPDATE,
+  HOOK_BEFORE_DESTROY,
+  HOOK_AFTER_DESTROY,
+  HOOK_BEFORE_ROUTE_ENTER,
+  HOOK_AFTER_ROUTE_ENTER,
+  HOOK_BEFORE_ROUTE_UPDATE,
+  HOOK_AFTER_ROUTE_UPDATE,
+  HOOK_BEFORE_ROUTE_LEAVE,
+  HOOK_AFTER_ROUTE_LEAVE,
+} from '../../yox-config/src/config'
 
 import {
   data,
@@ -11,8 +26,6 @@ import {
   leave,
   getter,
   setter,
-  watcher,
-  listener,
   filter,
   component,
   componentCallback,
@@ -20,151 +33,24 @@ import {
   optionsOtherHook,
   routerBeforeHook,
   routerAfterHook,
-  API,
+  IsUtil,
+  DomUtil,
+  ArrayUtil,
+  ObjectUtil,
+  StringUtil,
+  LoggerUtil,
   PropRule,
   ComputedInterface,
   ObserverInterface,
-  EmitterInterface,
-  CustomEventInterface,
-  ValueHolder,
+  Task,
   VNode,
 } from './type'
 
-interface arrayUtil {
+export type watcher = (newValue: any, oldValue: any, keypath: string) => void
 
-  each<T>(
-    array: T[],
-    callback: (item: T, index: number, length: number) => boolean | void,
-    reversed?: boolean
-  ): void
+export type listener = (event: CustomEventInterface, data?: data) => false | void
 
-  push<T>(array: T[], target: T | T[]): void
-
-  unshift<T>(array: T[], target: T | T[]): void
-
-  indexOf<T>(array: T[], target: T, strict?: boolean): number
-
-  last<T>(array: T[]): T | void
-
-  pop<T>(array: T[]): T | void
-
-  remove<T>(array: T[], target: T, strict?: boolean): number
-
-  has<T>(array: T[], target: T, strict?: boolean): boolean
-
-  toArray<T>(array: T[] | ArrayLike<T>): T[]
-
-  toObject(array: any[], key?: string | null, value?: any): Object
-
-  join(array: string[], separator: string): string
-
-  falsy(array: any): boolean
-
-}
-
-interface isUtil {
-
-  func(value: any): boolean
-
-  array(value: any): boolean
-
-  object(value: any): boolean
-
-  string(value: any): boolean
-
-  number(value: any): boolean
-
-  boolean(value: any): boolean
-
-  numeric(value: any): boolean
-
-}
-
-interface loggerUtil {
-
-  DEBUG: number
-
-  INFO: number
-
-  WARN: number
-
-  ERROR: number
-
-  FATAL: number
-
-  debug(msg: string, tag?: string): void
-
-  info(msg: string, tag?: string): void
-
-  warn(msg: string, tag?: string): void
-
-  error(msg: string, tag?: string): void
-
-  fatal(msg: string, tag?: string): void
-
-}
-
-interface objectUtil {
-
-  keys(object: data): string[]
-
-  sort(object: data, desc?: boolean): string[]
-
-  each(object: data, callback: (value: any, key: string) => boolean | void): void
-
-  clear(object: data): void
-
-  extend(original: data, object: data): data
-
-  merge(object1: data | void, object2: data | void): data | void
-
-  copy(object: any, deep?: boolean): any
-
-  get(object: any, keypath: string): ValueHolder | undefined
-
-  set(object: data, keypath: string, value: any, autofill?: boolean): void
-
-  has(object: data, key: string | number): boolean
-
-  falsy(object: any): boolean
-
-}
-
-interface stringUtil {
-
-  camelize(str: string): string
-
-  hyphenate(str: string): string
-
-  capitalize(str: string): string
-
-  trim(str: any): string
-
-  slice(str: string, start: number, end?: number): string
-
-  indexOf(str: string, part: string, start?: number): number
-
-  lastIndexOf(str: string, part: string, end?: number): number
-
-  startsWith(str: string, part: string): boolean
-
-  endsWith(str: string, part: string): boolean
-
-  charAt(str: string, index?: number): string
-
-  codeAt(str: string, index?: number): number
-
-  upper(str: string): string
-
-  lower(str: string): string
-
-  has(str: string, part: string): boolean
-
-  falsy(str: any): boolean
-
-}
-
-type YoxClass = typeof YoxInterface
+export type nativeListener = (event: CustomEventInterface | Event) => false | void
 
 export interface ComputedOptions {
 
@@ -198,6 +84,110 @@ export interface WatcherOptions {
 
   // 是否只监听一次，默认为 false
   once?: boolean
+
+}
+
+export interface EmitterOptions extends Task {
+
+  // 所在的命名空间
+  ns?: string
+
+  // 监听函数已执行次数
+  num?: number
+
+  // 监听函数的最大可执行次数
+  max?: number
+
+  // 计数器，用于扩展，随便做什么计数都行
+  count?: number
+
+}
+
+export interface EmitterInterface {
+
+  ns: boolean
+
+  listeners: Record<string, EmitterOptions[]>
+
+  nativeListeners?: Record<string, nativeListener>
+
+  fire(
+    type: string,
+    args: any[] | void,
+    filter?: (type: string, args: any[] | void, options: EmitterOptions) => boolean | void
+  ): boolean
+
+  on(
+    type: string,
+    listener?: listener | EmitterOptions
+  ): void
+
+  off(
+    type?: string,
+    listener?: listener
+  ): void
+
+  has(
+    type: string,
+    listener?: listener
+  ): boolean
+
+}
+
+export declare var EmitterInterface: {
+
+  prototype: EmitterInterface
+
+  new(ns?: boolean): EmitterInterface
+
+}
+
+export interface CustomEventInterface {
+
+  // 事件名称
+  type: string
+
+  // 事件当前的阶段
+  phase: number
+
+  // 哪个组件触发的事件
+  target?: YoxInterface
+
+  // 原始事件
+  originalEvent?: CustomEventInterface | Event
+
+  // 是否已阻止事件的默认行为
+  isPrevented?: true
+
+  // 事件是否已停止传递
+  isStoped?: true
+
+  // 处理当前事件的监听器
+  listener?: Function
+
+  // 模仿 Event 的两个方法签名，避免业务代码判断事件类型
+  preventDefault(): CustomEventInterface
+
+  stopPropagation(): CustomEventInterface
+
+  // 简单版本
+  prevent(): CustomEventInterface
+
+  stop(): CustomEventInterface
+
+}
+
+export declare var CustomEventInterface: {
+
+  prototype: CustomEventInterface
+
+  PHASE_CURRENT: number
+
+  PHASE_UPWARD: number
+
+  PHASE_DOWNWARD: number
+
+  new(type: string, originalEvent?: CustomEventInterface | Event): CustomEventInterface
 
 }
 
@@ -250,33 +240,33 @@ export interface YoxOptions {
 
   extensions?: data
 
-  [config.HOOK_BEFORE_CREATE]?: optionsBeforeCreateHook
+  [HOOK_BEFORE_CREATE]?: optionsBeforeCreateHook
 
-  [config.HOOK_AFTER_CREATE]?: optionsOtherHook
+  [HOOK_AFTER_CREATE]?: optionsOtherHook
 
-  [config.HOOK_BEFORE_MOUNT]?: optionsOtherHook
+  [HOOK_BEFORE_MOUNT]?: optionsOtherHook
 
-  [config.HOOK_AFTER_MOUNT]?: optionsOtherHook
+  [HOOK_AFTER_MOUNT]?: optionsOtherHook
 
-  [config.HOOK_BEFORE_UPDATE]?: optionsOtherHook
+  [HOOK_BEFORE_UPDATE]?: optionsOtherHook
 
-  [config.HOOK_AFTER_UPDATE]?: optionsOtherHook
+  [HOOK_AFTER_UPDATE]?: optionsOtherHook
 
-  [config.HOOK_BEFORE_DESTROY]?: optionsOtherHook
+  [HOOK_BEFORE_DESTROY]?: optionsOtherHook
 
-  [config.HOOK_AFTER_DESTROY]?: optionsOtherHook
+  [HOOK_AFTER_DESTROY]?: optionsOtherHook
 
-  [config.HOOK_BEFORE_ROUTE_ENTER]?: routerBeforeHook
+  [HOOK_BEFORE_ROUTE_ENTER]?: routerBeforeHook
 
-  [config.HOOK_AFTER_ROUTE_ENTER]?: routerAfterHook
+  [HOOK_AFTER_ROUTE_ENTER]?: routerAfterHook
 
-  [config.HOOK_BEFORE_ROUTE_UPDATE]?: routerBeforeHook
+  [HOOK_BEFORE_ROUTE_UPDATE]?: routerBeforeHook
 
-  [config.HOOK_AFTER_ROUTE_UPDATE]?: routerAfterHook
+  [HOOK_AFTER_ROUTE_UPDATE]?: routerAfterHook
 
-  [config.HOOK_BEFORE_ROUTE_LEAVE]?: routerBeforeHook
+  [HOOK_BEFORE_ROUTE_LEAVE]?: routerBeforeHook
 
-  [config.HOOK_AFTER_ROUTE_LEAVE]?: routerAfterHook
+  [HOOK_AFTER_ROUTE_LEAVE]?: routerAfterHook
 
 }
 
@@ -425,21 +415,21 @@ export declare const YoxInterface: {
 
   prototype: YoxInterface
 
-  dom: API
+  is: IsUtil
 
-  is: isUtil
+  dom: DomUtil
 
-  array: arrayUtil
+  array: ArrayUtil
 
-  object: objectUtil
+  object: ObjectUtil
 
-  string: stringUtil
+  string: StringUtil
 
-  logger: loggerUtil
+  logger: LoggerUtil
 
-  Emitter: typeof EmitterInterface
+  Emitter: EmitterClass
 
-  Event: typeof CustomEventInterface
+  Event: CustomEventClass
 
   new(options?: YoxOptions): YoxInterface
 
@@ -498,3 +488,7 @@ export interface TransitionHooks {
   enter?: enter
   leave?: leave
 }
+
+export type YoxClass = typeof YoxInterface
+export type EmitterClass = typeof EmitterInterface
+export type CustomEventClass = typeof CustomEventInterface

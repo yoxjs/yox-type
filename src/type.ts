@@ -1,4 +1,7 @@
 import {
+  watcher,
+  listener,
+  nativeListener,
   WatcherOptions,
   ComputedOptions,
   YoxOptions,
@@ -27,12 +30,6 @@ export type setter = (value: any) => void
 export type formater = (...args: any) => string | number | boolean
 
 export type filter = formater | Record<string, formater>
-
-export type watcher = (newValue: any, oldValue: any, keypath: string) => void
-
-export type listener = (event: CustomEventInterface, data?: data) => false | void
-
-export type nativeListener = (event: CustomEventInterface | Event) => false | void
 
 export type enter = (node: HTMLElement) => void
 
@@ -184,7 +181,7 @@ export interface VNode {
 
 }
 
-export interface API {
+export interface DomUtil {
 
   createElement(tag: string, isSvg?: boolean): Element
 
@@ -232,6 +229,140 @@ export interface API {
 
 }
 
+export interface ArrayUtil {
+
+  each<T>(
+    array: T[],
+    callback: (item: T, index: number, length: number) => boolean | void,
+    reversed?: boolean
+  ): void
+
+  push<T>(array: T[], target: T | T[]): void
+
+  unshift<T>(array: T[], target: T | T[]): void
+
+  indexOf<T>(array: T[], target: T, strict?: boolean): number
+
+  last<T>(array: T[]): T | void
+
+  pop<T>(array: T[]): T | void
+
+  remove<T>(array: T[], target: T, strict?: boolean): number
+
+  has<T>(array: T[], target: T, strict?: boolean): boolean
+
+  toArray<T>(array: T[] | ArrayLike<T>): T[]
+
+  toObject(array: any[], key?: string | null, value?: any): Object
+
+  join(array: string[], separator: string): string
+
+  falsy(array: any): boolean
+
+}
+
+export interface IsUtil {
+
+  func(value: any): boolean
+
+  array(value: any): boolean
+
+  object(value: any): boolean
+
+  string(value: any): boolean
+
+  number(value: any): boolean
+
+  boolean(value: any): boolean
+
+  numeric(value: any): boolean
+
+}
+
+export interface LoggerUtil {
+
+  DEBUG: number
+
+  INFO: number
+
+  WARN: number
+
+  ERROR: number
+
+  FATAL: number
+
+  debug(msg: string, tag?: string): void
+
+  info(msg: string, tag?: string): void
+
+  warn(msg: string, tag?: string): void
+
+  error(msg: string, tag?: string): void
+
+  fatal(msg: string, tag?: string): void
+
+}
+
+export interface ObjectUtil {
+
+  keys(object: data): string[]
+
+  sort(object: data, desc?: boolean): string[]
+
+  each(object: data, callback: (value: any, key: string) => boolean | void): void
+
+  clear(object: data): void
+
+  extend(original: data, object: data): data
+
+  merge(object1: data | void, object2: data | void): data | void
+
+  copy(object: any, deep?: boolean): any
+
+  get(object: any, keypath: string): ValueHolder | undefined
+
+  set(object: data, keypath: string, value: any, autofill?: boolean): void
+
+  has(object: data, key: string | number): boolean
+
+  falsy(object: any): boolean
+
+}
+
+export interface StringUtil {
+
+  camelize(str: string): string
+
+  hyphenate(str: string): string
+
+  capitalize(str: string): string
+
+  trim(str: any): string
+
+  slice(str: string, start: number, end?: number): string
+
+  indexOf(str: string, part: string, start?: number): number
+
+  lastIndexOf(str: string, part: string, end?: number): number
+
+  startsWith(str: string, part: string): boolean
+
+  endsWith(str: string, part: string): boolean
+
+  charAt(str: string, index?: number): string
+
+  codeAt(str: string, index?: number): number
+
+  upper(str: string): string
+
+  lower(str: string): string
+
+  has(str: string, part: string): boolean
+
+  falsy(str: any): boolean
+
+}
+
 export interface Task {
 
   // 待执行的函数
@@ -251,113 +382,6 @@ export interface NextTaskInterface {
   clear(): void
 
   run(): void
-
-}
-
-export interface EmitterOptions extends Task {
-
-  // 所在的命名空间
-  ns?: string
-
-  // 监听函数已执行次数
-  num?: number
-
-  // 监听函数的最大可执行次数
-  max?: number
-
-  // 计数器，用于扩展，随便做什么计数都行
-  count?: number
-
-}
-
-export interface CustomEventInterface {
-
-  // 事件名称
-  type: string
-
-  // 事件当前的阶段
-  // 0: 当前组件发射的事件，且当前组件正在处理
-  // 1: 当前组件向上发射的事件，且已流转到父组件
-  // -1: 当前组件向下发射的事件，且已流转到子组件
-  phase: number
-
-  // 哪个组件触发的事件
-  target?: YoxInterface
-
-  // 原始事件
-  originalEvent?: CustomEventInterface | Event
-
-  // 是否已阻止事件的默认行为
-  isPrevented?: true
-
-  // 事件是否已停止传递
-  isStoped?: true
-
-  // 处理当前事件的监听器
-  listener?: Function
-
-  // 模仿 Event 的两个方法签名，避免业务代码判断事件类型
-  preventDefault(): CustomEventInterface
-
-  stopPropagation(): CustomEventInterface
-
-  // 简单版本
-  prevent(): CustomEventInterface
-
-  stop(): CustomEventInterface
-
-}
-
-export declare var CustomEventInterface: {
-
-  prototype: CustomEventInterface
-
-  PHASE_CURRENT: number
-
-  PHASE_UPWARD: number
-
-  PHASE_DOWNWARD: number
-
-  new(type: string, originalEvent?: CustomEventInterface | Event): CustomEventInterface
-
-}
-
-export interface EmitterInterface {
-
-  ns: boolean
-
-  listeners: Record<string, EmitterOptions[]>
-
-  nativeListeners?: Record<string, nativeListener>
-
-  fire(
-    type: string,
-    args: any[] | void,
-    filter?: (type: string, args: any[] | void, options: EmitterOptions) => boolean | void
-  ): boolean
-
-  on(
-    type: string,
-    listener?: Function | EmitterOptions
-  ): void
-
-  off(
-    type?: string,
-    listener?: Function
-  ): void
-
-  has(
-    type: string,
-    listener?: Function
-  ): boolean
-
-}
-
-export declare var EmitterInterface: {
-
-  prototype: EmitterInterface
-
-  new(ns?: boolean): EmitterInterface
 
 }
 
