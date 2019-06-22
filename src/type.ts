@@ -45,7 +45,7 @@ export type off = (node: HTMLElement | Window | Document, listener: nativeListen
 
 export type componentCallback = (options: YoxOptions) => void
 
-export type componentLoader = (callback: componentCallback) => void
+export type componentLoader = (callback: componentCallback) => Promise<YoxOptions> | void
 
 export type component = YoxOptions | componentLoader
 
