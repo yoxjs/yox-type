@@ -18,14 +18,8 @@ import {
 import {
   data,
   dataGenerator,
-  bind,
-  unbind,
-  on,
-  off,
-  enter,
-  leave,
-  getter,
-  setter,
+  computedGetter,
+  computedSetter,
   filter,
   component,
   componentCallback,
@@ -42,6 +36,7 @@ import {
   PropRule,
   ComputedInterface,
   ObserverInterface,
+  Directive,
   Task,
   VNode,
 } from './type'
@@ -55,10 +50,10 @@ export type nativeListener = (event: CustomEventInterface | Event) => false | vo
 export interface ComputedOptions {
 
   // getter，必填
-  get: getter
+  get: computedGetter
 
   // setter
-  set?: setter
+  set?: computedSetter
 
   // 是否开启缓存，默认为 true
   cache?: boolean
@@ -220,7 +215,7 @@ export interface YoxOptions {
 
   slots?: Record<string, VNode[]>
 
-  computed?: Record<string, getter | ComputedOptions>
+  computed?: Record<string, computedGetter | ComputedOptions>
 
   watchers?: Record<string, watcher | WatcherOptions>
 
@@ -296,7 +291,7 @@ export interface YoxInterface {
 
   addComputed(
     keypath: string,
-    computed: getter | ComputedOptions
+    computed: computedGetter | ComputedOptions
   ): ComputedInterface | void
 
   removeComputed(
@@ -475,18 +470,18 @@ export interface YoxPlugin {
 
 export interface DirectiveHooks {
   once?: true
-  bind: bind
-  unbind?: unbind
+  bind: (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
+  unbind?: (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
 }
 
 export interface SpecialEventHooks {
-  on: on
-  off: off
+  on: (node: HTMLElement | Window | Document, listener: nativeListener) => void
+  off: (node: HTMLElement | Window | Document, listener: nativeListener) => void
 }
 
 export interface TransitionHooks {
-  enter?: enter
-  leave?: leave
+  enter?: (node: HTMLElement) => void
+  leave?: (node: HTMLElement, done: () => void) => void
 }
 
 export type YoxClass = typeof YoxInterface

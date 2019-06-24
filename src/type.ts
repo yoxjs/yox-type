@@ -1,7 +1,6 @@
 import {
   watcher,
   listener,
-  nativeListener,
   WatcherOptions,
   ComputedOptions,
   YoxOptions,
@@ -11,37 +10,25 @@ import {
   SpecialEventHooks,
 } from './global'
 
-export type hint = 1 | 2 | 3
+export type data = Record<string, any>
 
-export type lazy = number | true
+export type dataGenerator = (options: YoxOptions) => data
+
+export type lazyValue = number | true
 
 export type propType = (key: string, value: any) => void
 
 export type propValue = () => any
 
-export type data = Record<string, any>
+export type propertyHint = 1 | 2 | 3
 
-export type dataGenerator = (options: YoxOptions) => data
+export type computedGetter = () => any
 
-export type getter = () => any
+export type computedSetter = (value: any) => void
 
-export type setter = (value: any) => void
+export type filterFunction = (...args: any) => string | number | boolean
 
-export type formater = (...args: any) => string | number | boolean
-
-export type filter = formater | Record<string, formater>
-
-export type enter = (node: HTMLElement) => void
-
-export type leave = (node: HTMLElement, done: () => void) => void
-
-export type bind = (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
-
-export type unbind = (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
-
-export type on = (node: HTMLElement | Window | Document, listener: nativeListener) => void
-
-export type off = (node: HTMLElement | Window | Document, listener: nativeListener) => void
+export type filter = filterFunction | Record<string, filterFunction>
 
 export type componentCallback = (options: YoxOptions) => void
 
@@ -76,7 +63,7 @@ export interface Property {
 
   readonly value: any
 
-  readonly hint: hint
+  readonly hint: propertyHint
 
 }
 
@@ -99,7 +86,7 @@ export interface Directive {
   readonly hooks: DirectiveHooks
 
   // 取值函数
-  readonly getter?: getter | void
+  readonly getter?: () => any | void
 
   // 事件或函数调用式的指令会编译成 handler
   readonly handler?: listener | void
@@ -108,7 +95,7 @@ export interface Directive {
   readonly binding?: string | void
 
   // 单向绑定的 hint，用于区分 attr 和 prop
-  readonly hint?: hint | void
+  readonly hint?: propertyHint | void
 
 }
 
@@ -165,7 +152,7 @@ export interface VNode {
   readonly directives?: Record<string, Directive>
 
   // 如果 directives 有值，则 lazy 必有值
-  readonly lazy?: Record<string, lazy>
+  readonly lazy?: Record<string, lazyValue>
 
   readonly transition?: TransitionHooks
 
@@ -191,7 +178,7 @@ export interface DomUtil {
 
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
-  removeProp(node: HTMLElement, name: string, hint?: hint): void
+  removeProp(node: HTMLElement, name: string, hint?: propertyHint): void
 
   attr(node: HTMLElement, name: string, value?: string): string | void
 
@@ -395,7 +382,7 @@ export interface ObserverInterface {
 
   addComputed(
     keypath: string,
-    options: getter | ComputedOptions
+    options: computedGetter | ComputedOptions
   ): ComputedInterface | void
 
   removeComputed(
@@ -482,8 +469,8 @@ export declare var ComputedInterface: {
     cache: boolean,
     deps: string[],
     observer: ObserverInterface,
-    getter: getter,
-    setter: setter | void
+    getter: computedGetter,
+    setter: computedSetter | void
   ): ComputedInterface
 
 }
