@@ -16,9 +16,9 @@ export type dataGenerator = (options: YoxOptions) => data
 
 export type lazyValue = number | true
 
-export type propType = (key: string, value: any) => void
+export type propTypeFunction = (key: string, value: any) => void
 
-export type propValue = () => any
+export type propValueFunction = () => any
 
 export type propertyHint = 1 | 2 | 3
 
@@ -476,8 +476,8 @@ export declare var ComputedInterface: {
 }
 
 export interface PropRule {
-  type: string | string[] | propType
-  value?: any | propValue
+  type: string | string[] | propTypeFunction
+  value?: any | propValueFunction
   required?: boolean
 }
 
