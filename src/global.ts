@@ -43,11 +43,9 @@ import {
 
 export type Watcher<T> = (this: T, newValue: any, oldValue: any, keypath: string) => void
 
-export type Listener = (event: CustomEventInterface, data?: data) => false | void
+export type Listener<T> = (this: T, event: CustomEventInterface, data?: data) => false | void
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
-
-export type YoxListener = (this: YoxInterface, event: CustomEventInterface, data?: data) => false | void
 
 export interface ComputedOptions {
 
@@ -100,7 +98,7 @@ export interface EmitterOptions extends Task {
 
 }
 
-export interface EmitterInterface {
+export interface EmitterInterface<T> {
 
   ns: boolean
 
@@ -116,26 +114,26 @@ export interface EmitterInterface {
 
   on(
     type: string,
-    listener?: Listener | EmitterOptions
+    listener?: Listener<T> | EmitterOptions
   ): void
 
   off(
     type?: string,
-    listener?: Listener
+    listener?: Listener<T>
   ): void
 
   has(
     type: string,
-    listener?: Listener
+    listener?: Listener<T>
   ): boolean
 
 }
 
 export declare var EmitterInterface: {
 
-  prototype: EmitterInterface
+  prototype: EmitterInterface<unknown>
 
-  new(ns?: boolean): EmitterInterface
+  new<T>(ns?: boolean): EmitterInterface<T>
 
 }
 
@@ -231,7 +229,7 @@ export interface YoxOptions {
 
   filters?: Record<string, filter>
 
-  events?: Record<string, YoxListener>
+  events?: Record<string, Listener<YoxInterface>>
 
   methods?: Record<string, Function>
 
@@ -271,7 +269,7 @@ export interface YoxInterface {
 
   $options: YoxOptions
 
-  $emitter: EmitterInterface
+  $emitter: EmitterInterface<YoxInterface>
 
   $observer: ObserverInterface<YoxInterface>
 
@@ -312,18 +310,18 @@ export interface YoxInterface {
   ): void
 
   on(
-    type: string | Record<string, YoxListener>,
-    listener?: YoxListener
+    type: string | Record<string, Listener<YoxInterface>>,
+    listener?: Listener<YoxInterface>
   ): YoxInterface
 
   once(
-    type: string | Record<string, YoxListener>,
-    listener?: YoxListener
+    type: string | Record<string, Listener<YoxInterface>>,
+    listener?: Listener<YoxInterface>
   ): YoxInterface
 
   off(
     type?: string,
-    listener?: YoxListener
+    listener?: Listener<YoxInterface>
   ): YoxInterface
 
   fire(
