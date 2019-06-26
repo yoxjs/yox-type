@@ -291,7 +291,7 @@ export interface YoxInterface {
 
   $emitter: EmitterInterface
 
-  $observer: ObserverInterface
+  $observer: ObserverInterface<YoxInterface>
 
   $el?: HTMLElement
 
@@ -312,7 +312,7 @@ export interface YoxInterface {
   addComputed(
     keypath: string,
     computed: computedGetter | ComputedOptions
-  ): ComputedInterface | void
+  ): ComputedInterface<YoxInterface> | void
 
   removeComputed(
     keypath: string
