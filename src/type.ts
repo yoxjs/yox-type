@@ -1,5 +1,5 @@
 import {
-  watcher,
+  Watcher,
   Listener,
   WatcherOptions,
   ComputedOptions,
@@ -407,14 +407,14 @@ export interface ObserverInterface {
   ): void
 
   watch(
-    keypath: string | Record<string, watcher | WatcherOptions>,
-    watcher?: watcher | WatcherOptions,
+    keypath: string | Record<string, Watcher | WatcherOptions>,
+    watcher?: Watcher | WatcherOptions,
     immediate?: boolean
   ): void
 
   unwatch(
     keypath?: string,
-    watcher?: watcher
+    watcher?: Watcher
   ): void
 
   toggle(keypath: string): boolean
