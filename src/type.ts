@@ -407,14 +407,14 @@ export interface ObserverInterface<T> {
   ): void
 
   watch(
-    keypath: string | Record<string, Watcher | WatcherOptions>,
-    watcher?: Watcher | WatcherOptions,
+    keypath: string | Record<string, Watcher<T> | WatcherOptions<T>>,
+    watcher?: Watcher<T> | WatcherOptions<T>,
     immediate?: boolean
   ): void
 
   unwatch(
     keypath?: string,
-    watcher?: Watcher
+    watcher?: Watcher<T>
   ): void
 
   toggle(keypath: string): boolean

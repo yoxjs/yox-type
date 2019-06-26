@@ -41,9 +41,7 @@ import {
   VNode,
 } from './type'
 
-export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
-
-export type YoxWatcher = (this: YoxInterface, newValue: any, oldValue: any, keypath: string) => void
+export type Watcher<T> = (this: T, newValue: any, oldValue: any, keypath: string) => void
 
 export type Listener = (event: CustomEventInterface, data?: data) => false | void
 
@@ -70,26 +68,10 @@ export interface ComputedOptions {
 
 }
 
-export interface WatcherOptions {
+export interface WatcherOptions<T> {
 
   // 数据变化处理器，必填
-  watcher: Watcher
-
-  // 是否立即执行一次 watcher，默认为 false
-  immediate?: boolean
-
-  // 是否同步监听变化，默认为 false
-  sync?: boolean
-
-  // 是否只监听一次，默认为 false
-  once?: boolean
-
-}
-
-export interface YoxWatcherOptions {
-
-  // 数据变化处理器，必填
-  watcher: YoxWatcher
+  watcher: Watcher<T>
 
   // 是否立即执行一次 watcher，默认为 false
   immediate?: boolean
@@ -237,7 +219,7 @@ export interface YoxOptions {
 
   computed?: Record<string, computedGetter | ComputedOptions>
 
-  watchers?: Record<string, YoxWatcher | YoxWatcherOptions>
+  watchers?: Record<string, Watcher<YoxInterface> | WatcherOptions<YoxInterface>>
 
   transitions?: Record<string, TransitionHooks>
 
@@ -351,14 +333,14 @@ export interface YoxInterface {
   ): boolean
 
   watch(
-    keypath: string | Record<string, YoxWatcher | YoxWatcherOptions>,
-    watcher?: YoxWatcher | YoxWatcherOptions,
+    keypath: string | Record<string, Watcher<YoxInterface> | WatcherOptions<YoxInterface>>,
+    watcher?: Watcher<YoxInterface> | WatcherOptions<YoxInterface>,
     immediate?: boolean
   ): YoxInterface
 
   unwatch(
     keypath?: string,
-    watcher?: YoxWatcher
+    watcher?: Watcher<YoxInterface>
   ): YoxInterface
 
   loadComponent(
