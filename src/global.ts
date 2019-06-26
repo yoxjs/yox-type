@@ -86,6 +86,22 @@ export interface WatcherOptions {
 
 }
 
+export interface YoxWatcherOptions {
+
+  // 数据变化处理器，必填
+  watcher: YoxWatcher
+
+  // 是否立即执行一次 watcher，默认为 false
+  immediate?: boolean
+
+  // 是否同步监听变化，默认为 false
+  sync?: boolean
+
+  // 是否只监听一次，默认为 false
+  once?: boolean
+
+}
+
 export interface EmitterOptions extends Task {
 
   // 所在的命名空间
@@ -221,7 +237,7 @@ export interface YoxOptions {
 
   computed?: Record<string, computedGetter | ComputedOptions>
 
-  watchers?: Record<string, YoxWatcher | WatcherOptions>
+  watchers?: Record<string, YoxWatcher | YoxWatcherOptions>
 
   transitions?: Record<string, TransitionHooks>
 
@@ -335,8 +351,8 @@ export interface YoxInterface {
   ): boolean
 
   watch(
-    keypath: string | Record<string, YoxWatcher | WatcherOptions>,
-    watcher?: YoxWatcher | WatcherOptions,
+    keypath: string | Record<string, YoxWatcher | YoxWatcherOptions>,
+    watcher?: YoxWatcher | YoxWatcherOptions,
     immediate?: boolean
   ): YoxInterface
 
