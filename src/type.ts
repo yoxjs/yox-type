@@ -439,39 +439,11 @@ export interface ObserverInterface {
 
 }
 
-export declare var ObserverInterface: {
-
-  prototype: ObserverInterface
-
-  new(data?: data, context?: any): ObserverInterface
-
-}
-
 export interface ComputedInterface {
 
   get(force?: boolean): any
 
   set(value: any): void
-
-}
-
-export declare var ComputedInterface: {
-
-  prototype: ComputedInterface
-
-  current?: ComputedInterface
-
-  build(keypath: string, observer: ObserverInterface, options: any): ComputedInterface | void
-
-  new(
-    keypath: string,
-    sync: boolean,
-    cache: boolean,
-    deps: string[],
-    observer: ObserverInterface,
-    getter: computedGetter,
-    setter: computedSetter | void
-  ): ComputedInterface
 
 }
 
