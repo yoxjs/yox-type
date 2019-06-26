@@ -22,10 +22,6 @@ export type propValueFunction = () => any
 
 export type propertyHint = 1 | 2 | 3
 
-export type computedGetter = () => any
-
-export type computedSetter = (value: any) => void
-
 export type filterFunction = (...args: any) => string | number | boolean
 
 export type filter = filterFunction | Record<string, filterFunction>
@@ -43,6 +39,10 @@ export type optionsOtherHook = () => void
 export type routerBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
 
 export type routerAfterHook = (to: Location, from: Location | void) => void
+
+export type ComputedGetter<T> = () => T
+
+export type ComputedSetter<T> = (value: T) => void
 
 export interface ValueHolder {
   keypath?: string
@@ -382,7 +382,7 @@ export interface ObserverInterface<T> {
 
   addComputed(
     keypath: string,
-    options: computedGetter | ComputedOptions
+    options: ComputedGetter<T> | ComputedOptions<T>
   ): ComputedInterface<T> | void
 
   removeComputed(
