@@ -43,9 +43,11 @@ import {
 
 export type watcher = (newValue: any, oldValue: any, keypath: string) => void
 
-export type listener = (event: CustomEventInterface, data?: data) => false | void
+export type Listener = (event: CustomEventInterface, data?: data) => false | void
 
-export type nativeListener = (event: CustomEventInterface | Event) => false | void
+export type NativeListener = (event: CustomEventInterface | Event) => false | void
+
+export type YoxListener = (this: YoxInterface, event: CustomEventInterface, data?: data) => false | void
 
 export interface ComputedOptions {
 
@@ -104,7 +106,7 @@ export interface EmitterInterface {
 
   listeners: Record<string, EmitterOptions[]>
 
-  nativeListeners?: Record<string, nativeListener>
+  nativeListeners?: Record<string, NativeListener>
 
   fire(
     type: string,
@@ -114,17 +116,17 @@ export interface EmitterInterface {
 
   on(
     type: string,
-    listener?: listener | EmitterOptions
+    listener?: Listener | EmitterOptions
   ): void
 
   off(
     type?: string,
-    listener?: listener
+    listener?: Listener
   ): void
 
   has(
     type: string,
-    listener?: listener
+    listener?: Listener
   ): boolean
 
 }
@@ -229,7 +231,7 @@ export interface YoxOptions {
 
   filters?: Record<string, filter>
 
-  events?: Record<string, listener>
+  events?: Record<string, YoxListener>
 
   methods?: Record<string, Function>
 
@@ -310,18 +312,18 @@ export interface YoxInterface {
   ): void
 
   on(
-    type: string | Record<string, listener>,
-    listener?: listener
+    type: string | Record<string, YoxListener>,
+    listener?: YoxListener
   ): YoxInterface
 
   once(
-    type: string | Record<string, listener>,
-    listener?: listener
+    type: string | Record<string, YoxListener>,
+    listener?: YoxListener
   ): YoxInterface
 
   off(
     type?: string,
-    listener?: listener
+    listener?: YoxListener
   ): YoxInterface
 
   fire(
@@ -475,8 +477,8 @@ export interface DirectiveHooks {
 }
 
 export interface SpecialEventHooks {
-  on: (node: HTMLElement | Window | Document, listener: nativeListener) => void
-  off: (node: HTMLElement | Window | Document, listener: nativeListener) => void
+  on: (node: HTMLElement | Window | Document, listener: NativeListener) => void
+  off: (node: HTMLElement | Window | Document, listener: NativeListener) => void
 }
 
 export interface TransitionHooks {

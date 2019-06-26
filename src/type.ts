@@ -1,6 +1,6 @@
 import {
   watcher,
-  listener,
+  Listener,
   WatcherOptions,
   ComputedOptions,
   YoxOptions,
@@ -89,7 +89,7 @@ export interface Directive {
   readonly getter?: () => any | void
 
   // 事件或函数调用式的指令会编译成 handler
-  readonly handler?: listener | void
+  readonly handler?: Listener | void
 
   // 单向绑定的 keypath
   readonly binding?: string | void
@@ -208,9 +208,9 @@ export interface DomUtil {
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement | Window | Document, type: string, listener: listener): void
+  on(node: HTMLElement | Window | Document, type: string, listener: Listener): void
 
-  off(node: HTMLElement | Window | Document, type: string, listener: listener): void
+  off(node: HTMLElement | Window | Document, type: string, listener: Listener): void
 
   addSpecialEvent(type: string, hooks: SpecialEventHooks): void
 
