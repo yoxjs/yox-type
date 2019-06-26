@@ -19,7 +19,6 @@ import {
   data,
   dataGenerator,
   ComputedGetter,
-  ComputedSetter,
   filter,
   component,
   componentCallback,
@@ -47,13 +46,13 @@ export type Listener<T> = (this: T, event: CustomEventInterface, data?: data) =>
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 
-export interface ComputedOptions<T> {
+export interface ComputedOptions<T, V> {
 
   // getter，必填
-  get: ComputedGetter<T>
+  get: (this: T) => V
 
   // setter
-  set?: ComputedSetter<T>
+  set?: (this: T, value: V) => void
 
   // 是否开启缓存，默认为 true
   cache?: boolean
@@ -215,7 +214,7 @@ export interface YoxOptions {
 
   slots?: Record<string, VNode[]>
 
-  computed?: Record<string, ComputedGetter<YoxInterface> | ComputedOptions<YoxInterface>>
+  computed?: Record<string, ComputedGetter<YoxInterface> | ComputedOptions<YoxInterface, any>>
 
   watchers?: Record<string, Watcher<YoxInterface> | WatcherOptions<YoxInterface>>
 
@@ -291,7 +290,7 @@ export interface YoxInterface {
 
   addComputed(
     keypath: string,
-    computed: ComputedGetter<YoxInterface> | ComputedOptions<YoxInterface>
+    computed: ComputedGetter<YoxInterface> | ComputedOptions<YoxInterface, any>
   ): ComputedInterface<YoxInterface> | void
 
   removeComputed(

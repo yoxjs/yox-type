@@ -40,9 +40,9 @@ export type routerBeforeHook = (to: Location, from: Location | void, next: (valu
 
 export type routerAfterHook = (to: Location, from: Location | void) => void
 
-export type ComputedGetter<T> = () => T
+export type ComputedGetter<T> = (this: T) => any
 
-export type ComputedSetter<T> = (value: T) => void
+export type ComputedSetter<T> = (this: T, value: any) => void
 
 export interface ValueHolder {
   keypath?: string
@@ -382,7 +382,7 @@ export interface ObserverInterface<T> {
 
   addComputed(
     keypath: string,
-    options: ComputedGetter<T> | ComputedOptions<T>
+    options: ComputedGetter<T> | ComputedOptions<T, any>
   ): ComputedInterface<T> | void
 
   removeComputed(
