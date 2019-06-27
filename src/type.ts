@@ -38,8 +38,11 @@ export type RouterBeforeHook = (to: Location, from: Location | void, next: (valu
 export type RouterAfterHook = (to: Location, from: Location | void) => void
 
 export interface ValueHolder {
+
   keypath?: string
+
   value: any
+
 }
 
 export interface Attribute {

@@ -75,22 +75,13 @@ export interface ComputedOptions {
 
 }
 
-export interface TypedComputedOptions<T> {
+export interface TypedComputedOptions<T> extends ComputedOptions {
 
   // getter，必填
   get: TypedComputedGetter<T>
 
   // setter
   set?: TypedComputedSetter<T>
-
-  // 是否开启缓存，默认为 true
-  cache?: boolean
-
-  // 是否同步监听变化，默认为 true
-  sync?: boolean
-
-  // 写死依赖，从而跳过依赖自动收集
-  deps?: string[]
 
 }
 
@@ -110,19 +101,10 @@ export interface WatcherOptions {
 
 }
 
-export interface TypedWatcherOptions<T> {
+export interface TypedWatcherOptions<T> extends WatcherOptions {
 
   // 数据变化处理器，必填
   watcher: TypedWatcher<T>
-
-  // 是否立即执行一次 watcher，默认为 false
-  immediate?: boolean
-
-  // 是否同步监听变化，默认为 false
-  sync?: boolean
-
-  // 是否只监听一次，默认为 false
-  once?: boolean
 
 }
 
