@@ -10,35 +10,35 @@ import {
   SpecialEventHooks,
 } from './global'
 
-export type data = Record<string, any>
+export type Data = Record<string, any>
 
-export type dataGenerator = (options: YoxOptions) => data
+export type DataGenerator = (options: YoxOptions<YoxInterface>) => Data
 
-export type lazyValue = number | true
+export type LazyValue = number | true
 
-export type propTypeFunction = (key: string, value: any) => void
+export type PropTypeFunction = (key: string, value: any) => void
 
-export type propValueFunction = () => any
+export type PropValueFunction = () => any
 
-export type propertyHint = 1 | 2 | 3
+export type PropertyHint = 1 | 2 | 3
 
-export type filterFunction = (...args: any) => string | number | boolean
+export type FilterFunction = (this: YoxInterface, ...args: any) => string | number | boolean
 
-export type filter = filterFunction | Record<string, filterFunction>
+export type Filter = FilterFunction | Record<string, FilterFunction>
 
-export type componentCallback = (options: YoxOptions) => void
+export type ComponentCallback = (options: YoxOptions<YoxInterface>) => void
 
-export type componentLoader = (callback: componentCallback) => Promise<YoxOptions> | void
+export type ComponentLoader = (callback: ComponentCallback) => Promise<YoxOptions<YoxInterface>> | void
 
-export type component = YoxOptions | componentLoader
+export type Component = YoxOptions<YoxInterface> | ComponentLoader
 
-export type optionsBeforeCreateHook = (options: YoxOptions) => void
+export type OptionsBeforeCreateHook = (options: YoxOptions<YoxInterface>) => void
 
-export type optionsOtherHook = () => void
+export type OptionsOtherHook = () => void
 
-export type routerBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
+export type RouterBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
 
-export type routerAfterHook = (to: Location, from: Location | void) => void
+export type RouterAfterHook = (to: Location, from: Location | void) => void
 
 export type ComputedGetter<T> = (this: T) => any
 
@@ -63,7 +63,7 @@ export interface Property {
 
   readonly value: any
 
-  readonly hint: propertyHint
+  readonly hint: PropertyHint
 
 }
 
@@ -95,13 +95,13 @@ export interface Directive {
   readonly binding?: string | void
 
   // 单向绑定的 hint，用于区分 attr 和 prop
-  readonly hint?: propertyHint | void
+  readonly hint?: PropertyHint | void
 
 }
 
 export interface VNode {
 
-  data: data
+  data: Data
 
   // 真实节点
   node: Node
@@ -141,7 +141,7 @@ export interface VNode {
 
   readonly isStatic?: boolean
 
-  readonly props?: data
+  readonly props?: Data
 
   readonly slots?: Record<string, VNode[]>
 
@@ -152,7 +152,7 @@ export interface VNode {
   readonly directives?: Record<string, Directive>
 
   // 如果 directives 有值，则 lazy 必有值
-  readonly lazy?: Record<string, lazyValue>
+  readonly lazy?: Record<string, LazyValue>
 
   readonly transition?: TransitionHooks
 
@@ -178,7 +178,7 @@ export interface DomUtil {
 
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
-  removeProp(node: HTMLElement, name: string, hint?: propertyHint): void
+  removeProp(node: HTMLElement, name: string, hint?: PropertyHint): void
 
   attr(node: HTMLElement, name: string, value?: string): string | void
 
@@ -292,25 +292,25 @@ export interface LoggerUtil {
 
 export interface ObjectUtil {
 
-  keys(object: data): string[]
+  keys(object: Data): string[]
 
-  sort(object: data, desc?: boolean): string[]
+  sort(object: Data, desc?: boolean): string[]
 
-  each(object: data, callback: (value: any, key: string) => boolean | void): void
+  each(object: Data, callback: (value: any, key: string) => boolean | void): void
 
-  clear(object: data): void
+  clear(object: Data): void
 
-  extend(original: data, object: data): data
+  extend(original: Data, object: Data): Data
 
-  merge(object1: data | void, object2: data | void): data | void
+  merge(object1: Data | void, object2: Data | void): Data | void
 
   copy(object: any, deep?: boolean): any
 
   get(object: any, keypath: string): ValueHolder | undefined
 
-  set(object: data, keypath: string, value: any, autofill?: boolean): void
+  set(object: Data, keypath: string, value: any, autofill?: boolean): void
 
-  has(object: data, key: string | number): boolean
+  has(object: Data, key: string | number): boolean
 
   falsy(object: any): boolean
 
@@ -374,7 +374,7 @@ export interface NextTaskInterface {
 
 export interface ObserverInterface<T> {
 
-  data: data
+  data: Data
 
   context: T
 
@@ -402,7 +402,7 @@ export interface ObserverInterface<T> {
   ): any
 
   set(
-    keypath: string | data,
+    keypath: string | Data,
     value?: any
   ): void
 
@@ -448,21 +448,21 @@ export interface ComputedInterface<T> {
 }
 
 export interface PropRule {
-  type: string | string[] | propTypeFunction
-  value?: any | propValueFunction
+  type: string | string[] | PropTypeFunction
+  value?: any | PropValueFunction
   required?: boolean
 }
 
 export interface Location {
   path: string
   url?: string
-  params?: data
-  query?: data
+  params?: Data
+  query?: Data
 }
 
 export interface RouteTarget {
   name?: string
   path?: string
-  params?: data
-  query?: data
+  params?: Data
+  query?: Data
 }

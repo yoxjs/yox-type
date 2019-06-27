@@ -16,16 +16,16 @@ import {
 } from '../../yox-config/src/config'
 
 import {
-  data,
-  dataGenerator,
+  Data,
+  DataGenerator,
   ComputedGetter,
-  filter,
-  component,
-  componentCallback,
-  optionsBeforeCreateHook,
-  optionsOtherHook,
-  routerBeforeHook,
-  routerAfterHook,
+  Filter,
+  Component,
+  ComponentCallback,
+  OptionsBeforeCreateHook,
+  OptionsOtherHook,
+  RouterBeforeHook,
+  RouterAfterHook,
   PropRule,
   ComputedInterface,
   ObserverInterface,
@@ -36,7 +36,7 @@ import {
 
 export type Watcher<T> = (this: T, newValue: any, oldValue: any, keypath: string) => void
 
-export type Listener<T> = (this: T, event: CustomEventInterface, data?: data) => false | void
+export type Listener<T> = (this: T, event: CustomEventInterface, data?: Data) => false | void
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 
@@ -157,8 +157,7 @@ export interface CustomEventInterface {
 
 }
 
-
-export interface YoxOptions {
+export interface YoxOptions<Methods> {
 
   // 给外部命名组件的机会
   name?: string
@@ -167,13 +166,13 @@ export interface YoxOptions {
 
   el?: string | Node
 
-  data?: data | dataGenerator
+  data?: Data | DataGenerator
 
   template?: string | Function
 
   model?: string
 
-  props?: data
+  props?: Data
 
   root?: YoxInterface
 
@@ -193,53 +192,53 @@ export interface YoxOptions {
 
   transitions?: Record<string, TransitionHooks>
 
-  components?: Record<string, YoxOptions>
+  components?: Record<string, YoxOptions<YoxInterface>>
 
   directives?: Record<string, DirectiveHooks>
 
   partials?: Record<string, string>
 
-  filters?: Record<string, filter>
+  filters?: Record<string, Filter>
 
   events?: Record<string, Listener<YoxInterface>>
 
-  methods?: Record<string, Function>
+  methods?: Methods
 
-  extensions?: data
+  extensions?: Data
 
-  [HOOK_BEFORE_CREATE]?: optionsBeforeCreateHook
+  [HOOK_BEFORE_CREATE]?: OptionsBeforeCreateHook
 
-  [HOOK_AFTER_CREATE]?: optionsOtherHook
+  [HOOK_AFTER_CREATE]?: OptionsOtherHook
 
-  [HOOK_BEFORE_MOUNT]?: optionsOtherHook
+  [HOOK_BEFORE_MOUNT]?: OptionsOtherHook
 
-  [HOOK_AFTER_MOUNT]?: optionsOtherHook
+  [HOOK_AFTER_MOUNT]?: OptionsOtherHook
 
-  [HOOK_BEFORE_UPDATE]?: optionsOtherHook
+  [HOOK_BEFORE_UPDATE]?: OptionsOtherHook
 
-  [HOOK_AFTER_UPDATE]?: optionsOtherHook
+  [HOOK_AFTER_UPDATE]?: OptionsOtherHook
 
-  [HOOK_BEFORE_DESTROY]?: optionsOtherHook
+  [HOOK_BEFORE_DESTROY]?: OptionsOtherHook
 
-  [HOOK_AFTER_DESTROY]?: optionsOtherHook
+  [HOOK_AFTER_DESTROY]?: OptionsOtherHook
 
-  [HOOK_BEFORE_ROUTE_ENTER]?: routerBeforeHook
+  [HOOK_BEFORE_ROUTE_ENTER]?: RouterBeforeHook
 
-  [HOOK_AFTER_ROUTE_ENTER]?: routerAfterHook
+  [HOOK_AFTER_ROUTE_ENTER]?: RouterAfterHook
 
-  [HOOK_BEFORE_ROUTE_UPDATE]?: routerBeforeHook
+  [HOOK_BEFORE_ROUTE_UPDATE]?: RouterBeforeHook
 
-  [HOOK_AFTER_ROUTE_UPDATE]?: routerAfterHook
+  [HOOK_AFTER_ROUTE_UPDATE]?: RouterAfterHook
 
-  [HOOK_BEFORE_ROUTE_LEAVE]?: routerBeforeHook
+  [HOOK_BEFORE_ROUTE_LEAVE]?: RouterBeforeHook
 
-  [HOOK_AFTER_ROUTE_LEAVE]?: routerAfterHook
+  [HOOK_AFTER_ROUTE_LEAVE]?: RouterAfterHook
 
 }
 
 export interface YoxInterface {
 
-  $options: YoxOptions
+  $options: YoxOptions<YoxInterface>
 
   $emitter: EmitterInterface<YoxInterface>
 
@@ -277,7 +276,7 @@ export interface YoxInterface {
   ): any
 
   set(
-    keypath: string | data,
+    keypath: string | Data,
     value?: any
   ): void
 
@@ -298,7 +297,7 @@ export interface YoxInterface {
 
   fire(
     type: string | CustomEventInterface,
-    data?: data | boolean,
+    data?: Data | boolean,
     downward?: boolean
   ): boolean
 
@@ -315,11 +314,11 @@ export interface YoxInterface {
 
   loadComponent(
     name: string,
-    callback: componentCallback
+    callback: ComponentCallback
   ): void
 
   createComponent(
-    options: YoxOptions,
+    options: YoxOptions<YoxInterface>,
     vnode: VNode
   ): YoxInterface
 
@@ -334,9 +333,9 @@ export interface YoxInterface {
   ): TransitionHooks | void
 
   component(
-    name: string | Record<string, component>,
-    component?: component
-  ): component | void
+    name: string | Record<string, Component>,
+    component?: Component
+  ): Component | void
 
   partial(
     name: string | Record<string, string>,
@@ -344,15 +343,15 @@ export interface YoxInterface {
   ): Function | void
 
   filter(
-    name: string | Record<string, filter>,
-    filter?: filter
-  ): filter | void
+    name: string | Record<string, Filter>,
+    filter?: Filter
+  ): Filter | void
 
-  checkProps(props: data): void
+  checkProps(props: Data): void
 
   checkProp(key: string, value: any): void
 
-  forceUpdate(data?: data): void
+  forceUpdate(data?: Data): void
 
   destroy(): void
 
