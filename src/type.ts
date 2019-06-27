@@ -4,6 +4,7 @@ import {
   WatcherOptions,
   ComputedOptions,
   YoxTypedOptions,
+  ComputedGetter,
   YoxInterface,
   DirectiveHooks,
   TransitionHooks,
@@ -35,10 +36,6 @@ export type OptionsOtherHook = () => void
 export type RouterBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
 
 export type RouterAfterHook = (to: Location, from: Location | void) => void
-
-export type ComputedGetter = () => any
-
-export type ComputedSetter = (value: any) => void
 
 export interface ValueHolder {
   keypath?: string

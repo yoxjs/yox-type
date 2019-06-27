@@ -18,8 +18,6 @@ import {
 import {
   Data,
   DataGenerator,
-  ComputedGetter,
-  ComputedSetter,
   Component,
   ComponentCallback,
   OptionsBeforeCreateHook,
@@ -34,22 +32,29 @@ import {
   VNode,
 } from './type'
 
-// we map a plain type to a type of which the property is a function
-// e.g. { myname: string } will be mapped to { myname: () => string }
-// note this process can also be reversed during type inference
 type Accessors<T, V> = { [K in keyof T]: V }
 
 export type FilterFunction = (this: any, ...args: any) => string | number | boolean
 
 export type Filter = FilterFunction | Record<string, FilterFunction>
 
-export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
+export type TypedWatcher<T> = (this: T, newValue: any, oldValue: any, keypath: string) => void
 
-export type Listener = (event: CustomEventInterface, data?: Data) => false | void
+export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
 
 export type TypedListener<T> = (this: T, event: CustomEventInterface, data?: Data) => false | void
 
+export type Listener = (event: CustomEventInterface, data?: Data) => false | void
+
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
+
+export type ComputedGetter = () => any
+
+export type ComputedSetter = (value: any) => void
+
+export type TypedComputedGetter<T> = (this: T) => any
+
+export type TypedComputedSetter<T>  = (this: T, value: any) => void
 
 export interface ComputedOptions {
 
@@ -70,10 +75,45 @@ export interface ComputedOptions {
 
 }
 
+export interface TypedComputedOptions<T> {
+
+  // getter，必填
+  get: TypedComputedGetter<T>
+
+  // setter
+  set?: TypedComputedSetter<T>
+
+  // 是否开启缓存，默认为 true
+  cache?: boolean
+
+  // 是否同步监听变化，默认为 true
+  sync?: boolean
+
+  // 写死依赖，从而跳过依赖自动收集
+  deps?: string[]
+
+}
+
 export interface WatcherOptions {
 
   // 数据变化处理器，必填
   watcher: Watcher
+
+  // 是否立即执行一次 watcher，默认为 false
+  immediate?: boolean
+
+  // 是否同步监听变化，默认为 false
+  sync?: boolean
+
+  // 是否只监听一次，默认为 false
+  once?: boolean
+
+}
+
+export interface TypedWatcherOptions<T> {
+
+  // 数据变化处理器，必填
+  watcher: TypedWatcher<T>
 
   // 是否立即执行一次 watcher，默认为 false
   immediate?: boolean
@@ -275,7 +315,7 @@ export interface YoxInterface {
 
   addComputed(
     keypath: string,
-    computed: ComputedGetter | ComputedOptions
+    computed: TypedComputedGetter<this> | TypedComputedOptions<this>
   ): ComputedInterface | void
 
   removeComputed(
@@ -315,14 +355,14 @@ export interface YoxInterface {
   ): boolean
 
   watch(
-    keypath: string | Record<string, Watcher | WatcherOptions>,
-    watcher?: Watcher | WatcherOptions,
+    keypath: string | Record<string, TypedWatcher<this> | TypedWatcherOptions<this>>,
+    watcher?: TypedWatcher<this> | TypedWatcherOptions<this>,
     immediate?: boolean
   ): YoxInterface
 
   unwatch(
     keypath?: string,
-    watcher?: Watcher
+    watcher?: TypedWatcher<this>
   ): YoxInterface
 
   loadComponent(
