@@ -47,6 +47,8 @@ export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
 
 export type Listener = (event: CustomEventInterface, data?: Data) => false | void
 
+export type TypedListener<T> = (this: T, event: CustomEventInterface, data?: Data) => false | void
+
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 
 export interface ComputedOptions {
@@ -292,18 +294,18 @@ export interface YoxInterface {
   ): void
 
   on(
-    type: string | Record<string, Listener>,
-    listener?: Listener
+    type: string | Record<string, TypedListener<this>>,
+    listener?: TypedListener<this>
   ): YoxInterface
 
   once(
-    type: string | Record<string, Listener>,
-    listener?: Listener
+    type: string | Record<string, TypedListener<this>>,
+    listener?: TypedListener<this>
   ): YoxInterface
 
   off(
     type?: string,
-    listener?: Listener
+    listener?: TypedListener<this>
   ): YoxInterface
 
   fire(
