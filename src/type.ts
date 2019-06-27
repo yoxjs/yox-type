@@ -368,18 +368,18 @@ export interface NextTaskInterface {
 
 }
 
-export interface ObserverInterface<T> {
+export interface ObserverInterface {
 
   data: Data
 
-  context: T
+  context: any
 
   nextTask: NextTaskInterface
 
   addComputed(
     keypath: string,
     options: ComputedGetter | ComputedOptions
-  ): ComputedInterface<T> | void
+  ): ComputedInterface | void
 
   removeComputed(
     keypath: string
@@ -435,7 +435,7 @@ export interface ObserverInterface<T> {
 
 }
 
-export interface ComputedInterface<T> {
+export interface ComputedInterface {
 
   get(force?: boolean): any
 

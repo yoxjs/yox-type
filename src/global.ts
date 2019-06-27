@@ -100,7 +100,7 @@ export interface EmitterOptions extends Task {
 
 }
 
-export interface EmitterInterface<T> {
+export interface EmitterInterface {
 
   ns: boolean
 
@@ -251,9 +251,9 @@ export interface YoxInterface {
 
   $options: YoxTypedOptions
 
-  $emitter: EmitterInterface<YoxInterface>
+  $emitter: EmitterInterface
 
-  $observer: ObserverInterface<YoxInterface>
+  $observer: ObserverInterface
 
   $el?: HTMLElement
 
@@ -274,7 +274,7 @@ export interface YoxInterface {
   addComputed(
     keypath: string,
     computed: ComputedGetter | ComputedOptions
-  ): ComputedInterface<YoxInterface> | void
+  ): ComputedInterface | void
 
   removeComputed(
     keypath: string
