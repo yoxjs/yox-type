@@ -47,10 +47,6 @@ export type ComputedGetter = () => any
 
 export type ComputedSetter = (value: any) => void
 
-export type TypedComputedGetter<T> = (this: T) => any
-
-export type TypedComputedSetter<T> = (this: T, value: any) => void
-
 export type OptionsBeforeCreateHook = (options: YoxTypedOptions) => void
 
 export type OptionsOtherHook = () => void

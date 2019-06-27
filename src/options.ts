@@ -30,8 +30,6 @@ import {
   TypedWatcher,
   ComputedGetter,
   ComputedSetter,
-  TypedComputedGetter,
-  TypedComputedSetter,
   OptionsBeforeCreateHook,
   OptionsOtherHook,
   RouterBeforeHook,
@@ -65,16 +63,6 @@ export interface ComputedOptions {
 
   // 写死依赖，从而跳过依赖自动收集
   deps?: string[]
-
-}
-
-export interface TypedComputedOptions<T> extends ComputedOptions {
-
-  // getter，必填
-  get: TypedComputedGetter<T>
-
-  // setter
-  set?: TypedComputedSetter<T>
 
 }
 

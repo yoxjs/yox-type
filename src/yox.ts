@@ -5,13 +5,11 @@ import {
   Filter,
   TypedWatcher,
   TypedListener,
-  TypedComputedGetter,
 } from './type'
 
 import {
   YoxTypedOptions,
   TypedWatcherOptions,
-  TypedComputedOptions,
 } from './options'
 
 import {
@@ -24,14 +22,8 @@ import {
 } from './vnode'
 
 import {
-  EmitterInterface,
   CustomEventInterface,
 } from './emitter'
-
-import {
-  ObserverInterface,
-  ComputedInterface,
-} from './observer'
 
 export interface NextTaskInterface {
 
@@ -49,10 +41,6 @@ export interface YoxInterface {
 
   $options: YoxTypedOptions
 
-  $emitter: EmitterInterface
-
-  $observer: ObserverInterface
-
   $el?: HTMLElement
 
   $vnode?: VNode
@@ -68,15 +56,6 @@ export interface YoxInterface {
   $children?: YoxInterface[]
 
   $refs?: Record<string, YoxInterface | HTMLElement>
-
-  addComputed(
-    keypath: string,
-    computed: TypedComputedGetter<this> | TypedComputedOptions<this>
-  ): ComputedInterface | void
-
-  removeComputed(
-    keypath: string
-  ): void
 
   get(
     keypath: string,
