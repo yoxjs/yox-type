@@ -19,6 +19,7 @@ import {
   Data,
   DataGenerator,
   ComputedGetter,
+  ComputedSetter,
   Component,
   ComponentCallback,
   OptionsBeforeCreateHook,
@@ -33,23 +34,28 @@ import {
   VNode,
 } from './type'
 
+// we map a plain type to a type of which the property is a function
+// e.g. { myname: string } will be mapped to { myname: () => string }
+// note this process can also be reversed during type inference
+type Accessors<T, V> = { [K in keyof T]: V }
+
 export type FilterFunction = (this: any, ...args: any) => string | number | boolean
 
 export type Filter = FilterFunction | Record<string, FilterFunction>
 
-export type Watcher<T> = (this: T, newValue: any, oldValue: any, keypath: string) => void
+export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
 
-export type Listener<T> = (this: T, event: CustomEventInterface, data?: Data) => false | void
+export type Listener = (event: CustomEventInterface, data?: Data) => false | void
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 
-export interface ComputedOptions<T, V> {
+export interface ComputedOptions {
 
   // getter，必填
-  get: (this: T) => V
+  get: ComputedGetter
 
   // setter
-  set?: (this: T, value: V) => void
+  set?: ComputedSetter
 
   // 是否开启缓存，默认为 true
   cache?: boolean
@@ -62,10 +68,10 @@ export interface ComputedOptions<T, V> {
 
 }
 
-export interface WatcherOptions<T> {
+export interface WatcherOptions {
 
   // 数据变化处理器，必填
-  watcher: Watcher<T>
+  watcher: Watcher
 
   // 是否立即执行一次 watcher，默认为 false
   immediate?: boolean
@@ -110,17 +116,17 @@ export interface EmitterInterface<T> {
 
   on(
     type: string,
-    listener?: Listener<T> | EmitterOptions
+    listener?: Listener | EmitterOptions
   ): void
 
   off(
     type?: string,
-    listener?: Listener<T>
+    listener?: Listener
   ): void
 
   has(
     type: string,
-    listener?: Listener<T>
+    listener?: Listener
   ): boolean
 
 }
@@ -160,7 +166,7 @@ export interface CustomEventInterface {
 
 }
 
-export interface YoxOptions<Methods> {
+export interface YoxOptions<Computed, Watchers, Events, Methods> {
 
   // 给外部命名组件的机会
   name?: string
@@ -189,23 +195,23 @@ export interface YoxOptions<Methods> {
 
   slots?: Record<string, VNode[]>
 
-  computed?: Record<string, ComputedGetter<YoxInterface> | ComputedOptions<YoxInterface, any>>
+  computed?: Accessors<Computed, ComputedGetter | ComputedOptions>
 
-  watchers?: Record<string, Watcher<YoxInterface> | WatcherOptions<YoxInterface>>
+  watchers?: Accessors<Watchers, Watcher | WatcherOptions>
+
+  events?: Accessors<Events, Listener>
+
+  methods?: Methods
 
   transitions?: Record<string, TransitionHooks>
 
-  components?: Record<string, YoxOptions<Methods>>
+  components?: Record<string, YoxOptions<Computed, Watchers, Events, Methods>>
 
   directives?: Record<string, DirectiveHooks>
 
   partials?: Record<string, string>
 
   filters?: Record<string, Filter>
-
-  events?: Record<string, Listener<YoxInterface>>
-
-  methods?: Methods
 
   extensions?: Data
 
@@ -239,9 +245,11 @@ export interface YoxOptions<Methods> {
 
 }
 
+export type YoxTypedOptions = YoxOptions<any, any, any, any>
+
 export interface YoxInterface {
 
-  $options: YoxOptions<any>
+  $options: YoxTypedOptions
 
   $emitter: EmitterInterface<YoxInterface>
 
@@ -265,7 +273,7 @@ export interface YoxInterface {
 
   addComputed(
     keypath: string,
-    computed: ComputedGetter<YoxInterface> | ComputedOptions<YoxInterface, any>
+    computed: ComputedGetter | ComputedOptions
   ): ComputedInterface<YoxInterface> | void
 
   removeComputed(
@@ -284,18 +292,18 @@ export interface YoxInterface {
   ): void
 
   on(
-    type: string | Record<string, Listener<YoxInterface>>,
-    listener?: Listener<YoxInterface>
+    type: string | Record<string, Listener>,
+    listener?: Listener
   ): YoxInterface
 
   once(
-    type: string | Record<string, Listener<YoxInterface>>,
-    listener?: Listener<YoxInterface>
+    type: string | Record<string, Listener>,
+    listener?: Listener
   ): YoxInterface
 
   off(
     type?: string,
-    listener?: Listener<YoxInterface>
+    listener?: Listener
   ): YoxInterface
 
   fire(
@@ -305,14 +313,14 @@ export interface YoxInterface {
   ): boolean
 
   watch(
-    keypath: string | Record<string, Watcher<YoxInterface> | WatcherOptions<YoxInterface>>,
-    watcher?: Watcher<YoxInterface> | WatcherOptions<YoxInterface>,
+    keypath: string | Record<string, Watcher | WatcherOptions>,
+    watcher?: Watcher | WatcherOptions,
     immediate?: boolean
   ): YoxInterface
 
   unwatch(
     keypath?: string,
-    watcher?: Watcher<YoxInterface>
+    watcher?: Watcher
   ): YoxInterface
 
   loadComponent(
@@ -321,7 +329,7 @@ export interface YoxInterface {
   ): void
 
   createComponent(
-    options: YoxOptions<any>,
+    options: YoxTypedOptions,
     vnode: VNode
   ): YoxInterface
 

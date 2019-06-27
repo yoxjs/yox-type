@@ -3,7 +3,7 @@ import {
   Listener,
   WatcherOptions,
   ComputedOptions,
-  YoxOptions,
+  YoxTypedOptions,
   YoxInterface,
   DirectiveHooks,
   TransitionHooks,
@@ -12,7 +12,7 @@ import {
 
 export type Data = Record<string, any>
 
-export type DataGenerator = (options: YoxOptions<any>) => Data
+export type DataGenerator = (options: YoxTypedOptions) => Data
 
 export type LazyValue = number | true
 
@@ -22,13 +22,13 @@ export type PropValueFunction = () => any
 
 export type PropertyHint = 1 | 2 | 3
 
-export type ComponentCallback = (options: YoxOptions<any>) => void
+export type ComponentCallback = (options: YoxTypedOptions) => void
 
-export type ComponentLoader = (callback: ComponentCallback) => Promise<YoxOptions<any>> | void
+export type ComponentLoader = (callback: ComponentCallback) => Promise<YoxTypedOptions> | void
 
-export type Component = YoxOptions<any> | ComponentLoader
+export type Component = YoxTypedOptions | ComponentLoader
 
-export type OptionsBeforeCreateHook = (options: YoxOptions<any>) => void
+export type OptionsBeforeCreateHook = (options: YoxTypedOptions) => void
 
 export type OptionsOtherHook = () => void
 
@@ -36,9 +36,9 @@ export type RouterBeforeHook = (to: Location, from: Location | void, next: (valu
 
 export type RouterAfterHook = (to: Location, from: Location | void) => void
 
-export type ComputedGetter<T> = (this: T) => any
+export type ComputedGetter = () => any
 
-export type ComputedSetter<T> = (this: T, value: any) => void
+export type ComputedSetter = (value: any) => void
 
 export interface ValueHolder {
   keypath?: string
@@ -85,7 +85,7 @@ export interface Directive {
   readonly getter?: () => any | void
 
   // 事件或函数调用式的指令会编译成 handler
-  readonly handler?: Listener<any> | void
+  readonly handler?: Listener | void
 
   // 单向绑定的 keypath
   readonly binding?: string | void
@@ -204,9 +204,9 @@ export interface DomUtil {
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement | Window | Document, type: string, listener: Listener<null>): void
+  on(node: HTMLElement | Window | Document, type: string, listener: Listener): void
 
-  off(node: HTMLElement | Window | Document, type: string, listener: Listener<null>): void
+  off(node: HTMLElement | Window | Document, type: string, listener: Listener): void
 
   addSpecialEvent(type: string, hooks: SpecialEventHooks): void
 
@@ -378,7 +378,7 @@ export interface ObserverInterface<T> {
 
   addComputed(
     keypath: string,
-    options: ComputedGetter<T> | ComputedOptions<T, any>
+    options: ComputedGetter | ComputedOptions
   ): ComputedInterface<T> | void
 
   removeComputed(
@@ -403,14 +403,14 @@ export interface ObserverInterface<T> {
   ): void
 
   watch(
-    keypath: string | Record<string, Watcher<T> | WatcherOptions<T>>,
-    watcher?: Watcher<T> | WatcherOptions<T>,
+    keypath: string | Record<string, Watcher | WatcherOptions>,
+    watcher?: Watcher | WatcherOptions,
     immediate?: boolean
   ): void
 
   unwatch(
     keypath?: string,
-    watcher?: Watcher<T>
+    watcher?: Watcher
   ): void
 
   toggle(keypath: string): boolean
