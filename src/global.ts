@@ -26,12 +26,6 @@ import {
   optionsOtherHook,
   routerBeforeHook,
   routerAfterHook,
-  IsUtil,
-  DomUtil,
-  ArrayUtil,
-  ObjectUtil,
-  StringUtil,
-  LoggerUtil,
   PropRule,
   ComputedInterface,
   ObserverInterface,
@@ -128,14 +122,6 @@ export interface EmitterInterface<T> {
 
 }
 
-export declare var EmitterInterface: {
-
-  prototype: EmitterInterface<unknown>
-
-  new<T>(ns?: boolean): EmitterInterface<T>
-
-}
-
 export interface CustomEventInterface {
 
   // 事件名称
@@ -171,19 +157,6 @@ export interface CustomEventInterface {
 
 }
 
-export declare var CustomEventInterface: {
-
-  prototype: CustomEventInterface
-
-  PHASE_CURRENT: number
-
-  PHASE_UPWARD: number
-
-  PHASE_DOWNWARD: number
-
-  new(type: string, originalEvent?: CustomEventInterface | Event): CustomEventInterface
-
-}
 
 export interface YoxOptions {
 
@@ -405,68 +378,6 @@ export interface YoxInterface {
 
 }
 
-export declare const YoxInterface: {
-
-  prototype: YoxInterface
-
-  is: IsUtil
-
-  dom: DomUtil
-
-  array: ArrayUtil
-
-  object: ObjectUtil
-
-  string: StringUtil
-
-  logger: LoggerUtil
-
-  Emitter: EmitterClass
-
-  Event: CustomEventClass
-
-  new(options?: YoxOptions): YoxInterface
-
-  use(plugin: YoxPlugin): void
-
-  create(options?: YoxOptions): YoxOptions
-
-  nextTick(task: Function, context?: any): void
-
-  compile(template: string, stringify?: boolean): Function | string
-
-  directive(
-    name: string | Record<string, DirectiveHooks>,
-    directive?: DirectiveHooks
-  ): DirectiveHooks | void
-
-  transition(
-    name: string | Record<string, TransitionHooks>,
-    transition?: TransitionHooks
-  ): TransitionHooks | void
-
-  component(
-    name: string | Record<string, component>,
-    component?: component
-  ): component | void
-
-  partial(
-    name: string | Record<string, string>,
-    partial?: string
-  ): Function | void
-
-  filter(
-    name: string | Record<string, filter>,
-    filter?: filter
-  ): filter | void
-
-}
-
-export interface YoxPlugin {
-  version: string
-  install(Yox: YoxClass): void
-}
-
 export interface DirectiveHooks {
   once?: true
   bind: (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
@@ -482,7 +393,3 @@ export interface TransitionHooks {
   enter?: (node: HTMLElement) => void
   leave?: (node: HTMLElement, done: () => void) => void
 }
-
-export type YoxClass = typeof YoxInterface
-export type EmitterClass = typeof EmitterInterface
-export type CustomEventClass = typeof CustomEventInterface
