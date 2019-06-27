@@ -19,7 +19,6 @@ import {
   Data,
   DataGenerator,
   ComputedGetter,
-  Filter,
   Component,
   ComponentCallback,
   OptionsBeforeCreateHook,
@@ -33,6 +32,10 @@ import {
   Task,
   VNode,
 } from './type'
+
+export type FilterFunction = (this: any, ...args: any) => string | number | boolean
+
+export type Filter = FilterFunction | Record<string, FilterFunction>
 
 export type Watcher<T> = (this: T, newValue: any, oldValue: any, keypath: string) => void
 
@@ -192,7 +195,7 @@ export interface YoxOptions<Methods> {
 
   transitions?: Record<string, TransitionHooks>
 
-  components?: Record<string, YoxOptions<YoxInterface>>
+  components?: Record<string, YoxOptions<Methods>>
 
   directives?: Record<string, DirectiveHooks>
 
@@ -238,7 +241,7 @@ export interface YoxOptions<Methods> {
 
 export interface YoxInterface {
 
-  $options: YoxOptions<YoxInterface>
+  $options: YoxOptions<any>
 
   $emitter: EmitterInterface<YoxInterface>
 
@@ -318,7 +321,7 @@ export interface YoxInterface {
   ): void
 
   createComponent(
-    options: YoxOptions<YoxInterface>,
+    options: YoxOptions<any>,
     vnode: VNode
   ): YoxInterface
 

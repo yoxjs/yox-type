@@ -12,7 +12,7 @@ import {
 
 export type Data = Record<string, any>
 
-export type DataGenerator = (options: YoxOptions<YoxInterface>) => Data
+export type DataGenerator = (options: YoxOptions<any>) => Data
 
 export type LazyValue = number | true
 
@@ -22,17 +22,13 @@ export type PropValueFunction = () => any
 
 export type PropertyHint = 1 | 2 | 3
 
-export type FilterFunction = (this: YoxInterface, ...args: any) => string | number | boolean
+export type ComponentCallback = (options: YoxOptions<any>) => void
 
-export type Filter = FilterFunction | Record<string, FilterFunction>
+export type ComponentLoader = (callback: ComponentCallback) => Promise<YoxOptions<any>> | void
 
-export type ComponentCallback = (options: YoxOptions<YoxInterface>) => void
+export type Component = YoxOptions<any> | ComponentLoader
 
-export type ComponentLoader = (callback: ComponentCallback) => Promise<YoxOptions<YoxInterface>> | void
-
-export type Component = YoxOptions<YoxInterface> | ComponentLoader
-
-export type OptionsBeforeCreateHook = (options: YoxOptions<YoxInterface>) => void
+export type OptionsBeforeCreateHook = (options: YoxOptions<any>) => void
 
 export type OptionsOtherHook = () => void
 
