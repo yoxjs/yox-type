@@ -105,9 +105,9 @@ export interface EmitterOptions extends Task {
 }
 
 // data function 一般只需要访问 get() 就行了，不用给扩展后的 this
-type DataGenerator = (this: YoxInterface, options: YoxTypedOptions) => Data
+type DataGenerator = (this: YoxInterface, options: TypedComponentOptions) => Data
 
-export interface YoxOptions<Computed, Watchers, Events, Methods> {
+export interface ComponentOptions<Computed, Watchers, Events, Methods> {
 
   // 给外部命名组件的机会
   name?: string
@@ -146,7 +146,7 @@ export interface YoxOptions<Computed, Watchers, Events, Methods> {
 
   transitions?: Record<string, TransitionHooks>
 
-  components?: Record<string, YoxOptions<Computed, Watchers, Events, Methods>>
+  components?: Record<string, ComponentOptions<Computed, Watchers, Events, Methods>>
 
   directives?: Record<string, DirectiveHooks>
 
@@ -186,4 +186,4 @@ export interface YoxOptions<Computed, Watchers, Events, Methods> {
 
 }
 
-export type YoxTypedOptions = YoxOptions<any, any, any, any>
+export type TypedComponentOptions = ComponentOptions<any, any, any, any>

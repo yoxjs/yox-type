@@ -1,5 +1,5 @@
 import {
-  YoxTypedOptions
+  TypedComponentOptions
 } from './options'
 
 import {
@@ -21,11 +21,11 @@ export type PropValueFunction = () => any
 
 export type PropertyHint = 1 | 2 | 3
 
-export type ComponentCallback = (options: YoxTypedOptions) => void
+export type ComponentCallback = (options: TypedComponentOptions) => void
 
-export type ComponentLoader = (callback: ComponentCallback) => Promise<YoxTypedOptions> | void
+export type ComponentLoader = (callback: ComponentCallback) => Promise<TypedComponentOptions> | void
 
-export type Component = YoxTypedOptions | ComponentLoader
+export type Component = TypedComponentOptions | ComponentLoader
 
 export type FilterFunction = (this: any, ...args: any) => string | number | boolean
 
@@ -45,7 +45,7 @@ export type ComputedGetter = () => any
 
 export type ComputedSetter = (value: any) => void
 
-export type OptionsBeforeCreateHook = (options: YoxTypedOptions) => void
+export type OptionsBeforeCreateHook = (options: TypedComponentOptions) => void
 
 export type OptionsOtherHook = () => void
 
