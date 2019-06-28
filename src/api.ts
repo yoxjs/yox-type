@@ -7,7 +7,7 @@ import {
   SpecialEventHooks,
 } from './hooks'
 
-export interface DomUtil {
+export interface DomApi {
 
   createElement(tag: string, isSvg?: boolean): Element
 

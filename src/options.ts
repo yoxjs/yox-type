@@ -22,7 +22,6 @@ import {
 import {
   Task,
   Data,
-  DataGenerator,
   Filter,
   Listener,
   PropRule,
@@ -104,6 +103,9 @@ export interface EmitterOptions extends Task {
   count?: number
 
 }
+
+// data function 一般只需要访问 get() 就行了，不用给扩展后的 this
+type DataGenerator = (this: YoxInterface, options: YoxTypedOptions) => Data
 
 export interface YoxOptions<Computed, Watchers, Events, Methods> {
 

@@ -13,8 +13,6 @@ import {
 
 export type Data = Record<string, any>
 
-export type DataGenerator = (options: YoxTypedOptions) => Data
-
 export type LazyValue = number | true
 
 export type PropTypeFunction = (key: string, value: any) => void
