@@ -49,7 +49,7 @@ export interface DomApi {
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement | Window | Document, type: string, listener: Listener): void
+  on(node: HTMLElement | Window | Document, type: string, listener: Listener, context?: any): void
 
   off(node: HTMLElement | Window | Document, type: string, listener: Listener): void
 
