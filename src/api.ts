@@ -81,7 +81,7 @@ export interface ArrayApi {
 
   toArray<T>(array: T[] | ArrayLike<T>): T[]
 
-  toObject(array: any[], key?: string | null, value?: any): Object
+  toObject(array: any[], key?: string | null, value?: any): object
 
   join(array: string[], separator: string): string
 
