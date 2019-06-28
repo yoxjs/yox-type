@@ -149,7 +149,7 @@ export interface YoxInterface {
 
   increase(keypath: string, step?: number, max?: number): number | void
 
-  decrease(keypath: string, step: number, min?: number): number | void
+  decrease(keypath: string, step?: number, min?: number): number | void
 
   insert(keypath: string, item: any, index: number | boolean): true | void
 
