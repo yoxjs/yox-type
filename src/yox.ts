@@ -71,17 +71,17 @@ export interface YoxInterface {
   on(
     type: string | Record<string, TypedListener<this>>,
     listener?: TypedListener<this>
-  ): YoxInterface
+  ): this
 
   once(
     type: string | Record<string, TypedListener<this>>,
     listener?: TypedListener<this>
-  ): YoxInterface
+  ): this
 
   off(
     type?: string,
     listener?: TypedListener<this>
-  ): YoxInterface
+  ): this
 
   fire(
     type: string | CustomEventInterface,
@@ -93,12 +93,12 @@ export interface YoxInterface {
     keypath: string | Record<string, TypedWatcher<this> | TypedWatcherOptions<this>>,
     watcher?: TypedWatcher<this> | TypedWatcherOptions<this>,
     immediate?: boolean
-  ): YoxInterface
+  ): this
 
   unwatch(
     keypath?: string,
     watcher?: TypedWatcher<this>
-  ): YoxInterface
+  ): this
 
   loadComponent(
     name: string,
