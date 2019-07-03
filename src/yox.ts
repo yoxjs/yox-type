@@ -8,7 +8,7 @@ import {
 } from './type'
 
 import {
-  TypedComponentOptions,
+  ComponentOptions,
   TypedWatcherOptions,
 } from './options'
 
@@ -39,7 +39,7 @@ export interface NextTaskInterface {
 
 export interface YoxInterface {
 
-  $options: TypedComponentOptions
+  $options: ComponentOptions
 
   $el?: HTMLElement
 
@@ -106,7 +106,7 @@ export interface YoxInterface {
   ): void
 
   createComponent(
-    options: TypedComponentOptions,
+    options: ComponentOptions,
     vnode: VNode
   ): YoxInterface
 

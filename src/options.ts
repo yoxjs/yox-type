@@ -44,7 +44,6 @@ import {
   YoxInterface,
 } from './yox'
 
-type Accessors<T, V> = { [K in keyof T]: V }
 
 export interface ComputedOptions {
 
@@ -104,10 +103,19 @@ export interface EmitterOptions extends Task {
 
 }
 
-// data function 一般只需要访问 get() 就行了，不用给扩展后的 this
-type DataGenerator = (this: YoxInterface, options: TypedComponentOptions) => Data
+// data function 一般只需要访问 get() 就行了，不用给完整的 this，主要是那时候还没初始化完
+// 提示了 this 也白搭啊
+type DataGenerator = (
+  this: {
+    get(keypath: string, defaultValue?: any): any
+  },
+  options: ComponentOptions
+) => Data
 
-export interface ComponentOptions<Computed, Watchers, Events, Methods> {
+
+type Accessors<T, V> = { [K in keyof T]: V }
+
+export interface ComponentOptions<Computed = any, Watchers = any, Events = any, Methods = any> {
 
   // 给外部命名组件的机会
   name?: string
@@ -146,7 +154,7 @@ export interface ComponentOptions<Computed, Watchers, Events, Methods> {
 
   transitions?: Record<string, TransitionHooks>
 
-  components?: Record<string, ComponentOptions<Computed, Watchers, Events, Methods>>
+  components?: Record<string, ComponentOptions>
 
   directives?: Record<string, DirectiveHooks>
 
@@ -185,5 +193,3 @@ export interface ComponentOptions<Computed, Watchers, Events, Methods> {
   [HOOK_AFTER_ROUTE_LEAVE]?: RouterAfterHook
 
 }
-
-export type TypedComponentOptions = ComponentOptions<any, any, any, any>

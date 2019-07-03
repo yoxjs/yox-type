@@ -1,5 +1,5 @@
 import {
-  TypedComponentOptions
+  ComponentOptions
 } from './options'
 
 import {
@@ -21,11 +21,11 @@ export type PropValueFunction = () => any
 
 export type PropertyHint = 1 | 2 | 3
 
-export type ComponentCallback = (options: TypedComponentOptions) => void
+export type ComponentCallback = (options: ComponentOptions) => void
 
-export type ComponentLoader = (callback: ComponentCallback) => Promise<TypedComponentOptions> | void
+export type ComponentLoader = (callback: ComponentCallback) => Promise<ComponentOptions> | void
 
-export type Component = TypedComponentOptions | ComponentLoader
+export type Component = ComponentOptions | ComponentLoader
 
 export type FilterFunction = (this: any, ...args: any) => string | number | boolean
 
@@ -45,7 +45,7 @@ export type ComputedGetter = () => any
 
 export type ComputedSetter = (value: any) => void
 
-export type OptionsBeforeCreateHook = (options: TypedComponentOptions) => void
+export type OptionsBeforeCreateHook = (options: ComponentOptions) => void
 
 export type OptionsOtherHook = () => void
 
@@ -72,7 +72,14 @@ export type Task = {
 }
 
 export type PropRule = {
+
+  // 类型
   type: string | string[] | PropTypeFunction
+
+  // 默认值
   value?: any | PropValueFunction
+
+  // 是否必传
   required?: boolean
+
 }
