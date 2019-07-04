@@ -63,7 +63,7 @@ export interface Directive {
   readonly hint?: PropertyHint | void
 
   // 事件指令：是否监听的是 native 事件
-  readonly isNative?: boolean
+  readonly isNative?: true | void
 
 }
 
