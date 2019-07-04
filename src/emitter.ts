@@ -66,13 +66,13 @@ export interface CustomEventInterface {
   listener?: Function
 
   // 模仿 Event 的两个方法签名，避免业务代码判断事件类型
-  preventDefault(): CustomEventInterface
+  preventDefault(): this
 
-  stopPropagation(): CustomEventInterface
+  stopPropagation(): this
 
   // 简单版本
-  prevent(): CustomEventInterface
+  prevent(): this
 
-  stop(): CustomEventInterface
+  stop(): this
 
 }
