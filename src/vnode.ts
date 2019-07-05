@@ -36,7 +36,7 @@ export interface Property {
 export interface Directive extends Namespace {
 
   // 指令修饰符
-  readonly modifier: string
+  readonly modifier: string | void
 
   // 指令的值，一般是字面量，比如 o-x="1" 中的 1
   // 如果不是字面量，则提供 getter 函数用于取值，同时 value 也会保留字面量
