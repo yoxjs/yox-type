@@ -71,6 +71,17 @@ export type Task = {
 
 }
 
+export type Namespace = {
+
+  // [name].[ns]
+  key: string
+
+  name: string
+
+  ns: string
+
+}
+
 export type PropRule = {
 
   // 类型

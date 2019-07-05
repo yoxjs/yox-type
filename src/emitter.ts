@@ -1,4 +1,5 @@
 import {
+  Namespace,
   Listener,
   NativeListener,
 } from './type'
@@ -20,9 +21,9 @@ export interface EmitterInterface {
   nativeListeners?: Record<string, NativeListener>
 
   fire(
-    type: string,
+    type: string | Namespace,
     args: any[] | void,
-    filter?: (type: string, args: any[] | void, options: EmitterOptions) => boolean | void
+    filter?: (namespace: Namespace, args: any[] | void, options: EmitterOptions) => boolean | void
   ): boolean
 
   on(
@@ -39,6 +40,10 @@ export interface EmitterInterface {
     type: string,
     listener?: Listener
   ): boolean
+
+  parse(
+    type: string
+  ): Namespace
 
 }
 
