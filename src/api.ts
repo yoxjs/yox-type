@@ -61,7 +61,7 @@ export interface ArrayApi {
 
   each<T>(
     array: T[],
-    callback: (item: T, index: number, length: number) => boolean | void,
+    callback: (item: T, index: number) => boolean | void,
     reversed?: boolean
   ): void
 

@@ -23,7 +23,11 @@ export interface EmitterInterface {
   fire(
     type: string | Namespace,
     args: any[] | void,
-    filter?: (namespace: Namespace, args: any[] | void, options: EmitterOptions) => boolean | void
+    filter?: (
+      namespace: Namespace,
+      args: any[] | void,
+      options: EmitterOptions
+    ) => boolean | void
   ): boolean
 
   on(
