@@ -2,6 +2,7 @@ import {
   Data,
   Listener,
   LazyValue,
+  Namespace,
   PropertyHint,
 } from './type'
 
@@ -32,16 +33,7 @@ export interface Property {
 
 }
 
-export interface Directive {
-
-  // 指令命名空间，如 event
-  readonly ns: string
-
-  // 指令名称，如 click
-  readonly name: string
-
-  // vnode 级别每个指令的 unique key
-  readonly key: string
+export interface Directive extends Namespace {
 
   // 指令修饰符
   readonly modifier: string
