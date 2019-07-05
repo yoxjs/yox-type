@@ -59,9 +59,6 @@ export interface Directive {
   // 事件或函数调用式的指令会编译成 handler
   readonly handler?: Listener | void
 
-  // 单向绑定：绑定的 keypath
-  readonly binding?: string | void
-
   // 单向绑定：prop 的 hint，用于区分 attr 和 prop
   readonly hint?: PropertyHint | void
 
