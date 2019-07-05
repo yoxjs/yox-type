@@ -55,6 +55,9 @@ export interface CustomEventInterface {
   // 事件当前的阶段
   phase: number
 
+  // 命名空间信息
+  ns?: Namespace
+
   // 哪个组件触发的事件
   target?: YoxInterface
 
