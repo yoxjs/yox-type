@@ -51,7 +51,8 @@ export interface DomApi {
 
   on(node: HTMLElement | Window | Document, type: string, listener: Listener, context?: any): void
 
-  off(node: HTMLElement | Window | Document, type: string, listener: Listener): void
+  // 因为 Emitter.listener 的类型是 Function，这里对 listener 的类型不做要求，只要是注册的函数就行
+  off(node: HTMLElement | Window | Document, type: string, listener: Function): void
 
   addSpecialEvent(type: string, hooks: SpecialEventHooks): void
 
