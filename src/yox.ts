@@ -59,8 +59,7 @@ export interface YoxInterface {
 
   get(
     keypath: string,
-    defaultValue?: any,
-    depIgnore?: boolean
+    defaultValue?: any
   ): any
 
   set(
@@ -134,8 +133,6 @@ export interface YoxInterface {
     name: string | Record<string, Filter>,
     filter?: Filter
   ): Filter | void
-
-  checkProps(props: Data): void
 
   checkProp(key: string, value: any): void
 
