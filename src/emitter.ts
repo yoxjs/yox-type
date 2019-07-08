@@ -1,6 +1,5 @@
 import {
   Namespace,
-  Listener,
   NativeListener,
 } from './type'
 
@@ -32,17 +31,17 @@ export interface EmitterInterface {
 
   on(
     type: string,
-    listener?: Listener | EmitterOptions
+    listener: Function | EmitterOptions
   ): void
 
   off(
     type?: string,
-    listener?: Listener
+    listener?: Function
   ): void
 
   has(
     type: string,
-    listener?: Listener
+    listener?: Function
   ): boolean
 
   parse(
