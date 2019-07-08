@@ -3,13 +3,13 @@ import {
   Component,
   ComponentCallback,
   Filter,
-  TypedWatcher,
-  TypedListener,
+  Watcher,
+  Listener,
 } from './type'
 
 import {
   ComponentOptions,
-  TypedWatcherOptions,
+  WatcherOptions,
 } from './options'
 
 import {
@@ -68,18 +68,18 @@ export interface YoxInterface {
   ): void
 
   on(
-    type: string | Record<string, TypedListener<this>>,
-    listener?: TypedListener<this>
+    type: string | Record<string, Listener<this>>,
+    listener?: Listener<this>
   ): this
 
   once(
-    type: string | Record<string, TypedListener<this>>,
-    listener?: TypedListener<this>
+    type: string | Record<string, Listener<this>>,
+    listener?: Listener<this>
   ): this
 
   off(
     type?: string,
-    listener?: TypedListener<this>
+    listener?: Listener<this>
   ): this
 
   fire(
@@ -89,14 +89,14 @@ export interface YoxInterface {
   ): boolean
 
   watch(
-    keypath: string | Record<string, TypedWatcher<this> | TypedWatcherOptions<this>>,
-    watcher?: TypedWatcher<this> | TypedWatcherOptions<this>,
+    keypath: string | Record<string, Watcher<this> | WatcherOptions<this>>,
+    watcher?: Watcher<this> | WatcherOptions<this>,
     immediate?: boolean
   ): this
 
   unwatch(
     keypath?: string,
-    watcher?: TypedWatcher<this>
+    watcher?: Watcher<this>
   ): this
 
   loadComponent(

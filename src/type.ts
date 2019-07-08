@@ -31,13 +31,9 @@ export type FilterFunction = (this: any, ...args: any) => string | number | bool
 
 export type Filter = FilterFunction | Record<string, FilterFunction>
 
-export type TypedWatcher<T> = (this: T, newValue: any, oldValue: any, keypath: string) => void
+export type Watcher<T = any> = (this: T, newValue: any, oldValue: any, keypath: string) => void
 
-export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
-
-export type TypedListener<T> = (this: T, event: CustomEventInterface, data?: Data) => false | void
-
-export type Listener = (event: CustomEventInterface, data?: Data) => false | void
+export type Listener<T = any> = (this: T, event: CustomEventInterface, data?: Data) => false | void
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 

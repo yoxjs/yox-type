@@ -26,7 +26,6 @@ import {
   Listener,
   PropRule,
   Watcher,
-  TypedWatcher,
   ComputedGetter,
   ComputedSetter,
   OptionsBeforeCreateHook,
@@ -64,10 +63,10 @@ export interface ComputedOptions {
 
 }
 
-export interface WatcherOptions {
+export interface WatcherOptions<T = any> {
 
   // 数据变化处理器，必填
-  watcher: Watcher
+  watcher: Watcher<T>
 
   // 是否立即执行一次 watcher，默认为 false
   immediate?: boolean
@@ -77,13 +76,6 @@ export interface WatcherOptions {
 
   // 是否只监听一次，默认为 false
   once?: boolean
-
-}
-
-export interface TypedWatcherOptions<T> extends WatcherOptions {
-
-  // 数据变化处理器，必填
-  watcher: TypedWatcher<T>
 
 }
 
