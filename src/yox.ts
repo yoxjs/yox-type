@@ -79,7 +79,7 @@ export interface YoxInterface {
 
   off(
     type?: string,
-    listener?: Listener<this>
+    listener?: Function
   ): this
 
   fire(
