@@ -2,7 +2,6 @@ import {
   Data,
   Listener,
   LazyValue,
-  Namespace,
   PropertyHint,
 } from './type'
 
@@ -33,7 +32,13 @@ export interface Property {
 
 }
 
-export interface Directive extends Namespace {
+export interface Directive {
+
+  key: string
+
+  name: string
+
+  ns: string
 
   // 指令修饰符
   readonly modifier: string | void

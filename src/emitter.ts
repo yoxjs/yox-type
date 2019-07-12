@@ -1,5 +1,4 @@
 import {
-  Namespace,
   NativeListener,
 } from './type'
 
@@ -10,6 +9,16 @@ import {
 import {
   YoxInterface,
 } from './yox'
+
+export type Namespace = {
+
+  // 事件名称
+  type: string
+
+  // 命名空间
+  ns?: string
+
+}
 
 export interface EmitterInterface {
 
@@ -30,17 +39,17 @@ export interface EmitterInterface {
   ): boolean
 
   on(
-    type: string,
+    type: string | Namespace,
     listener: Function | EmitterOptions
   ): void
 
   off(
-    type?: string,
+    type?: string | Namespace,
     listener?: Function
   ): void
 
   has(
-    type: string,
+    type: string | Namespace,
     listener?: Function
   ): boolean
 
@@ -50,16 +59,10 @@ export interface EmitterInterface {
 
 }
 
-export interface CustomEventInterface {
-
-  // 事件名称
-  type: string
+export interface CustomEventInterface extends Namespace {
 
   // 事件当前的阶段
   phase: number
-
-  // 命名空间信息
-  ns?: Namespace
 
   // 哪个组件触发的事件
   target?: YoxInterface
