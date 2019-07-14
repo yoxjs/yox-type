@@ -95,15 +95,10 @@ export interface EmitterOptions extends Task {
 
 }
 
-// data function 一般只需要访问 get() 就行了，不用给完整的 this，主要是那时候还没初始化完
-// 提示了 this 也白搭啊
 type DataGenerator = (
-  this: {
-    get(keypath: string, defaultValue?: any): any
-  },
+  this: YoxInterface,
   options: ComponentOptions
 ) => Data
-
 
 type Accessors<T, V> = { [K in keyof T]: V }
 
