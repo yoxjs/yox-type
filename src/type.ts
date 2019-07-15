@@ -7,9 +7,7 @@ import {
   RouteTarget,
 } from './router'
 
-import {
-  CustomEventInterface,
-} from './event'
+import CustomEvent from 'yox-common/src/util/CustomEvent'
 
 export type Data = Record<string, any>
 
@@ -33,9 +31,9 @@ export type Filter = FilterFunction | Record<string, FilterFunction>
 
 export type Watcher<T = any> = (this: T, newValue: any, oldValue: any, keypath: string) => void
 
-export type Listener<T = any> = (this: T, event: CustomEventInterface, data?: Data) => false | void
+export type Listener<T = any> = (this: T, event: CustomEvent, data?: Data) => false | void
 
-export type NativeListener = (event: CustomEventInterface | Event) => false | void
+export type NativeListener = (event: CustomEvent | Event) => false | void
 
 export type ComputedGetter = () => any
 

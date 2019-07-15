@@ -21,9 +21,7 @@ import {
   VNode,
 } from './vnode'
 
-import {
-  CustomEventInterface,
-} from './event'
+import CustomEvent from 'yox-common/src/util/CustomEvent'
 
 export interface YoxInterface {
 
@@ -71,7 +69,7 @@ export interface YoxInterface {
   ): this
 
   fire(
-    type: string | CustomEventInterface,
+    type: string | CustomEvent,
     data?: Data | boolean,
     downward?: boolean
   ): boolean
