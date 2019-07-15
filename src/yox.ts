@@ -23,7 +23,7 @@ import {
 
 import {
   CustomEventInterface,
-} from './emitter'
+} from './event'
 
 export interface NextTaskInterface {
 

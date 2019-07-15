@@ -9,7 +9,7 @@ import {
 
 import {
   CustomEventInterface,
-} from './emitter'
+} from './event'
 
 export type Data = Record<string, any>
 
