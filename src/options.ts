@@ -28,10 +28,6 @@ import {
   Watcher,
   ComputedGetter,
   ComputedSetter,
-  OptionsBeforeCreateHook,
-  OptionsOtherHook,
-  RouterBeforeHook,
-  RouterAfterHook,
 } from './type'
 
 import {
@@ -40,9 +36,9 @@ import {
 } from './hooks'
 
 import {
-  YoxInterface,
-} from './yox'
-
+  Location,
+  RouteTarget,
+} from './router'
 
 export interface ComputedOptions {
 
@@ -63,10 +59,10 @@ export interface ComputedOptions {
 
 }
 
-export interface WatcherOptions<T = any> {
+export interface WatcherOptions<This = any> {
 
   // 数据变化处理器，必填
-  watcher: Watcher<T>
+  watcher: Watcher<This>
 
   // 是否立即执行一次 watcher，默认为 false
   immediate?: boolean
@@ -95,14 +91,19 @@ export interface EmitterOptions extends Task {
 
 }
 
-type DataGenerator = (
-  this: YoxInterface,
-  options: ComponentOptions
-) => Data
+type DataGenerator<T> = (options: ComponentOptions<T>) => Data
 
 type Accessors<T, V> = { [K in keyof T]: V }
 
-export interface ComponentOptions<Computed = any, Watchers = any, Events = any, Methods = any> {
+type OptionsBeforeCreateHook = (options: ComponentOptions) => void
+
+type OptionsOtherHook = () => void
+
+type RouterBeforeHook = (to: Location, from: Location | void, next: (value?: false | string | RouteTarget) => void) => void
+
+type RouterAfterHook = (to: Location, from: Location | void) => void
+
+export interface ComponentOptions<Yox = any, Computed = any, Watchers = any, Events = any, Methods = any> {
 
   // 给外部命名组件的机会
   name?: string
@@ -111,7 +112,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   el?: string | Node
 
-  data?: Data | DataGenerator
+  data?: Data | DataGenerator<Yox>
 
   template?: string | Function
 
@@ -119,11 +120,11 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   props?: Data
 
-  root?: YoxInterface
+  root?: Yox
 
-  parent?: YoxInterface
+  parent?: Yox
 
-  context?: YoxInterface
+  context?: Yox
 
   replace?: true
 
@@ -143,7 +144,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   components?: Record<string, ComponentOptions>
 
-  directives?: Record<string, DirectiveHooks>
+  directives?: Record<string, DirectiveHooks<Yox>>
 
   partials?: Record<string, string>
 
