@@ -25,18 +25,6 @@ import {
   CustomEventInterface,
 } from './event'
 
-export interface NextTaskInterface {
-
-  append(func: Function, context?: any): void
-
-  prepend(func: Function, context?: any): void
-
-  clear(): void
-
-  run(): void
-
-}
-
 export interface YoxInterface {
 
   $options: ComponentOptions
