@@ -1,12 +1,4 @@
 import {
-  NativeListener,
-} from './type'
-
-import {
-  EmitterOptions,
-} from './options'
-
-import {
   YoxInterface,
 } from './yox'
 
@@ -17,45 +9,6 @@ export type Namespace = {
 
   // 命名空间
   ns?: string
-
-}
-
-export interface EmitterInterface {
-
-  ns: boolean
-
-  listeners: Record<string, EmitterOptions[]>
-
-  nativeListeners?: Record<string, NativeListener>
-
-  fire(
-    type: string | Namespace,
-    args: any[] | void,
-    filter?: (
-      namespace: Namespace,
-      args: any[] | void,
-      options: EmitterOptions
-    ) => boolean | void
-  ): boolean
-
-  on(
-    type: string | Namespace,
-    listener: Function | EmitterOptions
-  ): void
-
-  off(
-    type?: string | Namespace,
-    listener?: Function
-  ): void
-
-  has(
-    type: string | Namespace,
-    listener?: Function
-  ): boolean
-
-  parse(
-    type: string
-  ): Namespace
 
 }
 

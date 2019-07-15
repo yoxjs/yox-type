@@ -13,7 +13,7 @@ import {
   HOOK_AFTER_ROUTE_UPDATE,
   HOOK_BEFORE_ROUTE_LEAVE,
   HOOK_AFTER_ROUTE_LEAVE,
-} from '../../yox-config/src/config'
+} from 'yox-config/src/config'
 
 import {
   VNode,

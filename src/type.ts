@@ -1,5 +1,5 @@
 import {
-  ComponentOptions
+  ComponentOptions,
 } from './options'
 
 import {
@@ -8,7 +8,7 @@ import {
 } from './router'
 
 import {
-  CustomEventInterface
+  CustomEventInterface,
 } from './emitter'
 
 export type Data = Record<string, any>
