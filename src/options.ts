@@ -40,6 +40,10 @@ import {
   RouteTarget,
 } from './router'
 
+import {
+  YoxInterface,
+} from './yox'
+
 export interface ComputedOptions {
 
   // getter，必填
@@ -103,7 +107,7 @@ type RouterBeforeHook = (to: Location, from: Location | void, next: (value?: fal
 
 type RouterAfterHook = (to: Location, from: Location | void) => void
 
-export interface ComponentOptions<Yox = any, Computed = any, Watchers = any, Events = any, Methods = any> {
+export interface ComponentOptions<Computed = any, Watchers = any, Events = any, Methods = any> {
 
   // 给外部命名组件的机会
   name?: string
@@ -112,7 +116,7 @@ export interface ComponentOptions<Yox = any, Computed = any, Watchers = any, Eve
 
   el?: string | Node
 
-  data?: Data | DataGenerator<Yox>
+  data?: Data | DataGenerator<YoxInterface>
 
   template?: string | Function
 
@@ -120,11 +124,11 @@ export interface ComponentOptions<Yox = any, Computed = any, Watchers = any, Eve
 
   props?: Data
 
-  root?: Yox
+  root?: YoxInterface
 
-  parent?: Yox
+  parent?: YoxInterface
 
-  context?: Yox
+  context?: YoxInterface
 
   replace?: true
 
