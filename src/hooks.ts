@@ -8,7 +8,7 @@ import {
 } from './vnode'
 
 import {
-  YoxInterface
+  YoxInterface,
 } from './yox'
 
 export interface DirectiveHooks {
