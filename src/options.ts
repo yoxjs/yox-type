@@ -144,7 +144,7 @@ export interface ComponentOptions<Yox = any, Computed = any, Watchers = any, Eve
 
   components?: Record<string, ComponentOptions>
 
-  directives?: Record<string, DirectiveHooks<Yox>>
+  directives?: Record<string, DirectiveHooks>
 
   partials?: Record<string, string>
 
