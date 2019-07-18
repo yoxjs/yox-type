@@ -22,13 +22,17 @@ export type ComponentLoader = (callback: ComponentCallback) => Promise<Component
 
 export type Component = ComponentOptions | ComponentLoader
 
-export type FilterFunction<This = any> = (this: This, ...args: any) => string | number | boolean
+export type FilterFunction = (this: any, ...args: any) => string | number | boolean
 
-export type Filter<This = any> = FilterFunction<This> | Record<string, FilterFunction<This>>
+export type Filter = FilterFunction | Record<string, FilterFunction>
 
-export type Watcher<This = any> = (this: This, newValue: any, oldValue: any, keypath: string) => void
+export type ThisWatcher<This> = (this: This, newValue: any, oldValue: any, keypath: string) => void
 
-export type Listener<This = any> = (this: This, event: CustomEventInterface, data?: Data) => false | void
+export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
+
+export type ThisListener<This> = (this: This, event: CustomEventInterface, data?: Data) => false | void
+
+export type Listener = (event: CustomEventInterface, data?: Data) => false | void
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 

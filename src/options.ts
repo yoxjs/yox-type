@@ -17,9 +17,10 @@ import {
   Task,
   Data,
   Filter,
-  Listener,
   PropRule,
   Watcher,
+  Listener,
+  ThisWatcher,
   ComputedGetter,
   ComputedSetter,
 } from './type'
@@ -52,10 +53,26 @@ export interface ComputedOptions {
 
 }
 
-export interface WatcherOptions<This = any> {
+export interface WatcherOptions {
 
   // 数据变化处理器，必填
-  watcher: Watcher<This>
+  watcher: Watcher
+
+  // 是否立即执行一次 watcher，默认为 false
+  immediate?: boolean
+
+  // 是否同步监听变化，默认为 false
+  sync?: boolean
+
+  // 是否只监听一次，默认为 false
+  once?: boolean
+
+}
+
+export interface ThisWatcherOptions<This = any> {
+
+  // 数据变化处理器，必填
+  watcher: ThisWatcher<This>
 
   // 是否立即执行一次 watcher，默认为 false
   immediate?: boolean
