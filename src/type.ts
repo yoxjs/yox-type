@@ -3,7 +3,7 @@ import {
 } from './options'
 
 import {
-  CustomEvent,
+  CustomEventInterface,
 } from './yox'
 
 export type Data = Record<string, any>
@@ -28,9 +28,9 @@ export type Filter<This = any> = FilterFunction<This> | Record<string, FilterFun
 
 export type Watcher<This = any> = (this: This, newValue: any, oldValue: any, keypath: string) => void
 
-export type Listener<This = any> = (this: This, event: CustomEvent, data?: Data) => false | void
+export type Listener<This = any> = (this: This, event: CustomEventInterface, data?: Data) => false | void
 
-export type NativeListener = (event: CustomEvent | Event) => false | void
+export type NativeListener = (event: CustomEventInterface | Event) => false | void
 
 export type ComputedGetter = () => any
 

@@ -21,97 +21,46 @@ import {
   VNode,
 } from './vnode'
 
-import * as constant from './constant'
+/**
+ * Yox 事件系统的事件类型
+ */
+export interface CustomEventInterface {
 
-export class CustomEvent {
-
-  public static PHASE_CURRENT = 0
-
-  public static PHASE_UPWARD = 1
-
-  public static PHASE_DOWNWARD = constant.MINUS_ONE
-
-  // 事件名称
   type: string
 
-  // 事件当前阶段
   phase: number
 
-  // 事件命名空间
   ns?: string
 
-  // 哪个组件发出的事件
   target?: YoxInterface
 
-  // 原始事件，比如 DOM 事件
-  originalEvent?: CustomEvent | Event
+  originalEvent?: CustomEventInterface | Event
 
-  // 是否已阻止事件的默认行为
   isPrevented?: true
 
-  // 是否已停止事件冒泡
   isStoped?: true
 
-  // 处理当前事件的监听器，方便外部获取 listener 进行解绑
   listener?: Function
-
-  /**
-   * 构造函数
-   *
-   * 可以传事件名称，也可以传原生事件对象
-   */
-  constructor(type: string, originalEvent?: CustomEvent | Event) {
-    // 这里不设置命名空间
-    // 因为有没有命名空间取决于 Emitter 的构造函数有没有传 true
-    // CustomEvent 自己无法决定
-    this.type = type
-    this.phase = CustomEvent.PHASE_CURRENT
-    if (originalEvent) {
-      this.originalEvent = originalEvent
-    }
-  }
 
   /**
    * 阻止事件的默认行为
    */
-  preventDefault(): this {
-    const instance = this
-    if (!instance.isPrevented) {
-      const { originalEvent } = instance
-      if (originalEvent) {
-        originalEvent.preventDefault()
-      }
-      instance.isPrevented = constant.TRUE
-    }
-    return instance
-  }
+  preventDefault(): this;
 
   /**
    * 停止事件广播
    */
-  stopPropagation(): this {
-    const instance = this
-    if (!instance.isStoped) {
-      const { originalEvent } = instance
-      if (originalEvent) {
-        originalEvent.stopPropagation()
-      }
-      instance.isStoped = constant.TRUE
-    }
-    return instance
-  }
+  stopPropagation(): this;
 
-  prevent(): this {
-    return this.preventDefault()
-  }
+  prevent(): this;
 
-  stop(): this {
-    return this.stopPropagation()
-  }
+  stop(): this;
 
 }
 
-
+/**
+ * Yox 接口类型
+ */
 export interface YoxInterface {
 
   $options: ComponentOptions
@@ -158,7 +107,7 @@ export interface YoxInterface {
   ): this
 
   fire(
-    type: string | CustomEvent,
+    type: string | CustomEventInterface,
     data?: Data | boolean,
     downward?: boolean
   ): boolean
