@@ -14,24 +14,6 @@ import {
   YoxInterface,
 } from './yox'
 
-export interface Attribute {
-
-  readonly name: string
-
-  readonly value: string
-
-}
-
-export interface Property {
-
-  readonly name: string
-
-  readonly value: any
-
-  readonly hint: PropertyHint
-
-}
-
 export interface Directive {
 
   key: string
@@ -107,9 +89,9 @@ export interface VNode {
 
   readonly slots?: Record<string, VNode[]>
 
-  readonly nativeProps?: Record<string, Property>
+  readonly nativeProps?: Record<string, any>
 
-  readonly nativeAttrs?: Record<string, Attribute>
+  readonly nativeAttrs?: Record<string, string>
 
   readonly directives?: Record<string, Directive>
 

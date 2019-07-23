@@ -19,7 +19,7 @@ export interface DomApi {
 
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
-  removeProp(node: HTMLElement, name: string, hint?: PropertyHint): void
+  removeProp(node: HTMLElement, name: string): void
 
   attr(node: HTMLElement, name: string, value?: string): string | void
 
