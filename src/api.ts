@@ -1,7 +1,6 @@
 import {
   Data,
   Listener,
-  PropertyHint,
   ValueHolder,
 } from './type'
 

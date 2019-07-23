@@ -83,13 +83,14 @@ export interface VNode {
   // 是否是 option 元素
   readonly isOption?: boolean
 
+  // 是否是 静态节点
   readonly isStatic?: boolean
 
   readonly props?: Data
 
   readonly slots?: Record<string, VNode[]>
 
-  readonly nativeProps?: Record<string, any>
+  readonly nativeProps?: Data
 
   readonly nativeAttrs?: Record<string, string>
 
