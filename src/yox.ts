@@ -3,6 +3,7 @@ import {
   Component,
   ComponentCallback,
   Filter,
+  Partial,
   ThisWatcher,
   ThisListener,
 } from './type'
@@ -149,8 +150,8 @@ export interface YoxInterface {
   ): Component | void
 
   partial(
-    name: string | Record<string, string>,
-    partial?: string
+    name: string | Record<string, Partial>,
+    partial?: Partial
   ): Function | void
 
   filter(
