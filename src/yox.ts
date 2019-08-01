@@ -161,7 +161,7 @@ export interface YoxInterface {
 
   checkProp(key: string, value: any): void
 
-  forceUpdate(data?: Data): void
+  forceUpdate(props?: Data): void
 
   destroy(): void
 
