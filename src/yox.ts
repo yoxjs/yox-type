@@ -4,6 +4,7 @@ import {
   ComponentCallback,
   Filter,
   Partial,
+  ThisTask,
   ThisWatcher,
   ThisListener,
 } from './type'
@@ -165,7 +166,7 @@ export interface YoxInterface {
 
   destroy(): void
 
-  nextTick(task: Function): void
+  nextTick(task: ThisTask<this>): void
 
   toggle(keypath: string): boolean
 
