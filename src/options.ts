@@ -7,6 +7,7 @@ import {
   HOOK_AFTER_UPDATE,
   HOOK_BEFORE_DESTROY,
   HOOK_AFTER_DESTROY,
+  HOOK_BEFORE_PROPS_UPDATE,
 } from 'yox-config/src/config'
 
 import {
@@ -173,5 +174,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
   [HOOK_BEFORE_DESTROY]?: ComponentOptionsOtherHook
 
   [HOOK_AFTER_DESTROY]?: ComponentOptionsOtherHook
+
+  [HOOK_BEFORE_PROPS_UPDATE]?: (props: Data) => void
 
 }
