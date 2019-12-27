@@ -135,8 +135,6 @@ export interface ObjectApi {
 
   keys(object: Data): string[]
 
-  sort(object: Data, desc?: boolean): string[]
-
   each(object: Data, callback: (value: any, key: string) => boolean | void): void
 
   clear(object: Data): void

@@ -10,7 +10,7 @@ export type Data = Record<string, any>
 
 export type LazyValue = number | true
 
-export type PropTypeFunction = (key: string, value: any) => void
+export type PropTypeFunction = (key: string, value: any, componentName: string | void) => void
 
 export type PropValueFunction = () => any
 
