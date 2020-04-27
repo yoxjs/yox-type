@@ -86,6 +86,16 @@ export interface ThisWatcherOptions<This = any> {
 
 }
 
+export interface EmitterNamespace {
+
+  // 事件名称
+  type: string
+
+  // 命名空间
+  ns?: string
+
+}
+
 export interface EmitterOptions extends Task {
 
   // 所在的命名空间
