@@ -22,6 +22,7 @@ import {
   Watcher,
   Listener,
   ThisWatcher,
+  ThisListener,
   ComputedGetter,
   ComputedSetter,
 } from './type'
@@ -86,13 +87,46 @@ export interface ThisWatcherOptions<This = any> {
 
 }
 
-export interface EmitterNamespace {
+export interface ListenerOptions {
+
+  // 数据变化处理器，必填
+  listener: Listener
+
+  // 命名空间
+  ns?: string
+
+}
+
+export interface ThisListenerOptions<This = any> {
+
+  // 数据变化处理器，必填
+  listener: ThisListener<This>
+
+  // 命名空间
+  ns?: string
+
+}
+
+export interface EmitterEvent {
 
   // 事件名称
   type: string
 
   // 命名空间
   ns?: string
+
+}
+
+export interface EmitterFilter {
+
+  // 事件名称
+  type?: string
+
+  // 命名空间
+  ns?: string
+
+  // 事件处理函数
+  fn?: Function
 
 }
 
@@ -153,7 +187,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   watchers?: Accessors<Watchers, Watcher | WatcherOptions>
 
-  events?: Accessors<Events, Listener>
+  events?: Accessors<Events, Listener | ListenerOptions>
 
   methods?: Methods
 

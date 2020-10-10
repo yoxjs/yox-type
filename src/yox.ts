@@ -12,6 +12,8 @@ import {
 import {
   ComponentOptions,
   ThisWatcherOptions,
+  ThisListenerOptions,
+  EmitterEvent,
 } from './options'
 
 import {
@@ -94,22 +96,22 @@ export interface YoxInterface {
   ): void
 
   on(
-    type: string | Record<string, ThisListener<this>>,
-    listener?: ThisListener<this>
+    type: string | Record<string, ThisListener<this> | ThisListenerOptions>,
+    listener?: ThisListener<this> | ThisListenerOptions
   ): this
 
   once(
-    type: string | Record<string, ThisListener<this>>,
-    listener?: ThisListener<this>
+    type: string | Record<string, ThisListener<this> | ThisListenerOptions>,
+    listener?: ThisListener<this> | ThisListenerOptions
   ): this
 
   off(
     type?: string,
-    listener?: Function
+    listener?: ThisListener<this> | ThisListenerOptions
   ): this
 
   fire(
-    type: string | CustomEventInterface,
+    type: string | EmitterEvent | CustomEventInterface,
     data?: Data | boolean,
     downward?: boolean
   ): boolean
