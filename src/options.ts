@@ -15,7 +15,6 @@ import {
 } from './vnode'
 
 import {
-  Task,
   Data,
   Filter,
   PropRule,
@@ -126,11 +125,11 @@ export interface EmitterFilter {
   ns?: string
 
   // 事件处理函数
-  fn?: Function
+  listener?: Function
 
 }
 
-export interface EmitterOptions extends Task {
+export interface EmitterOptions {
 
   // 所在的命名空间
   ns?: string
@@ -143,6 +142,12 @@ export interface EmitterOptions extends Task {
 
   // 计数器，用于扩展，随便做什么计数都行
   count?: number
+
+  // 执行函数的上下文对象
+  ctx?: any
+
+  // 事件处理函数
+  listener: Function
 
 }
 

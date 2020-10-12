@@ -7,7 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/yoxjs/yox-type.git"
   },
-  "scripts": {},
+  "scripts": {
+    "tsc": "tsc"
+  },
   "keywords": [
     "yox",
     "type",
@@ -19,7 +21,7 @@
     "url": "https://github.com/yoxjs/yox-type/issues"
   },
   "homepage": "https://github.com/yoxjs/yox-type#readme",
-  "peerDependencies": {
+  "dependencies": {
     "yox-config": "^0.3.0"
   }
 }
