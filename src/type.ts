@@ -52,6 +52,16 @@ export type ValueHolder = {
 
 }
 
+export type PureObject = {
+
+  get(key: string): any
+
+  set(key: string, value: any): void
+
+  keys(): string[]
+
+}
+
 export type Task = {
 
   // 待执行的函数
