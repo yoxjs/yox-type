@@ -36,7 +36,7 @@ export type Watcher = (newValue: any, oldValue: any, keypath: string) => void
 
 export type ThisListener<This> = (this: This, event: CustomEventInterface, data?: Data) => false | void
 
-export type Listener = (event: CustomEventInterface, data?: Data) => false | void
+export type Listener = (event: CustomEventInterface, data?: Data, isNative?: boolean) => false | void
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 

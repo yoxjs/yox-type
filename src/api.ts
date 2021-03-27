@@ -18,9 +18,13 @@ export interface DomApi {
 
   prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
 
+  setProp(node: HTMLElement, name: string, value: string | number | boolean): string | number | boolean | void
+
   removeProp(node: HTMLElement, name: string): void
 
   attr(node: HTMLElement, name: string, value?: string): string | void
+
+  setAttr(node: HTMLElement, name: string, value: string): string | void
 
   removeAttr(node: HTMLElement, name: string): void
 
@@ -42,13 +46,17 @@ export interface DomApi {
 
   text(node: Node, text?: string, isStyle?: boolean, isOption?: boolean): string | void
 
+  setText(node: Node, text: string, isStyle?: boolean, isOption?: boolean): string | void
+
   html(node: Element, html?: string, isStyle?: boolean, isOption?: boolean): string | void
+
+  setHtml(node: Element, html: string, isStyle?: boolean, isOption?: boolean): string | void
 
   addClass(node: HTMLElement, className: string): void
 
   removeClass(node: HTMLElement, className: string): void
 
-  on(node: HTMLElement | Window | Document, type: string, listener: Listener, context?: any): void
+  on(node: HTMLElement | Window | Document, type: string, listener: Listener): void
 
   // 因为 Emitter.listener 的类型是 Function，这里对 listener 的类型不做要求，只要是注册的函数就行
   off(node: HTMLElement | Window | Document, type: string, listener: Function): void
