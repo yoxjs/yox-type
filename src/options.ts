@@ -12,6 +12,7 @@ import {
 
 import {
   VNode,
+  Slots,
 } from './vnode'
 
 import {
@@ -186,7 +187,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   vnode?: VNode
 
-  slots?: Record<string, VNode[]>
+  slots?: Slots
 
   computed?: Accessors<Computed, ComputedGetter | ComputedOptions>
 

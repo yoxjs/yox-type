@@ -86,7 +86,7 @@ export interface Slots {
 
   vnodes: VNode[],
 
-  components: VNode[]
+  components: VNode[] | void
 
 }
 
