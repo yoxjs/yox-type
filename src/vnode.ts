@@ -82,6 +82,14 @@ export interface ModelValue {
 
 }
 
+export interface Slots {
+
+  vnodes: VNode[],
+
+  components: VNode[]
+
+}
+
 export interface VNode {
 
   data: Data
@@ -122,9 +130,9 @@ export interface VNode {
   // 是否是 静态节点
   readonly isStatic?: boolean
 
-  readonly props?: Data
+  readonly slots?: Slots
 
-  readonly slots?: Record<string, VNode[]>
+  readonly props?: Data
 
   readonly nativeProps?: Data
 
