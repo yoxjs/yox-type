@@ -58,6 +58,8 @@ export type PureObject = {
 
   set(key: string, value: any): void
 
+  has(key: string): boolean
+
   keys(): string[]
 
 }
