@@ -44,8 +44,6 @@ export interface CustomEventInterface {
 
   isStoped?: true
 
-  listener?: Function
-
   /**
    * 阻止事件的默认行为
    */
