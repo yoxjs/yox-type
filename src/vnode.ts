@@ -130,6 +130,9 @@ export interface VNode {
   // 是否是 静态节点
   readonly isStatic?: boolean
 
+  // 是否是 纯净节点，即节点上没有框架发明的任何东西
+  readonly isPure?: boolean
+
   readonly slots?: Slots
 
   readonly props?: Data
