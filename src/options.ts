@@ -156,9 +156,7 @@ type DataGenerator<T> = (options: ComponentOptions<T>) => Data
 
 type Accessors<T, V> = { [K in keyof T]: V }
 
-type ComponentOptionsBeforeCreateHook = (options: ComponentOptions) => void
-
-type ComponentOptionsOtherHook = () => void
+type ComponentOptionsHook = () => void
 
 export interface ComponentOptions<Computed = any, Watchers = any, Events = any, Methods = any> {
 
@@ -209,21 +207,21 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   extensions?: Data
 
-  [HOOK_BEFORE_CREATE]?: ComponentOptionsBeforeCreateHook
+  [HOOK_BEFORE_CREATE]?: (options: ComponentOptions) => void
 
-  [HOOK_AFTER_CREATE]?: ComponentOptionsOtherHook
+  [HOOK_AFTER_CREATE]?: ComponentOptionsHook
 
-  [HOOK_BEFORE_MOUNT]?: ComponentOptionsOtherHook
+  [HOOK_BEFORE_MOUNT]?: ComponentOptionsHook
 
-  [HOOK_AFTER_MOUNT]?: ComponentOptionsOtherHook
+  [HOOK_AFTER_MOUNT]?: ComponentOptionsHook
 
-  [HOOK_BEFORE_UPDATE]?: ComponentOptionsOtherHook
+  [HOOK_BEFORE_UPDATE]?: ComponentOptionsHook
 
-  [HOOK_AFTER_UPDATE]?: ComponentOptionsOtherHook
+  [HOOK_AFTER_UPDATE]?: ComponentOptionsHook
 
-  [HOOK_BEFORE_DESTROY]?: ComponentOptionsOtherHook
+  [HOOK_BEFORE_DESTROY]?: ComponentOptionsHook
 
-  [HOOK_AFTER_DESTROY]?: ComponentOptionsOtherHook
+  [HOOK_AFTER_DESTROY]?: ComponentOptionsHook
 
   [HOOK_BEFORE_PROPS_UPDATE]?: (props: Data) => void
 
