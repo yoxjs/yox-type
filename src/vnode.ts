@@ -92,6 +92,8 @@ export interface Slots {
 
 export interface VNode {
 
+  type: number
+
   data: Data
 
   // 真实节点
