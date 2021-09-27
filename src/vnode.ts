@@ -143,6 +143,8 @@ export interface VNode {
 
   readonly nativeAttrs?: Record<string, string>
 
+  readonly nativeStyles?: Data
+
   readonly directives?: Record<string, Directive>
 
   readonly events?: Record<string, EventValue>

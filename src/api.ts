@@ -16,17 +16,21 @@ export interface DomApi {
 
   createComment(text: string): Comment
 
-  prop(node: HTMLElement, name: string, value?: string | number | boolean): string | number | boolean | void
+  getProp(node: HTMLElement, name: string): string | number | boolean | void
 
-  setProp(node: HTMLElement, name: string, value: string | number | boolean): string | number | boolean | void
+  setProp(node: HTMLElement, name: string, value: string | number | boolean): void
 
   removeProp(node: HTMLElement, name: string): void
 
-  attr(node: HTMLElement, name: string, value?: string): string | void
+  getAttr(node: HTMLElement, name: string): string | void
 
-  setAttr(node: HTMLElement, name: string, value: string): string | void
+  setAttr(node: HTMLElement, name: string, value: string): void
 
   removeAttr(node: HTMLElement, name: string): void
+
+  setStyle(style: CSSStyleDeclaration, name: string, value: string | number | void): void
+
+  removeStyle(style: CSSStyleDeclaration, name: string): void
 
   before(parentNode: Node, node: Node, beforeNode: Node): void
 
