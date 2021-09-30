@@ -48,13 +48,13 @@ export interface DomApi {
 
   tag(node: Node): string | void
 
-  text(node: Node, text?: string, isStyle?: boolean, isOption?: boolean): string | void
+  getText(node: Node): string | void
 
-  setText(node: Node, text: string, isStyle?: boolean, isOption?: boolean): string | void
+  setText(node: Node, text: string, isStyle?: boolean, isOption?: boolean): void
 
-  html(node: Element, html?: string, isStyle?: boolean, isOption?: boolean): string | void
+  getHtml(node: Element): string | void
 
-  setHtml(node: Element, html: string, isStyle?: boolean, isOption?: boolean): string | void
+  setHtml(node: Element, html: string, isStyle?: boolean, isOption?: boolean): void
 
   addClass(node: HTMLElement, className: string): void
 
