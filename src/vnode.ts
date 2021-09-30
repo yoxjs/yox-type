@@ -117,6 +117,9 @@ export interface VNode {
   // 是否是 组件节点
   readonly isComponent?: boolean
 
+  // 是否是 传送门节点
+  readonly isPortal?: boolean
+
   // 是否是 注释节点
   readonly isComment?: boolean
 
