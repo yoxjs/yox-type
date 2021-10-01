@@ -10,6 +10,8 @@ import {
 
 export interface DomApi {
 
+  getBodyElement(): Element
+
   createElement(tag: string, isSvg?: boolean): Element
 
   createText(text: string): Text

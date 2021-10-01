@@ -99,6 +99,9 @@ export interface VNode {
   // 真实节点
   node: Node
 
+  // 实际的父节点
+  parentNode?: Node
+
   // 片段
   fragment?: VNode[]
 
@@ -116,6 +119,12 @@ export interface VNode {
 
   // 是否是 组件节点
   readonly isComponent?: boolean
+
+  // 是否是 元素节点
+  readonly isElement?: boolean
+
+  // 是否是 片段节点
+  readonly isFragment?: boolean
 
   // 是否是 传送门节点
   readonly isPortal?: boolean
@@ -161,6 +170,8 @@ export interface VNode {
   readonly transition?: TransitionHooks
 
   readonly model?: ModelValue
+
+  readonly to?: string
 
   readonly ref?: string
 
