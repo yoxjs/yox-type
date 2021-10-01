@@ -10,19 +10,23 @@ import {
 } from './hooks'
 
 import {
+  DomApi
+} from './api'
+
+import {
   CustomEventInterface,
   YoxInterface,
 } from './yox'
 
 export interface DirectiveRuntime {
-  args?: (stack: any[]) => any[],
-  expr?: (stack: any[]) => any,
-  stack: any[],
+  args?: (stack: any[]) => any[]
+  expr?: (stack: any[]) => any
+  stack: any[]
 }
 
 export interface EventRuntime {
-  args: (stack: any[], event: CustomEventInterface, data?: Data) => any[],
-  stack: any[],
+  args: (stack: any[], event: CustomEventInterface, data?: Data) => any[]
+  stack: any[]
 }
 
 export interface Directive {
@@ -84,10 +88,18 @@ export interface ModelValue {
 
 export interface Slots {
 
-  vnodes: VNode[],
+  vnodes: VNode[]
 
   components: VNode[] | void
 
+}
+
+export interface VNodeOperator {
+  create(api: DomApi, vnode: VNode): void
+  update(api: DomApi, vnode: VNode, oldVNode: VNode): void
+  destroy(api: DomApi, vnode: VNode): void
+  insert(api: DomApi, parentNode: Node, vnode: VNode, before?: VNode): void
+  remove(api: DomApi, parentNode: Node, vnode: VNode): void
 }
 
 export interface VNode {
@@ -113,6 +125,9 @@ export interface VNode {
 
   // 渲染该节点的组件
   readonly context: YoxInterface
+
+  // 处理该节点的各种方法
+  readonly operator: VNodeOperator
 
   // 元素节点或组件节点的标签名称
   readonly tag?: string
