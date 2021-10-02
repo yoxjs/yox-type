@@ -114,9 +114,6 @@ export interface VNode {
   // 实际的父节点
   parentNode?: Node
 
-  // 片段
-  fragment?: VNode[]
-
   // 组件实际的父组件
   parent?: YoxInterface
 
