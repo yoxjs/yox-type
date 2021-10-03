@@ -100,6 +100,8 @@ export interface VNodeOperator {
   destroy(api: DomApi, vnode: VNode): void
   insert(api: DomApi, parentNode: Node, vnode: VNode, before?: VNode): void
   remove(api: DomApi, parentNode: Node, vnode: VNode): void
+  enter(vnode: VNode): void
+  leave(vnode: VNode, done: Function): void
 }
 
 export interface VNode {
