@@ -96,7 +96,7 @@ export interface Slots {
 
 export interface VNodeOperator {
   create(api: DomApi, vnode: VNode): void
-  update(api: DomApi, parentNode: Node, vnode: VNode, oldVNode: VNode): void
+  update(api: DomApi, vnode: VNode, oldVNode: VNode): void
   destroy(api: DomApi, vnode: VNode): void
   insert(api: DomApi, parentNode: Node, vnode: VNode, before?: VNode): void
   remove(api: DomApi, parentNode: Node, vnode: VNode): void
@@ -113,8 +113,11 @@ export interface VNode {
   // 真实节点
   node: Node
 
-  // 实际的父节点
+  // 真实的父节点
   parentNode?: Node
+
+  // 目标节点
+  target?: Node
 
   // 组件实际的父组件
   parent?: YoxInterface
