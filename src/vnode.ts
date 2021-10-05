@@ -96,7 +96,7 @@ export interface Slots {
 
 export interface VNodeOperator {
   create(api: DomApi, vnode: VNode): void
-  update(api: DomApi, vnode: VNode, oldVNode: VNode): void
+  update(api: DomApi, parentNode: Node, vnode: VNode, oldVNode: VNode): void
   destroy(api: DomApi, vnode: VNode): void
   insert(api: DomApi, parentNode: Node, vnode: VNode, before?: VNode): void
   remove(api: DomApi, parentNode: Node, vnode: VNode): void
