@@ -108,10 +108,10 @@ export interface VNode {
 
   type: number
 
-  data: Data
+  data?: Data
 
   // 真实节点
-  node: Node
+  node?: Node
 
   // 真实的父节点
   parentNode?: Node
