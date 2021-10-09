@@ -119,6 +119,9 @@ export interface VNode {
   // 目标节点
   target?: Node
 
+  // 影子节点
+  shadow?: VNode
+
   // 组件实际的父组件
   parent?: YoxInterface
 
