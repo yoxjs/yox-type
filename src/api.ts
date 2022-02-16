@@ -18,12 +18,6 @@ export interface DomApi {
 
   createComment(text: string): Comment
 
-  getProp(node: HTMLElement, name: string): string | number | boolean | void
-
-  setProp(node: HTMLElement, name: string, value: string | number | boolean): void
-
-  removeProp(node: HTMLElement, name: string): void
-
   getAttr(node: HTMLElement, name: string): string | void
 
   setAttr(node: HTMLElement, name: string, value: string): void

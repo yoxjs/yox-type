@@ -165,8 +165,6 @@ export interface VNode {
 
   readonly props?: Data
 
-  readonly nativeProps?: Data
-
   readonly nativeAttrs?: Record<string, string>
 
   readonly nativeStyles?: Data

@@ -14,8 +14,6 @@ export type PropTypeFunction = (key: string, value: any, componentName: string |
 
 export type PropValueFunction = () => any
 
-export type PropertyHint = 1 | 2 | 3
-
 export type ComponentCallback = (options: ComponentOptions) => void
 
 export type ComponentLoader = (callback: ComponentCallback) => Promise<ComponentOptions> | void
