@@ -93,7 +93,7 @@ export interface ListenerOptions {
   listener: Listener
 
   // 命名空间
-  ns?: string
+  ns: string
 
 }
 
@@ -103,7 +103,33 @@ export interface ThisListenerOptions<This = any> {
   listener: ThisListener<This>
 
   // 命名空间
-  ns?: string
+  ns: string
+
+}
+
+export interface TypeListenerOptions {
+
+  // 事件名称，必填
+  type: string
+
+  // 数据变化处理器，必填
+  listener: Listener
+
+  // 命名空间
+  ns: string
+
+}
+
+export interface ThisTypeListenerOptions<This = any> {
+
+  // 事件名称，必填
+  type: string
+
+  // 数据变化处理器，必填
+  listener: ThisListener<This>
+
+  // 命名空间
+  ns: string
 
 }
 
@@ -191,7 +217,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   watchers?: Accessors<Watchers, Watcher | WatcherOptions>
 
-  events?: Accessors<Events, Listener | ListenerOptions>
+  events?: Accessors<Events, Listener | ListenerOptions> | TypeListenerOptions[]
 
   methods?: Methods
 
