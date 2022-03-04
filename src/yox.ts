@@ -13,6 +13,7 @@ import {
   ComponentOptions,
   ThisWatcherOptions,
   ThisListenerOptions,
+  EmitterFilter,
   EmitterEvent,
 } from './options'
 
@@ -94,12 +95,12 @@ export interface YoxInterface {
   ): void
 
   on(
-    type: string | Record<string, ThisListener<this> | ThisListenerOptions>,
+    type: string | Record<string, ThisListener<this> | ThisListenerOptions> | EmitterFilter[],
     listener?: ThisListener<this> | ThisListenerOptions
   ): this
 
   once(
-    type: string | Record<string, ThisListener<this> | ThisListenerOptions>,
+    type: string | Record<string, ThisListener<this> | ThisListenerOptions> | EmitterFilter[],
     listener?: ThisListener<this> | ThisListenerOptions
   ): this
 
