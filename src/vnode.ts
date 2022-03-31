@@ -86,13 +86,7 @@ export interface ModelValue {
 
 }
 
-export interface Slots {
-
-  vnodes: VNode[]
-
-  components: VNode[] | void
-
-}
+export type Slots = Record<string, (parent: YoxInterface) => VNode[] | void>
 
 export interface VNodeOperator {
   create(api: DomApi, vnode: VNode): void

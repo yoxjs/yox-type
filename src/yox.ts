@@ -23,6 +23,7 @@ import {
 } from './hooks'
 
 import {
+  Slots,
   VNode,
 } from './vnode'
 
@@ -162,6 +163,8 @@ export interface YoxInterface {
   ): Filter | void
 
   checkProp(key: string, value: any): void
+
+  renderSlots(props: Data, slots: Slots): void
 
   forceUpdate(props?: Data): void
 
