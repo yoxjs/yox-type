@@ -14,19 +14,19 @@ import {
 } from './api'
 
 import {
-  CustomEventInterface,
   YoxInterface,
+  CustomEventInterface,
 } from './yox'
 
-export interface DirectiveRuntime {
-  args?: (stack: any[]) => any[]
-  expr?: (stack: any[]) => any
-  stack: any[]
-}
+export type EventArgs = (event: CustomEventInterface, data?: Data) => any[]
+export type DirectiveArgs = () => any
 
 export interface EventRuntime {
-  args: (stack: any[], event: CustomEventInterface, data?: Data) => any[]
-  stack: any[]
+  execute: EventArgs
+}
+
+export interface DirectiveRuntime {
+  execute: DirectiveArgs
 }
 
 export interface Directive {
