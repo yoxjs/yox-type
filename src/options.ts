@@ -1,6 +1,8 @@
 import {
   HOOK_BEFORE_CREATE,
   HOOK_AFTER_CREATE,
+  HOOK_BEFORE_RENDER,
+  HOOK_AFTER_RENDER,
   HOOK_BEFORE_MOUNT,
   HOOK_AFTER_MOUNT,
   HOOK_BEFORE_UPDATE,
@@ -236,6 +238,10 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
   [HOOK_BEFORE_CREATE]?: (options: ComponentOptions) => void
 
   [HOOK_AFTER_CREATE]?: ComponentOptionsHook
+
+  [HOOK_BEFORE_RENDER]?: ComponentOptionsHook
+
+  [HOOK_AFTER_RENDER]?: ComponentOptionsHook
 
   [HOOK_BEFORE_MOUNT]?: ComponentOptionsHook
 
