@@ -3,7 +3,6 @@ import {
   Component,
   ComponentCallback,
   Filter,
-  Partial,
   ThisTask,
   ThisWatcher,
   ThisListener,
@@ -151,11 +150,6 @@ export interface YoxInterface {
     name: string | Record<string, Component>,
     component?: Component
   ): Component | void
-
-  partial(
-    name: string | Record<string, Partial>,
-    partial?: Partial
-  ): Function | void
 
   filter(
     name: string | Record<string, Filter>,

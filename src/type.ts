@@ -24,8 +24,6 @@ export type FilterFunction = (this: any, ...args: any) => string | number | bool
 
 export type Filter = FilterFunction | Record<string, FilterFunction>
 
-export type Partial = string | Function
-
 export type ThisTask<This> = (this: This) => void
 
 export type ThisWatcher<This> = (this: This, newValue: any, oldValue: any, keypath: string) => void

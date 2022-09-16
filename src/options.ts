@@ -229,8 +229,6 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   directives?: Record<string, DirectiveHooks>
 
-  partials?: Record<string, string>
-
   filters?: Record<string, Filter>
 
   extensions?: Data
