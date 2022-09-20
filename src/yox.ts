@@ -66,8 +66,6 @@ export interface CustomEventInterface {
  */
 export interface YoxInterface {
 
-  $id: number
-
   $options: ComponentOptions
 
   $el?: HTMLElement
