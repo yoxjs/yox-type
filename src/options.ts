@@ -43,6 +43,9 @@ export interface ComputedOptions {
   // getter，必填
   get: ComputedGetter
 
+  // 调用 getter 函数的参数列表
+  args?: any[]
+
   // setter
   set?: ComputedSetter
 

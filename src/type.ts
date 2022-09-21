@@ -36,7 +36,7 @@ export type Listener = (event: CustomEventInterface, data?: Data, isNative?: boo
 
 export type NativeListener = (event: CustomEventInterface | Event) => false | void
 
-export type ComputedGetter = () => any
+export type ComputedGetter = (...params: any) => any
 
 export type ComputedSetter = (value: any) => void
 
