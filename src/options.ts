@@ -240,7 +240,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   [HOOK_AFTER_CREATE]?: ComponentOptionsHook
 
-  [HOOK_BEFORE_RENDER]?: ComponentOptionsHook
+  [HOOK_BEFORE_RENDER]?: (props: Data) => void
 
   [HOOK_AFTER_RENDER]?: ComponentOptionsHook
 
