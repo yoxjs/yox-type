@@ -40,6 +40,8 @@ export type ComputedGetter = (...params: any) => any
 
 export type ComputedSetter = (value: any) => void
 
+export type ComputedOutter = (value: any) => any
+
 export type ValueHolder = {
 
   keypath?: string
