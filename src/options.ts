@@ -27,7 +27,7 @@ import {
   ThisListener,
   ComputedGetter,
   ComputedSetter,
-  ComputedOutter,
+  ComputedOutput,
 } from './type'
 
 import {
@@ -47,9 +47,6 @@ export interface ComputedOptions {
   // setter
   set?: ComputedSetter
 
-  // 出口函数，方便获取计算属性最终的返回值
-  out?: ComputedOutter
-
   // 是否开启缓存，默认为 true
   cache?: boolean
 
@@ -59,8 +56,11 @@ export interface ComputedOptions {
   // 写死依赖，从而跳过依赖自动收集
   deps?: string[]
 
-  // 调用 getter 函数的参数列表
-  args?: any[]
+  // 入口参数，调用 getter 函数的参数列表
+  input?: any[]
+
+  // 出口函数，方便获取计算属性最终的返回值
+  output?: ComputedOutput,
 
 }
 
