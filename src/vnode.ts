@@ -134,18 +134,6 @@ export interface VNode {
   // 是否是 组件节点
   readonly isComponent?: boolean
 
-  // 是否是 注释节点
-  readonly isComment?: boolean
-
-  // 是否是 片段节点
-  readonly isFragment?: boolean
-
-  // 是否是 传送门节点
-  readonly isPortal?: boolean
-
-  // 是否是 插槽节点
-  readonly isSlot?: boolean
-
   // 是否是 svg 元素
   readonly isSvg?: boolean
 
