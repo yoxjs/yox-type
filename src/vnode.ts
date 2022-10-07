@@ -2,6 +2,7 @@ import {
   Data,
   Listener,
   LazyValue,
+  DirectiveFunction,
 } from './type'
 
 import {
@@ -31,29 +32,17 @@ export interface DirectiveRuntime {
 
 export interface Directive {
 
-  key: string
-
   name: string
 
   ns: string
 
-  runtime: DirectiveRuntime | void
-
   // 指令修饰符
   readonly modifier: string | void
 
-  // 指令的值，一般是字面量，比如 o-x="1" 中的 1
-  // 如果不是字面量，则提供 getter 函数用于取值，同时 value 也会保留字面量
-  readonly value?: string | number | boolean
+  // 指令的值
+  readonly value: any
 
-  // 取值函数
-  readonly getter?: () => any | void
-
-  // 事件或函数调用式的指令会编译成 handler
-  readonly handler?: () => void | void
-
-  // 必须有 hooks
-  readonly hooks: DirectiveHooks
+  readonly create: DirectiveFunction
 
 }
 
@@ -130,9 +119,6 @@ export interface VNode {
 
   // 元素节点或组件节点的标签名称
   readonly tag?: string
-
-  // 是否是 组件节点
-  readonly isComponent?: boolean
 
   // 是否是 svg 元素
   readonly isSvg?: boolean

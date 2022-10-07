@@ -3,18 +3,14 @@ import {
 } from './type'
 
 import {
-  VNode,
   Directive,
 } from './vnode'
 
-import {
-  YoxInterface,
-} from './yox'
-
 export interface DirectiveHooks {
-  once?: true
-  bind: (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
-  unbind?: (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => void
+  afterMount: (directive: Directive) => void
+  beforeUpdate: (directive: Directive) => void
+  afterUpdate: (directive: Directive) => void
+  beforeDestroy: (directive: Directive) => void
 }
 
 export interface SpecialEventHooks {

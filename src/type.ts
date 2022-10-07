@@ -1,6 +1,14 @@
 import {
+  DirectiveHooks,
+} from './hooks'
+
+import {
   ComponentOptions,
 } from './options'
+
+import {
+  Directive,
+} from './vnode'
 
 import {
   CustomEventInterface,
@@ -19,6 +27,8 @@ export type ComponentCallback = (options: ComponentOptions) => void
 export type ComponentLoader = (callback: ComponentCallback) => Promise<ComponentOptions> | void
 
 export type Component = ComponentOptions | ComponentLoader
+
+export type DirectiveFunction = (node: HTMLElement, directive: Directive) => DirectiveHooks | undefined
 
 export type FilterFunction = (this: any, ...args: any) => string | number | boolean
 
