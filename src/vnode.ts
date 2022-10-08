@@ -6,7 +6,6 @@ import {
 } from './type'
 
 import {
-  DirectiveHooks,
   TransitionHooks,
 } from './hooks'
 

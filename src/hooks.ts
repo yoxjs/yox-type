@@ -4,13 +4,14 @@ import {
 
 import {
   Directive,
+  VNode,
 } from './vnode'
 
 export interface DirectiveHooks {
-  afterMount: (directive: Directive) => void
-  beforeUpdate: (directive: Directive) => void
-  afterUpdate: (directive: Directive) => void
-  beforeDestroy: (directive: Directive) => void
+  afterMount?: (directive: Directive, vnode: VNode) => void
+  beforeUpdate?: (directive: Directive, vnode: VNode) => void
+  afterUpdate?: (directive: Directive, vnode: VNode) => void
+  beforeDestroy?: (directive: Directive, vnode: VNode) => void
 }
 
 export interface SpecialEventHooks {

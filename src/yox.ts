@@ -6,6 +6,7 @@ import {
   ThisTask,
   ThisWatcher,
   ThisListener,
+  DirectiveFunction,
 } from './type'
 
 import {
@@ -17,7 +18,6 @@ import {
 } from './options'
 
 import {
-  DirectiveHooks,
   TransitionHooks,
 } from './hooks'
 
@@ -136,9 +136,9 @@ export interface YoxInterface {
   ): YoxInterface
 
   directive(
-    name: string | Record<string, DirectiveHooks>,
-    directive?: DirectiveHooks
-  ): DirectiveHooks | void
+    name: string | Record<string, DirectiveFunction>,
+    directive?: DirectiveFunction
+  ): DirectiveFunction | void
 
   transition(
     name: string | Record<string, TransitionHooks>,

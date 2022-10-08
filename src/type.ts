@@ -8,10 +8,12 @@ import {
 
 import {
   Directive,
+  VNode,
 } from './vnode'
 
 import {
   CustomEventInterface,
+  YoxInterface,
 } from './yox'
 
 export type Data = Record<string, any>
@@ -28,7 +30,7 @@ export type ComponentLoader = (callback: ComponentCallback) => Promise<Component
 
 export type Component = ComponentOptions | ComponentLoader
 
-export type DirectiveFunction = (node: HTMLElement, directive: Directive) => DirectiveHooks | undefined
+export type DirectiveFunction = (node: HTMLElement | YoxInterface, directive: Directive, vnode: VNode) => DirectiveHooks | undefined
 
 export type FilterFunction = (this: any, ...args: any) => string | number | boolean
 

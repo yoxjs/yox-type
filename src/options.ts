@@ -28,11 +28,11 @@ import {
   ComputedGetter,
   ComputedSetter,
   ComputedOutput,
+  DirectiveFunction,
 } from './type'
 
 import {
   TransitionHooks,
-  DirectiveHooks,
 } from './hooks'
 
 import {
@@ -234,7 +234,7 @@ export interface ComponentOptions<Computed = any, Watchers = any, Events = any, 
 
   components?: Record<string, ComponentOptions>
 
-  directives?: Record<string, DirectiveHooks>
+  directives?: Record<string, DirectiveFunction>
 
   filters?: Record<string, Filter>
 
