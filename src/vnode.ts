@@ -122,12 +122,6 @@ export interface VNode {
   // 是否是 svg 元素
   readonly isSvg?: boolean
 
-  // 是否是 style 元素
-  readonly isStyle?: boolean
-
-  // 是否是 option 元素
-  readonly isOption?: boolean
-
   // 是否是 静态节点
   readonly isStatic?: boolean
 

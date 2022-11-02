@@ -44,13 +44,17 @@ export interface DomApi {
 
   tag(node: Node): string | void
 
-  getText(node: Node): string | void
+  getNodeText(node: Node): string | void
 
-  setText(node: Node, text: string, isStyle?: boolean, isOption?: boolean): void
+  setNodeText(node: Node, text: string): void
+
+  getElementText(node: Node): string | void
+
+  setElementText(node: Node, text: string): void
 
   getHtml(node: Element): string | void
 
-  setHtml(node: Element, html: string, isStyle?: boolean, isOption?: boolean): void
+  setHtml(node: Element, html: string): void
 
   addClass(node: HTMLElement, className: string): void
 
